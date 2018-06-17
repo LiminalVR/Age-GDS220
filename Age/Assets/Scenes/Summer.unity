@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 2062557060}
   - component: {fileID: 2062557059}
   m_Layer: 0
-  m_Name: Terrain
+  m_Name: SummerTerrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
