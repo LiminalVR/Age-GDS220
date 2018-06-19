@@ -15,14 +15,14 @@ public class PlayerController : MonoBehaviour {
             Ray ray = new Ray(transform.position, transform.forward);
             RaycastHit raycastHit;
 
-            Physics.Raycast(ray, out raycastHit, _maxDis, _interactionLayers);
+            if(Physics.Raycast(ray, out raycastHit, _maxDis, _interactionLayers))
+            {
 
-            IElement selectedElement = raycastHit.collider.gameObject.GetComponent<IElement>();
+                IElement selectedElement = raycastHit.collider.gameObject.GetComponent<IElement>();
 
-            if(selectedElement != null)
-                selectedElement.Interact();
-
-
+                if(selectedElement != null)
+                    selectedElement.Interact();
+            }
         }
     }
 }
