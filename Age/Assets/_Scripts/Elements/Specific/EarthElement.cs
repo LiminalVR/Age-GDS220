@@ -7,6 +7,14 @@ public class EarthElement : BaseElement {
     public override void Interact()
     {
         base.Interact();
-        Debug.Log("Dig em");
+
+        if(!_isActive)
+        {
+            Debug.Log("Dig em");
+        }
+        else
+        {
+            Debug.Log("Dig em 2");
+        }
     }
 }

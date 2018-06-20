@@ -7,6 +7,13 @@ public class AirElement : BaseElement {
     public override void Interact()
     {
         base.Interact();
-        Debug.Log("Blow em");
+        if(!_isActive)
+        {
+            Debug.Log("Blow em");
+        }
+        else
+        {
+            Debug.Log("Blow em 2");
+        }
     }
 }

@@ -7,6 +7,14 @@ public class FireElement : BaseElement {
     public override void Interact()
     {
         base.Interact();
-        Debug.Log("Light em");
+
+        if(!_isActive)
+        {
+            Debug.Log("Light em");
+        }
+        else
+        {
+            Debug.Log("Light em 2");
+        }
     }
 }

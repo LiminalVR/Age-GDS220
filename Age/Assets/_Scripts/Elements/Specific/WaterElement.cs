@@ -7,6 +7,13 @@ public class WaterElement : BaseElement {
     public override void Interact()
     {
         base.Interact();
-        Debug.Log("Spray em");
+        if(!_isActive)
+        {
+            Debug.Log("Spray em");
+        }
+        else
+        {
+            Debug.Log("Spray em 2");
+        }
     }
 }

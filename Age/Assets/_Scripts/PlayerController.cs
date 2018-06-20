@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private LayerMask _interactionLayers;
     [SerializeField] private string _buttonName;
     [SerializeField] private float _maxDis;
+    private IElement _selectedElement;
 
     private void Update()
     {
@@ -17,11 +18,24 @@ public class PlayerController : MonoBehaviour {
 
             if(Physics.Raycast(ray, out raycastHit, _maxDis, _interactionLayers))
             {
+                _selectedElement = raycastHit.collider.gameObject.GetComponent<IElement>();
+            }
+        }
 
-                IElement selectedElement = raycastHit.collider.gameObject.GetComponent<IElement>();
+        if(Input.GetButton(_buttonName))
+        {
+            if(_selectedElement != null)
+            {
+                _selectedElement.ConfirmationTime += Time.deltaTime;
+            }
+        }
 
-                if(selectedElement != null)
-                    selectedElement.Interact();
+        if(Input.GetButtonUp(_buttonName))
+        {
+            if(_selectedElement != null)
+            {
+                _selectedElement.ConfirmationTime = 0;
+                _selectedElement = null;
             }
         }
     }

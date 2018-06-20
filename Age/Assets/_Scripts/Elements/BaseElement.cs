@@ -5,13 +5,39 @@ using UnityEngine;
 public class BaseElement : MonoBehaviour, IElement {
 
     [Header("Interaction")]
+    [SerializeField] private float _confirmationDuration;
     [SerializeField] protected AudioClip _interactionSound;
     [SerializeField] protected GameObject _interactionEffect;
     [SerializeField] protected AudioClip _otherInteractionSound;
     [SerializeField] protected GameObject _otherInteractionEffect;
 
     protected AudioSource _as;
-    private bool _isActive = false;
+    protected bool _isActive = false;
+    protected bool _isConfirming = false;
+    private float _confirmationTime;
+
+    public float ConfirmationTime
+    {
+        get { return _confirmationTime; }
+        set
+        {
+            if(value == 0)
+                _isConfirming = false;
+            else
+                _isConfirming = true;
+
+            _confirmationTime = value;
+
+            if(_confirmationTime > _confirmationDuration)
+            {
+                _confirmationTime = 0;
+                _isConfirming = false;
+                Interact();
+            }
+
+            Debug.Log(_confirmationTime);
+        }
+    }
 
     private void Start()
     {

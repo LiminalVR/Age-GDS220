@@ -4,6 +4,7 @@ using UnityEngine;
 
 public interface IElement {
 
+    float ConfirmationTime { get; set; }
     void Interact();
 }
 
