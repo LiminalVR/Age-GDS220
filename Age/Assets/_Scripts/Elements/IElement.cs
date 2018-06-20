@@ -6,3 +6,9 @@ public interface IElement {
 
     void Interact();
 }
+
+
+// Earth
+// Water
+// Fire
+// Air
