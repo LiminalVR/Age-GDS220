@@ -127,8 +127,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a3081b23cb75ff44a55ecd10545edf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _confirmationDuration: 2
   _interactionSound: {fileID: 0}
   _interactionEffect: {fileID: 0}
+  _otherInteractionSound: {fileID: 0}
+  _otherInteractionEffect: {fileID: 0}
+  _renderersToFade:
+  - {fileID: 23514178863463292}
+  _targetAlpha: 0.2
+  _fadeDuration: 5
 --- !u!135 &135617362446612286
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 33664185780090672}
   - component: {fileID: 23581028462913928}
   - component: {fileID: 135069160117591344}
-  - component: {fileID: 114519191639339668}
   - component: {fileID: 114243876011855026}
   - component: {fileID: 54560872440303490}
   - component: {fileID: 114966668290288946}
@@ -117,19 +116,6 @@ MonoBehaviour:
   _height: 0.5
   _maxSpeed: 0.5
   _accelaration: 100
---- !u!114 &114519191639339668
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1584831961560204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 900757decd64bbf46ab9321f8bfce372, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interactionSound: {fileID: 0}
-  _interactionEffect: {fileID: 0}
 --- !u!114 &114966668290288946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,8 +127,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd49c23b778e6124ba807f7ce7dcca7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _confirmationDuration: 2
   _interactionSound: {fileID: 0}
   _interactionEffect: {fileID: 0}
+  _otherInteractionSound: {fileID: 0}
+  _otherInteractionEffect: {fileID: 0}
+  _renderersToFade:
+  - {fileID: 23581028462913928}
+  _targetAlpha: 0.2
+  _fadeDuration: 5
 --- !u!135 &135069160117591344
 SphereCollider:
   m_ObjectHideFlags: 1

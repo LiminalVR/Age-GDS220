@@ -113,8 +113,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bd6dfc6d2fd01b488af4ba2bda4ec61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _confirmationDuration: 2
   _interactionSound: {fileID: 0}
   _interactionEffect: {fileID: 0}
+  _otherInteractionSound: {fileID: 0}
+  _otherInteractionEffect: {fileID: 0}
+  _renderersToFade:
+  - {fileID: 23607949879508554}
+  _targetAlpha: 0.2
+  _fadeDuration: 5
 --- !u!114 &114772060547155124
 MonoBehaviour:
   m_ObjectHideFlags: 1

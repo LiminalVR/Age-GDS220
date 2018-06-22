@@ -25,7 +25,8 @@ public class ElementManager : MonoBehaviour {
 
     private void Start()
     {
-        SpawnElement();
+        if(_nextElementIndex < _elementOrder.Length)
+            SpawnElement();
     }
 
     public void SpawnElement()
@@ -40,7 +41,8 @@ public class ElementManager : MonoBehaviour {
 
     public void ElementActivated()
     {
-        SpawnElement();
+        if(_nextElementIndex < _elementOrder.Length)
+            SpawnElement();
     }
 
     private void Update()
