@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour {
 
     private void Update()
     {
-        if(Input.GetButtonDown(_buttonName))
+     /*   if(Input.GetButtonDown(_buttonName))
         {
             Ray ray = new Ray(transform.position, transform.forward);
             RaycastHit raycastHit;
@@ -37,6 +37,6 @@ public class PlayerController : MonoBehaviour {
                 _selectedElement.ConfirmationTime = 0;
                 _selectedElement = null;
             }
-        }
+        }*/
     }
 }
