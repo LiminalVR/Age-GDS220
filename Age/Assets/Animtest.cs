@@ -13,17 +13,20 @@ public class Animtest : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey(KeyCode.Alpha1)) {
 
-			//Use this to stomp out the campfire
-			anim.SetBool ("cFireAlive", false);
-			anim.SetBool ("cFireDie", true);
-		}
-
-			//Use this to repair the campfire
-		if (Input.GetKey(KeyCode.Alpha2)) {
-			anim.SetBool ("cFireDie", false);
-			anim.SetBool ("cFireAlive", true);
-		}
 	}
+
+	//Campfire collapser
+	void EarthOrbSpring () {
+		anim.SetBool ("cFireAlive", false);
+		anim.SetBool ("cFireDie", true);
+	}
+
+	//Campfire prepare / repair
+	void EarthOrbSummer () {
+		anim.SetBool ("cFireDie", false);
+		anim.SetBool ("cFireAlive", true);
+	}
+
+
 }
