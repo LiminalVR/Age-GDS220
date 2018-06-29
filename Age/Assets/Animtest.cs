@@ -5,6 +5,7 @@ using UnityEngine;
 public class Animtest : MonoBehaviour {
 
 	public Animator anim;
+	public GameObject blueFlowerPetal, blueFlowerBud;
 
 	// Use this for initialization
 	void Start () {
@@ -22,6 +23,9 @@ public class Animtest : MonoBehaviour {
 		if (Input.GetKey(KeyCode.Alpha3)) {
 			FireOrbAutumn ();
 		}
+		if (Input.GetKey(KeyCode.Alpha4)) {
+			WaterOrbSummer ();
+		}
 	}
 
 	//Campfire collapser
@@ -38,6 +42,29 @@ public class Animtest : MonoBehaviour {
 
 	//Light up campfire
 	void FireOrbAutumn () {
+		
+	}
 
+	void WaterOrbSummer () {
+		blueFlowerPetal.gameObject.SetActive (true);
+		StartCoroutine (ScaleUpOverTime(3));
+	}
+
+	IEnumerator ScaleUpOverTime (float time) {
+		Vector3 originalScale = blueFlowerPetal.transform.localScale;
+		Vector3 destinationScale = new Vector3(1.0f, 1.0f, 1.0f);
+		Vector3 budOriginalScale = blueFlowerBud.transform.localScale;
+		Vector3 budDestinationScale = new Vector3(0.0f, 1.0f, 0.0f);
+
+		float currentTime = 0.0f;
+
+		do {
+			blueFlowerPetal.transform.localScale = Vector3.Lerp(originalScale, destinationScale, currentTime / time);
+			blueFlowerBud.transform.localScale = Vector3.Lerp(budOriginalScale, budDestinationScale, currentTime / time);
+			currentTime += Time.deltaTime;
+			yield return null;
+			blueFlowerBud.gameObject.SetActive(false);
+		} 
+		while (currentTime <= time);
 	}
 }
