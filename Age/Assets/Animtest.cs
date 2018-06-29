@@ -13,7 +13,15 @@ public class Animtest : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		if (Input.GetKey(KeyCode.Alpha1)) {
+			EarthOrbSpring ();
+		}
+		if (Input.GetKey(KeyCode.Alpha2)) {
+			EarthOrbSummer ();
+		}
+		if (Input.GetKey(KeyCode.Alpha3)) {
+			FireOrbAutumn ();
+		}
 	}
 
 	//Campfire collapser
@@ -28,5 +36,8 @@ public class Animtest : MonoBehaviour {
 		anim.SetBool ("cFireAlive", true);
 	}
 
+	//Light up campfire
+	void FireOrbAutumn () {
 
+	}
 }
