@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 33051926409547526}
   - component: {fileID: 23153819804532476}
   m_Layer: 0
-  m_Name: Stem
+  m_Name: PurpleFlower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
