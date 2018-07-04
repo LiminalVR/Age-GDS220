@@ -1,26 +1,63 @@
 fileFormatVersion: 2
-guid: 655af8d8637549a4dabd7a7359d7aadc
-timeCreated: 1530717508
+guid: fd81051f9933c4f48a3dff0b014a2fa9
+timeCreated: 1530718248
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
+    100002: group1
+    100004: group2
+    100006: pCube1
+    100008: pCube2
+    100010: pCube3
+    100012: pCube4
+    100014: pCube5
+    100016: pCylinder1
     400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: pSphere1
+    400002: group1
+    400004: group2
+    400006: pCube1
+    400008: pCube2
+    400010: pCube3
+    400012: pCube4
+    400014: pCube5
+    400016: pCylinder1
+    2300000: pCube1
+    2300002: pCube2
+    2300004: pCube3
+    2300006: pCube4
+    2300008: pCube5
+    2300010: pCylinder1
+    3300000: pCube1
+    3300002: pCube2
+    3300004: pCube3
+    3300006: pCube4
+    3300008: pCube5
+    3300010: pCylinder1
+    4300000: pCylinder1
+    4300002: pCube2
+    4300004: pCube4
+    4300006: pCube1
+    4300008: pCube3
+    4300010: pCube5
+    9500000: //RootNode
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Bark
-    second: {fileID: 2100000, guid: 9ff38bf1085b4bd419817315664d0c19, type: 2}
+      name: Leaf
+    second: {fileID: 2100000, guid: e169634532719c84bb2555a713cf2149, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Leaves
-    second: {fileID: 2100000, guid: c88d824df2d57d944912be294ada085f, type: 2}
+      name: Stem
+    second: {fileID: 2100000, guid: 7a691c377aa7e2e49b25560c5b0643e6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StemHead
+    second: {fileID: 2100000, guid: a35de0ee72c14bb40b76a39830b56d43, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -50,7 +87,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 40
+    globalScale: 0.025
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -92,7 +129,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
