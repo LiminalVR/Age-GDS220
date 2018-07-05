@@ -66,14 +66,14 @@ public class BaseElement : MonoBehaviour, IElement {
                 _as.PlayOneShot(_interactionSound);
 
             if(_interactionEffect != null)
-                activeEffect = Instantiate(_interactionEffect, transform.position, transform.rotation);
+                activeEffect = Instantiate(_interactionEffect, transform.position, transform.rotation, transform);
 
             Debug.Log(activeEffect);
 
-            while(activeEffect != null)
-            {
-                yield return null;
-            }
+            //while(activeEffect != null)
+            //{
+            //    yield return null;
+            //}
 
             StartCoroutine(Fade());
         }
@@ -83,7 +83,7 @@ public class BaseElement : MonoBehaviour, IElement {
                 _as.PlayOneShot(_otherInteractionSound);
 
             if(_otherInteractionEffect != null)
-                activeEffect = Instantiate(_otherInteractionEffect, transform.position, transform.rotation);
+                activeEffect = Instantiate(_otherInteractionEffect, transform.position, transform.rotation, transform);
         }
 
         yield return null;

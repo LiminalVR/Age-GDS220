@@ -128,7 +128,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _confirmationDuration: 2
   _interactionSound: {fileID: 0}
-  _interactionEffect: {fileID: 0}
+  _interactionEffect: {fileID: 1218185337132190, guid: 46dcef25b3205f4439d671ffd5634c4e,
+    type: 2}
   _otherInteractionSound: {fileID: 0}
   _otherInteractionEffect: {fileID: 0}
   _renderersToFade:
