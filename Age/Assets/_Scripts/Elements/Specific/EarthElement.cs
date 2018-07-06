@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class EarthElement : BaseElement {
 
+    [SerializeField] private Animator _campFireAnim;
+
     public override void Interact()
     {
-        base.Interact();
-
         if(!_isActive)
         {
-            Debug.Log("Dig em");
+            // 1st interaction actions.
+            _campFireAnim.SetBool("cFireDie", false);
+            _campFireAnim.SetBool("cFireAlive", true);
         }
         else
         {
+            // Other interaction actions.
             Debug.Log("Dig em 2");
         }
+
+        base.Interact();
     }
 }

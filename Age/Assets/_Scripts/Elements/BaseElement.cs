@@ -10,6 +10,7 @@ public class BaseElement : MonoBehaviour, IElement {
     [SerializeField] protected GameObject _interactionEffect;
     [SerializeField] protected AudioClip _otherInteractionSound;
     [SerializeField] protected GameObject _otherInteractionEffect;
+    private GameObject _startObj;
 
     [Header("Fade")]
     [SerializeField] private Renderer[] _renderersToFade;
@@ -46,6 +47,14 @@ public class BaseElement : MonoBehaviour, IElement {
 
     private void Start()
     {
+        _startObj = this.gameObject;
+    }
+
+    private void ResetElement()
+    {
+        var temp = Instantiate(_startObj, transform.position, transform.rotation);
+        temp.SetActive(false);
+        Destroy(this.gameObject);
     }
 
     public virtual void Interact()
@@ -117,5 +126,10 @@ public class BaseElement : MonoBehaviour, IElement {
         }
 
         yield return null;
+    }
+
+    private void OnDisable()
+    {
+        ResetElement();
     }
 }

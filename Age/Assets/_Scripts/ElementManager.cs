@@ -34,7 +34,7 @@ public class ElementManager : MonoBehaviour {
         BaseElement element = _elementOrder[_nextElementIndex];
         Transform sp = _elementSpawnPoints[_nextElementIndex];
 
-        _lastSpawnedElement = Instantiate(element, sp.position, sp.rotation);
+        element.gameObject.SetActive(true);
 
         _nextElementIndex++;
     }

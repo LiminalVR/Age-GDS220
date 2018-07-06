@@ -58,7 +58,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 09bf8c6a973bac64bacca78b0b20b8bd, type: 2}
   m_StaticBatchInfo:
@@ -136,6 +135,7 @@ MonoBehaviour:
   - {fileID: 23514178863463292}
   _targetAlpha: 0.2
   _fadeDuration: 5
+  _campFireAnim: {fileID: 0}
 --- !u!135 &135617362446612286
 SphereCollider:
   m_ObjectHideFlags: 1
