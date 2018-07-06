@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseElement : MonoBehaviour, IElement {
+public abstract class BaseElement : MonoBehaviour, IElement {
 
     [Header("Interaction")]
     [SerializeField] private float _confirmationDuration;
@@ -59,9 +59,41 @@ public class BaseElement : MonoBehaviour, IElement {
 
     public virtual void Interact()
     {
+        switch(SeasonManager._currentSeason)
+        {
+            case SeasonManager.Seasons.SUMMER:
+                EnactSummerActions(!_isActive);
+                break;
+
+            case SeasonManager.Seasons.AUTUMN:
+                EnactAutumnActions(!_isActive);
+                break;
+
+            case SeasonManager.Seasons.WINTER:
+                EnactWinterActions(!_isActive);
+                break;
+
+            case SeasonManager.Seasons.SPRING:
+                EnactSpringActions(!_isActive);
+                break;
+
+            default:
+                Debug.LogError("Unknown Season");
+                break;
+        }
+
         StartCoroutine(AnimateEffect(_isActive));
         _isActive = true;
     }
+
+    #region "Actions"
+
+    protected abstract void EnactSummerActions(bool initialAction);
+    protected abstract void EnactWinterActions(bool initialAction);
+    protected abstract void EnactAutumnActions(bool initialAction);
+    protected abstract void EnactSpringActions(bool initialAction);
+
+    #endregion
 
     private IEnumerator AnimateEffect(bool otherEffect)
     {

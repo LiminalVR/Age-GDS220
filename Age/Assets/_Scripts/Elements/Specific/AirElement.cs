@@ -4,21 +4,51 @@ using UnityEngine;
 
 public class AirElement : BaseElement {
 
-    public override void Interact()
+    protected override void EnactSummerActions(bool initialAction)
     {
-        if(!_isActive)
+        if(initialAction)
         {
-            // 1st interaction actions.
 
-            Debug.Log("Blow em");
         }
         else
         {
-            // Other interaction actions.
 
-            Debug.Log("Blow em 2");
         }
+    }
 
-        base.Interact();
+    protected override void EnactAutumnActions(bool initialAction)
+    {
+        if(initialAction)
+        {
+
+        }
+        else
+        {
+
+        }
+    }
+
+    protected override void EnactWinterActions(bool initialAction)
+    {
+        if(initialAction)
+        {
+
+        }
+        else
+        {
+
+        }
+    }
+
+    protected override void EnactSpringActions(bool initialAction)
+    {
+        if(initialAction)
+        {
+
+        }
+        else
+        {
+
+        }
     }
 }

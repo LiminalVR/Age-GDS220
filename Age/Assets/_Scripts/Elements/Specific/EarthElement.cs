@@ -6,20 +6,53 @@ public class EarthElement : BaseElement {
 
     [SerializeField] private Animator _campFireAnim;
 
-    public override void Interact()
+    protected override void EnactSummerActions(bool initialAction)
     {
-        if(!_isActive)
+        if(initialAction)
         {
-            // 1st interaction actions.
             _campFireAnim.SetBool("cFireDie", false);
             _campFireAnim.SetBool("cFireAlive", true);
         }
         else
         {
-            // Other interaction actions.
-            Debug.Log("Dig em 2");
-        }
 
-        base.Interact();
+        }
+    }
+
+    protected override void EnactAutumnActions(bool initialAction)
+    {
+        if(initialAction)
+        {
+
+        }
+        else
+        {
+
+        }
+    }
+
+    protected override void EnactWinterActions(bool initialAction)
+    {
+        if(initialAction)
+        {
+
+        }
+        else
+        {
+
+        }
+    }
+
+    protected override void EnactSpringActions(bool initialAction)
+    {
+        if(initialAction)
+        {
+            _campFireAnim.SetBool("cFireAlive", false);
+            _campFireAnim.SetBool("cFireDie", true);
+        }
+        else
+        {
+
+        }
     }
 }

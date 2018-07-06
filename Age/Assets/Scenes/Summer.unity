@@ -454,6 +454,7 @@ GameObject:
   m_Component:
   - component: {fileID: 352193000}
   - component: {fileID: 352192999}
+  - component: {fileID: 352193001}
   m_Layer: 0
   m_Name: CTRL_GameGod
   m_TagString: Untagged
@@ -477,11 +478,6 @@ MonoBehaviour:
   - {fileID: 741101705}
   - {fileID: 1233311166}
   - {fileID: 1745867175}
-  _elementSpawnPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!4 &352193000
 Transform:
   m_ObjectHideFlags: 0
@@ -495,6 +491,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &352193001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 352192998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 367ef13e66867fd43a0bf8ab565b9d7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _seasonOrder: 00000000020000000100000003000000
+  _seasonDuration: 5
 --- !u!1001 &383682040
 Prefab:
   m_ObjectHideFlags: 0

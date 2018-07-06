@@ -5,7 +5,6 @@ using UnityEngine;
 public class ElementManager : MonoBehaviour {
 
     [SerializeField] private BaseElement[] _elementOrder;
-    [SerializeField] private Transform[] _elementSpawnPoints;
     private int _nextElementIndex = 0;
     private BaseElement _lastSpawnedElement;
 
@@ -17,6 +16,7 @@ public class ElementManager : MonoBehaviour {
 
     private Element[] _elements;
     */
+
 
     private void Awake()
     {
@@ -32,8 +32,6 @@ public class ElementManager : MonoBehaviour {
     public void SpawnElement()
     {
         BaseElement element = _elementOrder[_nextElementIndex];
-        Transform sp = _elementSpawnPoints[_nextElementIndex];
-
         element.gameObject.SetActive(true);
 
         _nextElementIndex++;

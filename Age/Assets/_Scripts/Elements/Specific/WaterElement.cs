@@ -4,21 +4,52 @@ using UnityEngine;
 
 public class WaterElement : BaseElement {
 
-    public override void Interact()
-    {
-        if(!_isActive)
-        {
-            // 1st interaction actions.
 
-            Debug.Log("Spray em");
+    protected override void EnactSummerActions(bool initialAction)
+    {
+        if(initialAction)
+        {
+
         }
         else
         {
-            // Other interaction actions.
 
-            Debug.Log("Spray em 2");
         }
+    }
 
-        base.Interact();
+    protected override void EnactAutumnActions(bool initialAction)
+    {
+        if(initialAction)
+        {
+
+        }
+        else
+        {
+
+        }
+    }
+
+    protected override void EnactWinterActions(bool initialAction)
+    {
+        if(initialAction)
+        {
+
+        }
+        else
+        {
+
+        }
+    }
+
+    protected override void EnactSpringActions(bool initialAction)
+    {
+        if(initialAction)
+        {
+
+        }
+        else
+        {
+
+        }
     }
 }
