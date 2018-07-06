@@ -111,10 +111,10 @@ public abstract class BaseElement : MonoBehaviour, IElement {
 
             Debug.Log(activeEffect);
 
-            //while(activeEffect != null)
-            //{
-            //    yield return null;
-            //}
+            while(activeEffect != null)
+            {
+                yield return null;
+            }
 
             StartCoroutine(Fade());
         }

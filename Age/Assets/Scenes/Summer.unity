@@ -195,10 +195,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1999715327816606, guid: 0b2fa53dc0c08ab40a78f08e63c1e015, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b2fa53dc0c08ab40a78f08e63c1e015, type: 2}
   m_IsPrefabParent: 0
@@ -508,7 +504,7 @@ MonoBehaviour:
   _seasonOrder: 00000000020000000100000003000000
   _seasonDuration: 20
   _loopSeasons: 1
-  _unlimitedDuration: 0
+  _unlimitedDuration: 1
   _fadeOutDuration: 5
   _fadeInDuration: 5
   _fadeMask: {fileID: 852455854}
@@ -1533,10 +1529,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1584831961560204, guid: 9a6c3c0a03f965b45b9c01df6b3ee496, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9a6c3c0a03f965b45b9c01df6b3ee496, type: 2}
   m_IsPrefabParent: 0
@@ -2085,10 +2077,6 @@ Prefab:
     - target: {fileID: 4955097633627228, guid: 4e7c228d118bbe64fbfe7535f2bbe112, type: 2}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1221561139603768, guid: 4e7c228d118bbe64fbfe7535f2bbe112, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4e7c228d118bbe64fbfe7535f2bbe112, type: 2}
