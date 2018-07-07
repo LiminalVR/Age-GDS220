@@ -15,7 +15,7 @@ public class SceneElement : BaseElement
     {
         base.Interact();
 
-        _seasonManager.ChangeSeason();
+        StartCoroutine(_seasonManager.ChangeSeason());
     }
 
     protected override void EnactSummerActions(bool initialAction)
