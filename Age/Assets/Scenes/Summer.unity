@@ -501,9 +501,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 367ef13e66867fd43a0bf8ab565b9d7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _seasonOrder: 00000000020000000100000003000000
-  _seasonDuration: 20
-  _loopSeasons: 1
+  _nextSceneIndex: 1
+  _season: 0
+  _seasonDuration: 150
   _unlimitedDuration: 1
   _fadeOutDuration: 5
   _fadeInDuration: 5
@@ -933,7 +933,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

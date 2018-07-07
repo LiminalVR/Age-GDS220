@@ -5,18 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/__DELETED_GUID_Trash/d6cdb2b110849fe4081e0d04a2fa5740
-    guid: d6cdb2b110849fe4081e0d04a2fa5740
   - enabled: 1
     path: Assets/Scenes/Summer.unity
     guid: 0da80b307c22d40408b258c2bc7b4e1b
   - enabled: 1
     path: Assets/Scenes/Autumn.unity
-    guid: 2812f5a37f9e40d478da1ef3f486999d
+    guid: 4b851de0dbf1f28408b997210eb829d4
   - enabled: 1
-    path: Assets/Scenes/Winter.unity
-    guid: fcb63560f0e7c7f4cad45b4d7c20bb8a
+    path: Assets/Scenes/Summer 2.unity
+    guid: d9582733c55a5c945902fb9d9e9c32b0
   - enabled: 1
-    path: Assets/Scenes/Spring.unity
-    guid: efcc428cab8596e47b640716e594adf1
+    path: Assets/Scenes/Summer 3.unity
+    guid: ee716949c1c213242ae3bba619e4aa8e

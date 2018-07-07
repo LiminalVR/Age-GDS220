@@ -11,17 +11,11 @@ public class SeasonManager : MonoBehaviour {
     public static Seasons _currentSeason;
 
     [Header("Seasons")]
-    [SerializeField] private Seasons[] _seasonOrder;
-    private int _currentSeasonIndex;
+    [SerializeField] private int _nextSceneIndex;
+    [SerializeField] private Seasons _season;
 
     [SerializeField] private float _seasonDuration;
-    [SerializeField] private bool _loopSeasons;
     [SerializeField] private bool _unlimitedDuration;
-
-    private Coroutine _summer;
-    private Coroutine _winter;
-    private Coroutine _autumn;
-    private Coroutine _spring;
 
     [Header("Transition")]
     [SerializeField] private float _fadeOutDuration;
@@ -30,8 +24,9 @@ public class SeasonManager : MonoBehaviour {
 
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
-        _currentSeason = _seasonOrder[0];
+        StartCoroutine(ManipulateFadeMask(_fadeInDuration, 0));
+        _currentSeason = _season;
+
         Setup();
     }
 
@@ -44,79 +39,49 @@ public class SeasonManager : MonoBehaviour {
         switch(_currentSeason)
         {
             case Seasons.SUMMER:
-                if(_summer == null)
-                {
-                    _summer = StartCoroutine(ProgressSummer());
-                }
+                StartCoroutine(ProgressSummer());
+
                 break;
 
             case Seasons.WINTER:
-                if(_winter == null)
-                {
-                    _winter = StartCoroutine(ProgressWinter());
-                }
+                StartCoroutine(ProgressWinter());
+
                 break;
 
             case Seasons.AUTUMN:
-                if(_autumn == null)
-                {
-                    _autumn = StartCoroutine(ProgressAutumn());
-                }
+                StartCoroutine(ProgressAutumn());
                 break;
 
             case Seasons.SPRING:
-                if(_spring == null)
-                {
-                    _spring = StartCoroutine(ProgressSpring());
-                }
+                StartCoroutine(ProgressSpring());
                 break;
         }
     }
 
-    public IEnumerator ChangeSeason()
+    public IEnumerator ManipulateFadeMask(float duration, float targetAlpha)
     {
-        _currentSeasonIndex = _currentSeasonIndex < _seasonOrder.Length - 1 ? _currentSeasonIndex + 1 : 0;
-        _currentSeason = _seasonOrder[_currentSeasonIndex];
-
-        print("Change Season");
-
         var step = 0.0f;
         Color startColour = _fadeMask.color;
 
         while(step < 1)
         {
-            step += Time.deltaTime/_fadeOutDuration;
-            _fadeMask.color = Color.Lerp(startColour, new Color(startColour.r, startColour.g, startColour.b, 1), step);
+            step += Time.deltaTime / duration;
+            _fadeMask.color = Color.Lerp(startColour, new Color(startColour.r, startColour.g, startColour.b, targetAlpha), step);
             yield return null;
         }
 
-        SceneManager.LoadScene(_currentSeasonIndex);
-
-        step = 0.0f;
-        startColour = _fadeMask.color;
-
-        while(step < 1)
-        {
-            step += Time.deltaTime / _fadeInDuration;
-            _fadeMask.color = Color.Lerp(startColour, new Color(startColour.r, startColour.g, startColour.b, 0), step);
-            yield return null;
-        }
-
-        if(_loopSeasons)
-            WipeSeasons();
-
-        Setup();
         yield return null;
     }
 
-    private void WipeSeasons()
+    public IEnumerator ChangeSeason()
     {
-        _summer = null;
-        _autumn = null;
-        _winter = null;
-        _spring = null;
+        StartCoroutine(ManipulateFadeMask(_fadeOutDuration, 1));
 
-        StopAllCoroutines();
+        yield return new WaitForSeconds(_fadeOutDuration);
+
+        SceneManager.LoadScene(_nextSceneIndex);
+
+        yield return null;
     }
 
     private IEnumerator ProgressSummer()
