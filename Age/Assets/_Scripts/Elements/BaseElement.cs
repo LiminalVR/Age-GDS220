@@ -6,6 +6,7 @@ public abstract class BaseElement : MonoBehaviour, IElement {
 
     [Header("Interaction")]
     [SerializeField] private float _confirmationDuration;
+    [SerializeField] private GameObject _confirmingEffect;
     [SerializeField] protected AudioClip _interactionSound;
     [SerializeField] protected GameObject _interactionEffect;
     [SerializeField] protected AudioClip _otherInteractionSound;
@@ -28,9 +29,23 @@ public abstract class BaseElement : MonoBehaviour, IElement {
         set
         {
             if(value == 0)
+            {
                 _isConfirming = false;
+
+                if(_confirmingEffect.activeSelf)
+                {
+                    _confirmingEffect.SetActive(false);
+                }
+            }
             else
+            {
                 _isConfirming = true;
+
+                if(!_confirmingEffect.activeSelf)
+                {
+                    _confirmingEffect.SetActive(true);
+                }
+            }
 
             _confirmationTime = value;
 
