@@ -18,7 +18,7 @@ public class FlowersOpen : MonoBehaviour {
  		StartCoroutine (ScaleUpOverTime(3));
 	}
 
-	IEnumerator ScaleUpOverTime (float time) {
+	private IEnumerator ScaleUpOverTime (float time) {
 		Vector3 originalScale = transform.localScale;
 		Vector3 destinationScale = new Vector3(1.0f, 1.0f, 1.0f);
 
