@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlowersClose : MonoBehaviour {
+public class SummerWaterClosed : MonoBehaviour {
 
-	void Start () {
-		
-	}
-	
 	void Update () {
-		if (Input.GetKey(KeyCode.Alpha5)) {
+		if (Input.GetKey(KeyCode.Alpha2)) {
+			//Water
 			FlowerClose ();
 		}
 	}

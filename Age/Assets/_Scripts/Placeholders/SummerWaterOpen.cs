@@ -2,20 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlowersOpen : MonoBehaviour {
+public class SummerWaterOpen : MonoBehaviour {
 
-	void Start () {
-		
-	}
-	
 	void Update () {
-		if (Input.GetKey(KeyCode.Alpha5)) {
+		if (Input.GetKey(KeyCode.Alpha2)) {
+			//Water
 			FlowerOpen ();
 		}
 	}
 
 	void FlowerOpen () {
- 		StartCoroutine (ScaleUpOverTime(3));
+		StartCoroutine (ScaleUpOverTime(3));
 	}
 
 	private IEnumerator ScaleUpOverTime (float time) {
