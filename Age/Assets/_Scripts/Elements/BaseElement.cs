@@ -74,21 +74,21 @@ public abstract class BaseElement : MonoBehaviour, IElement {
 
     public virtual void Interact()
     {
-        switch(SeasonManager._currentSeason)
+        switch(SeasonManager._currentSeasonType)
         {
-            case SeasonManager.Seasons.SUMMER:
+            case SeasonManager.SeasonType.SUMMER:
                 EnactSummerActions(!_isActive);
                 break;
 
-            case SeasonManager.Seasons.AUTUMN:
+            case SeasonManager.SeasonType.AUTUMN:
                 EnactAutumnActions(!_isActive);
                 break;
 
-            case SeasonManager.Seasons.WINTER:
+            case SeasonManager.SeasonType.WINTER:
                 EnactWinterActions(!_isActive);
                 break;
 
-            case SeasonManager.Seasons.SPRING:
+            case SeasonManager.SeasonType.SPRING:
                 EnactSpringActions(!_isActive);
                 break;
 

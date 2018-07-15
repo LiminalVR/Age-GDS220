@@ -5,66 +5,34 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SeasonManager : MonoBehaviour {
-    
-    
-    public enum Seasons { SUMMER, WINTER, AUTUMN, SPRING }
-    public static Seasons _currentSeason;
+
+    public enum SeasonType { SUMMER, WINTER, AUTUMN, SPRING }
+    public static SeasonType _currentSeasonType;
 
     [Header("Seasons")]
-    [SerializeField] private Seasons[] _seasonOrder;
-    [SerializeField] private Seasons _season;
-    [SerializeField] private GameObject _summerTerrain;
-    [SerializeField] private GameObject _winterTerrain;
-    [SerializeField] private GameObject _autumnTerrain;
-    [SerializeField] private GameObject _springTerrain;
+    [SerializeField] private Season[] _seasons;
+    private Season _currentSeason;
     private int _currentSeasonNum = 0;
-
-    [SerializeField] private float _seasonDuration;
-    [SerializeField] private bool _unlimitedDuration;
 
     [Header("Transition")]
     [SerializeField] private float _fadeOutDuration;
     [SerializeField] private float _fadeInDuration;
     [SerializeField] private Image _fadeMask;
 
+    private ElementManager _elementManager;
+
     private void Start()
     {
-        _currentSeason = _season;
+        _elementManager = GetComponent<ElementManager>();
 
-        Setup();
+        SeasonSetup();
     }
 
-    private void Update()
+    private void SeasonSetup()
     {
-    }
-
-    private void Setup()
-    {
-        DeactiveAllTerrains();
-
-        switch(_currentSeason)
-        {
-            case Seasons.SUMMER:
-                _summerTerrain.SetActive(true);
-                StartCoroutine(ProgressSummer());
-                break;
-
-            case Seasons.WINTER:
-                StartCoroutine(ProgressWinter());
-                _winterTerrain.SetActive(true);
-                break;
-
-            case Seasons.AUTUMN:
-                StartCoroutine(ProgressAutumn());
-                _autumnTerrain.SetActive(true);
-                break;
-
-            case Seasons.SPRING:
-                StartCoroutine(ProgressSpring());
-                _springTerrain.SetActive(true);
-                break;
-        }
-
+        _currentSeason = _seasons[_currentSeasonNum];
+        _currentSeason.StartSeason();
+        _elementManager.ResetElementOrder(_currentSeason._elementSpawnOrder);
         StartCoroutine(ManipulateFadeMask(_fadeInDuration, 0));
     }
 
@@ -89,96 +57,12 @@ public class SeasonManager : MonoBehaviour {
 
         yield return new WaitForSeconds(_fadeOutDuration);
 
+        _currentSeason.EndSeason();
+
         _currentSeasonNum++;
-        _currentSeason = _seasonOrder[_currentSeasonNum];
 
-        Setup();
-
-        yield return null;
-    }
-
-    private IEnumerator ProgressSummer()
-    {
-        
-
-        var currentTime = 0.0f;
-
-        while(currentTime < _seasonDuration || _unlimitedDuration)
-        {
-            currentTime += Time.deltaTime;
-            
-            // Summer actions.
-
-            yield return null;
-        }
-
-        StartCoroutine(ChangeSeason());
+        SeasonSetup();
 
         yield return null;
-    }
-
-    private IEnumerator ProgressWinter()
-    {
-        print(_currentSeason);
-
-        var currentTime = 0.0f;
-
-        while(currentTime < _seasonDuration || _unlimitedDuration)
-        {
-            currentTime += Time.deltaTime;
-
-            // Winter actions.
-
-            yield return null;
-        }
-
-        StartCoroutine(ChangeSeason());
-        yield return null;
-    }
-
-    private IEnumerator ProgressAutumn()
-    {
-        print(_currentSeason);
-
-        var currentTime = 0.0f;
-
-        while(currentTime < _seasonDuration || _unlimitedDuration)
-        {
-            currentTime += Time.deltaTime;
-
-            // Autumn actions.
-
-            yield return null;
-        }
-
-        StartCoroutine(ChangeSeason());
-        yield return null;
-    }
-
-    private IEnumerator ProgressSpring()
-    {
-        print(_currentSeason);
-
-        var currentTime = 0.0f;
-
-        while(currentTime < _seasonDuration || _unlimitedDuration)
-        {
-            currentTime += Time.deltaTime;
-
-            // Spring actions.
-
-            yield return null;
-        }
-
-        StartCoroutine(ChangeSeason());
-        yield return null;
-    }
-
-    private void DeactiveAllTerrains()
-    {
-        _summerTerrain.SetActive(false);
-        _winterTerrain.SetActive(false);
-        _autumnTerrain.SetActive(false);
-        _springTerrain.SetActive(false);
     }
 }

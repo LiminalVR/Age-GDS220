@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class ElementManager : MonoBehaviour {
 
-    [SerializeField] private BaseElement[] _elementOrder;
+    public enum ElementType { EARTH, FIRE, WATER, AIR, SEASON }
+    [SerializeField] private BaseElement _earthElement, _fireElement, _waterElement, _airElement, _seasonElement;
+    private BaseElement _selectedElement;
+    public ElementType[] _currentElementOrder;
     private int _nextElementIndex = 0;
-    private BaseElement _lastSpawnedElement;
 
     /*
     struct Element {
@@ -23,27 +25,52 @@ public class ElementManager : MonoBehaviour {
         DelegatesAndEvents._onElementAcivated += ElementActivated;
     }
 
-    private void Start()
-    {
-        if(_nextElementIndex < _elementOrder.Length)
-            SpawnElement();
-    }
-
     public void SpawnElement()
     {
-        BaseElement element = _elementOrder[_nextElementIndex];
-        element.gameObject.SetActive(true);
-
+        _selectedElement.gameObject.SetActive(true);
         _nextElementIndex++;
+    }
+
+    // Selects next element relative to the Element Spawn Order.
+    private void SelectNextElement()
+    {
+        switch(_currentElementOrder[_nextElementIndex])
+        {
+            case ElementType.EARTH:
+                _selectedElement = _earthElement;
+                break;
+            case ElementType.WATER:
+                _selectedElement = _waterElement;
+                break;
+            case ElementType.FIRE:
+                _selectedElement = _fireElement;
+                break;
+            case ElementType.AIR:
+                _selectedElement = _airElement;
+                break;
+            case ElementType.SEASON:
+                _selectedElement = _seasonElement;
+                break;
+        }
     }
 
     public void ElementActivated()
     {
-        if(_nextElementIndex < _elementOrder.Length)
+        print("Element Activated: " + _selectedElement);
+
+        if(_nextElementIndex < _currentElementOrder.Length)
+        {
+            print("Spawning next element...");
+            SelectNextElement();
             SpawnElement();
+        }
     }
 
-    private void Update()
+    public void ResetElementOrder(ElementType[] order)
     {
+        _currentElementOrder = order;
+        _nextElementIndex = 0;
+        SelectNextElement();
+        SpawnElement();
     }
 }

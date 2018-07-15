@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -554,12 +554,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e700275f3f556e048b88ca8396b2599e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _elementOrder:
-  - {fileID: 2100535856}
-  - {fileID: 741101705}
-  - {fileID: 1233311166}
-  - {fileID: 1925242537}
-  - {fileID: 738627321}
+  _earthElement: {fileID: 2100535856}
+  _fireElement: {fileID: 1233311166}
+  _waterElement: {fileID: 741101705}
+  _airElement: {fileID: 1925242537}
+  _seasonElement: {fileID: 738627321}
+  _currentElementOrder: 
 --- !u!4 &352193000
 Transform:
   m_ObjectHideFlags: 0
@@ -586,14 +586,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 367ef13e66867fd43a0bf8ab565b9d7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _seasonOrder: 00000000020000000100000003000000
-  _season: 0
-  _summerTerrain: {fileID: 2062557058}
-  _winterTerrain: {fileID: 1873442667}
-  _autumnTerrain: {fileID: 1828557415}
-  _springTerrain: {fileID: 869550260}
-  _seasonDuration: 150
-  _unlimitedDuration: 1
+  _seasons:
+  - _season: 0
+    _seasonTerrain: {fileID: 2062557058}
+    _otherActiveObjects: []
+    _otherInactiveObjects: []
+    _elementSpawnOrder: 0000000004000000
+  - _season: 1
+    _seasonTerrain: {fileID: 1873442667}
+    _otherActiveObjects: []
+    _otherInactiveObjects: []
+    _elementSpawnOrder: 0000000001000000
   _fadeOutDuration: 5
   _fadeInDuration: 5
   _fadeMask: {fileID: 852455854}
@@ -1566,10 +1569,10 @@ RectTransform:
   m_Father: {fileID: 1736666884}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 512, y: -384}
-  m_SizeDelta: {x: 1024, y: 768}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &852455854
 MonoBehaviour:
@@ -3020,7 +3023,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1736666880
 MonoBehaviour:
   m_ObjectHideFlags: 0
