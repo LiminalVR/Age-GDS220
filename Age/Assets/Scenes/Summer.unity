@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -482,8 +482,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 367ef13e66867fd43a0bf8ab565b9d7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nextSceneIndex: 1
+  _seasonOrder: 00000000020000000100000003000000
   _season: 0
+  _summerTerrain: {fileID: 2062557058}
+  _winterTerrain: {fileID: 1873442667}
+  _autumnTerrain: {fileID: 1828557415}
+  _springTerrain: {fileID: 869550260}
   _seasonDuration: 150
   _unlimitedDuration: 1
   _fadeOutDuration: 5
@@ -3210,7 +3214,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -766411398
+  randomSeed: -1328949749
   InitialModule:
     serializedVersion: 3
     enabled: 1

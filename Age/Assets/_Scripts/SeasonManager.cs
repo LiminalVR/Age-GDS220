@@ -11,8 +11,13 @@ public class SeasonManager : MonoBehaviour {
     public static Seasons _currentSeason;
 
     [Header("Seasons")]
-    [SerializeField] private int _nextSceneIndex;
+    [SerializeField] private Seasons[] _seasonOrder;
     [SerializeField] private Seasons _season;
+    [SerializeField] private GameObject _summerTerrain;
+    [SerializeField] private GameObject _winterTerrain;
+    [SerializeField] private GameObject _autumnTerrain;
+    [SerializeField] private GameObject _springTerrain;
+    private int _currentSeasonNum = 0;
 
     [SerializeField] private float _seasonDuration;
     [SerializeField] private bool _unlimitedDuration;
@@ -24,7 +29,6 @@ public class SeasonManager : MonoBehaviour {
 
     private void Start()
     {
-        StartCoroutine(ManipulateFadeMask(_fadeInDuration, 0));
         _currentSeason = _season;
 
         Setup();
@@ -36,26 +40,32 @@ public class SeasonManager : MonoBehaviour {
 
     private void Setup()
     {
+        DeactiveAllTerrains();
+
         switch(_currentSeason)
         {
             case Seasons.SUMMER:
+                _summerTerrain.SetActive(true);
                 StartCoroutine(ProgressSummer());
-
                 break;
 
             case Seasons.WINTER:
                 StartCoroutine(ProgressWinter());
-
+                _winterTerrain.SetActive(true);
                 break;
 
             case Seasons.AUTUMN:
                 StartCoroutine(ProgressAutumn());
+                _autumnTerrain.SetActive(true);
                 break;
 
             case Seasons.SPRING:
                 StartCoroutine(ProgressSpring());
+                _springTerrain.SetActive(true);
                 break;
         }
+
+        StartCoroutine(ManipulateFadeMask(_fadeInDuration, 0));
     }
 
     public IEnumerator ManipulateFadeMask(float duration, float targetAlpha)
@@ -79,14 +89,17 @@ public class SeasonManager : MonoBehaviour {
 
         yield return new WaitForSeconds(_fadeOutDuration);
 
-        SceneManager.LoadScene(_nextSceneIndex);
+        _currentSeasonNum++;
+        _currentSeason = _seasonOrder[_currentSeasonNum];
+
+        Setup();
 
         yield return null;
     }
 
     private IEnumerator ProgressSummer()
     {
-        print(_currentSeason);
+        
 
         var currentTime = 0.0f;
 
@@ -159,5 +172,13 @@ public class SeasonManager : MonoBehaviour {
 
         StartCoroutine(ChangeSeason());
         yield return null;
+    }
+
+    private void DeactiveAllTerrains()
+    {
+        _summerTerrain.SetActive(false);
+        _winterTerrain.SetActive(false);
+        _autumnTerrain.SetActive(false);
+        _springTerrain.SetActive(false);
     }
 }
