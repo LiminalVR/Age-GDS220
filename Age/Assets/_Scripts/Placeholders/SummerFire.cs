@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class SummerFire : MonoBehaviour {
 
-	ParticleSystem pT;
+	public GameObject cloudsPT;
+	ParticleSystem sunraysPT;
 
 	void Start () {
-		pT = GetComponent<ParticleSystem> ();
+		sunraysPT = GetComponent<ParticleSystem> ();
 	}
 	
 	void Update () {
 		if (Input.GetKey(KeyCode.Alpha3)) {
-			//Fire //Need sun effects
-
+			//Fire
+			sunraysPT.Play();
+			cloudsPT.SetActive (false);
 		}
 	}
 }

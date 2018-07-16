@@ -67,8 +67,8 @@ public abstract class BaseElement : MonoBehaviour, IElement {
 
     private void ResetElement()
     {
-        var temp = Instantiate(_startObj, transform.position, transform.rotation);
-        temp.SetActive(false);
+        //var temp = Instantiate(_startObj, transform.position, transform.rotation);
+        //temp.SetActive(false);
         Destroy(this.gameObject);
     }
 
