@@ -8,13 +8,13 @@ public class SummerEarth : MonoBehaviour {
 
 	void Start () {
 		anim = GetComponent<Animator> ();
-		anim.SetBool ("cFireDead", false);
+		anim.SetBool ("cFireDead", true);
 	}
 	
 	void Update () {
 		if (Input.GetKey(KeyCode.Alpha1)) {
 			//Earth
-			anim.SetBool ("cFireDead", true);
+			anim.SetBool ("cFireDead", false);
 		}
 	}
 }
