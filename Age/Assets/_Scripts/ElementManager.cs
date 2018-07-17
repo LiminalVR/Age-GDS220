@@ -71,17 +71,17 @@ public class ElementManager : MonoBehaviour {
         _currentElementOrder = order;
         _nextElementIndex = 0;
 
-        DeactivateAllElements();
+        ResetAllElements();
         SelectNextElement();
         SpawnElement();
     }
 
-    private void DeactivateAllElements()
+    private void ResetAllElements()
     {
-        _earthElement.gameObject.SetActive(false);
-        _waterElement.gameObject.SetActive(false);
-        _fireElement.gameObject.SetActive(false);
-        _airElement.gameObject.SetActive(false);
-        _seasonElement.gameObject.SetActive(false);
+        _earthElement.ResetElement();
+        _waterElement.ResetElement();
+        _fireElement.ResetElement();
+        _airElement.ResetElement();
+        _seasonElement.ResetElement();
     }
 }

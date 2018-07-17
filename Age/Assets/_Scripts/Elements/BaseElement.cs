@@ -11,7 +11,7 @@ public abstract class BaseElement : MonoBehaviour, IElement {
     [SerializeField] protected GameObject _interactionEffect;
     [SerializeField] protected AudioClip _otherInteractionSound;
     [SerializeField] protected GameObject _otherInteractionEffect;
-    private GameObject _startObj;
+    private Color[] _startColours;
 
     [Header("Fade")]
     [SerializeField] private Renderer[] _renderersToFade;
@@ -60,15 +60,21 @@ public abstract class BaseElement : MonoBehaviour, IElement {
         }
     }
 
-    private void Start()
+    private void Awake()
     {
-        _startObj = this.gameObject;
+        _startColours = GetColours(_renderersToFade);
     }
 
-    private void ResetElement()
+    public void ResetElement()
     {
-        //var temp = Instantiate(_startObj, transform.position, transform.rotation);
-        //temp.SetActive(false);
+        if(gameObject.activeSelf)
+        {
+            _isActive = false;
+            _isConfirming = false;
+            ChangeColours(_renderersToFade, _startColours);
+
+            gameObject.SetActive(false);
+        }
     }
 
     public virtual void Interact()
@@ -130,7 +136,7 @@ public abstract class BaseElement : MonoBehaviour, IElement {
                 yield return null;
             }
 
-            StartCoroutine(Fade());
+            StartCoroutine(Fade(_renderersToFade, _targetAlpha, _fadeDuration));
         }
         else
         {
@@ -144,28 +150,24 @@ public abstract class BaseElement : MonoBehaviour, IElement {
         yield return null;
     }
 
-    private IEnumerator Fade()
+    private IEnumerator Fade(Renderer[] renderers, float alpha, float duration)
     {
-        List<Color> _startColours = new List<Color>();
-
-        foreach(Renderer rend in _renderersToFade)
-        {
-            _startColours.Add(rend.material.color);
-        }
+        Color[] startColours = GetColours(_renderersToFade);
 
         var step = 0.0f;
 
         while(step < 1)
         {
-            step += Time.deltaTime / _fadeDuration;
+            step += Time.deltaTime / duration;
 
-            for(int index = 0; index < _startColours.Count; index++)
+            for(int index = 0; index < startColours.Length; index++)
             {
-                Material mat = _renderersToFade[index].material;
-                Color startColour = _startColours[index];
+                Material mat = renderers[index].material;
+                Color startColour = startColours[index];
+                Color targetColour = ChangeAlpha(mat.color, alpha);
 
-                mat.color = Color.Lerp(startColour, new Color(mat.color.r, mat.color.g, mat.color.b, _targetAlpha), step);
-                _renderersToFade[index].material = mat;
+                mat.color = Color.Lerp(startColour, targetColour, step);
+                renderers[index].material = mat;
             }
 
             yield return null;
@@ -174,8 +176,48 @@ public abstract class BaseElement : MonoBehaviour, IElement {
         yield return null;
     }
 
-    private void OnDisable()
+    private void ChangeColours(Material[] materials, Color[] targetColours)
     {
-        ResetElement();
+        for(int index = 0; index < materials.Length; index++)
+        {
+            materials[index].color = targetColours[index];
+        }
+    }
+
+    private void ChangeColours(Renderer[] renderers, Color[] targetColours)
+    {
+        for(int index = 0; index < renderers.Length; index++)
+        {
+            renderers[index].material.color = targetColours[index];
+        }
+    }
+
+    private Color[] GetColours(Renderer[] renderers)
+    {
+        List<Color> colours = new List<Color>();
+
+        foreach(Renderer rend in renderers)
+        {
+            colours.Add(rend.material.color);
+        }
+
+        return colours.ToArray();
+    }
+
+    private Color[] GetColours(Material[] materials)
+    {
+        List<Color> colours = new List<Color>();
+
+        foreach(Material mat in materials)
+        {
+            colours.Add(mat.color);
+        }
+
+        return colours.ToArray();
+    }
+
+    private Color ChangeAlpha(Color color, float alpha)
+    {
+        return new Color(color.r, color.g, color.b, alpha);
     }
 }
