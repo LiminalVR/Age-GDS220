@@ -69,7 +69,6 @@ public abstract class BaseElement : MonoBehaviour, IElement {
     {
         //var temp = Instantiate(_startObj, transform.position, transform.rotation);
         //temp.SetActive(false);
-        Destroy(this.gameObject);
     }
 
     public virtual void Interact()

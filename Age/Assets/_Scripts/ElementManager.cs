@@ -70,7 +70,18 @@ public class ElementManager : MonoBehaviour {
     {
         _currentElementOrder = order;
         _nextElementIndex = 0;
+
+        DeactivateAllElements();
         SelectNextElement();
         SpawnElement();
+    }
+
+    private void DeactivateAllElements()
+    {
+        _earthElement.gameObject.SetActive(false);
+        _waterElement.gameObject.SetActive(false);
+        _fireElement.gameObject.SetActive(false);
+        _airElement.gameObject.SetActive(false);
+        _seasonElement.gameObject.SetActive(false);
     }
 }
