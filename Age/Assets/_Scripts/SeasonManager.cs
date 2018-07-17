@@ -19,20 +19,44 @@ public class SeasonManager : MonoBehaviour {
     [SerializeField] private float _fadeInDuration;
     [SerializeField] private Image _fadeMask;
 
+    [Header("Aesthetics")]
+    [SerializeField] private int _treeMatSelectIndex;
+    private Material[] _treeMaterials;
+    private int _albedoID;
+
     private ElementManager _elementManager;
 
     private void Start()
     {
         _elementManager = GetComponent<ElementManager>();
 
-        SeasonSetup();
+        SetupTrees();
+
+        SetupSeasons();
     }
 
-    private void SeasonSetup()
+    private void SetupTrees()
+    {
+        _albedoID = Shader.PropertyToID("_MainTex");
+
+        GameObject[] trees = GameObject.FindGameObjectsWithTag("Tree");
+        List<Material> treeMaterials = new List<Material>();
+
+        foreach(GameObject tree in trees)
+        {
+            Material[] materials = tree.GetComponent<Renderer>().materials;
+            treeMaterials.Add(materials[_treeMatSelectIndex]);
+        }
+
+        _treeMaterials = treeMaterials.ToArray();
+    }
+
+    private void SetupSeasons()
     {
         _currentSeason = _seasons[_currentSeasonNum];
         _currentSeason.StartSeason();
         _elementManager.ResetElementOrder(_currentSeason._elementSpawnOrder);
+        ChangeTrees();
         StartCoroutine(ManipulateFadeMask(_fadeInDuration, 0));
     }
 
@@ -61,8 +85,16 @@ public class SeasonManager : MonoBehaviour {
 
         _currentSeasonNum++;
 
-        SeasonSetup();
+        SetupSeasons();
 
         yield return null;
+    }
+
+    private void ChangeTrees()
+    {
+        foreach(Material mat in _treeMaterials)
+        {
+            mat.SetTexture(_albedoID, _currentSeason._seasonTreeTex);
+        }
     }
 }

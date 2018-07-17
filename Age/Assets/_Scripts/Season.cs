@@ -11,8 +11,11 @@ public class Season {
     [SerializeField] private GameObject[] _otherActiveObjects;
     [SerializeField] private GameObject[] _otherInactiveObjects;
 
+    [Header("Aesthetics")]
+    public Texture _seasonTreeTex;
+
     [Header("Elements")]
-    [SerializeField] public ElementManager.ElementType[] _elementSpawnOrder;
+    public ElementManager.ElementType[] _elementSpawnOrder;
 
     public void StartSeason()
     {
