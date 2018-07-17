@@ -12,6 +12,7 @@ public abstract class BaseElement : MonoBehaviour, IElement {
     [SerializeField] protected AudioClip _otherInteractionSound;
     [SerializeField] protected GameObject _otherInteractionEffect;
     private Color[] _startColours;
+    private ColourMaster _colourMaster;
 
     [Header("Fade")]
     [SerializeField] private Renderer[] _renderersToFade;
@@ -62,7 +63,8 @@ public abstract class BaseElement : MonoBehaviour, IElement {
 
     private void Awake()
     {
-        _startColours = GetColours(_renderersToFade);
+        _colourMaster = new ColourMaster();
+        _startColours = _colourMaster.GetColours(_renderersToFade);
     }
 
     public void ResetElement()
@@ -71,7 +73,7 @@ public abstract class BaseElement : MonoBehaviour, IElement {
         {
             _isActive = false;
             _isConfirming = false;
-            ChangeColours(_renderersToFade, _startColours);
+            _colourMaster.ChangeColours(_renderersToFade, _startColours);
 
             gameObject.SetActive(false);
         }
@@ -152,7 +154,7 @@ public abstract class BaseElement : MonoBehaviour, IElement {
 
     private IEnumerator Fade(Renderer[] renderers, float alpha, float duration)
     {
-        Color[] startColours = GetColours(_renderersToFade);
+        Color[] startColours = _colourMaster.GetColours(_renderersToFade);
 
         var step = 0.0f;
 
@@ -164,7 +166,7 @@ public abstract class BaseElement : MonoBehaviour, IElement {
             {
                 Material mat = renderers[index].material;
                 Color startColour = startColours[index];
-                Color targetColour = ChangeAlpha(mat.color, alpha);
+                Color targetColour = _colourMaster.ChangeAlpha(mat.color, alpha);
 
                 mat.color = Color.Lerp(startColour, targetColour, step);
                 renderers[index].material = mat;
@@ -174,50 +176,5 @@ public abstract class BaseElement : MonoBehaviour, IElement {
         }
 
         yield return null;
-    }
-
-    private void ChangeColours(Material[] materials, Color[] targetColours)
-    {
-        for(int index = 0; index < materials.Length; index++)
-        {
-            materials[index].color = targetColours[index];
-        }
-    }
-
-    private void ChangeColours(Renderer[] renderers, Color[] targetColours)
-    {
-        for(int index = 0; index < renderers.Length; index++)
-        {
-            renderers[index].material.color = targetColours[index];
-        }
-    }
-
-    private Color[] GetColours(Renderer[] renderers)
-    {
-        List<Color> colours = new List<Color>();
-
-        foreach(Renderer rend in renderers)
-        {
-            colours.Add(rend.material.color);
-        }
-
-        return colours.ToArray();
-    }
-
-    private Color[] GetColours(Material[] materials)
-    {
-        List<Color> colours = new List<Color>();
-
-        foreach(Material mat in materials)
-        {
-            colours.Add(mat.color);
-        }
-
-        return colours.ToArray();
-    }
-
-    private Color ChangeAlpha(Color color, float alpha)
-    {
-        return new Color(color.r, color.g, color.b, alpha);
     }
 }
