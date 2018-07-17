@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465829, g: 0.49641728, b: 0.57482105, a: 1}
+  m_IndirectSpecularColor: {r: 0.44658232, g: 0.4964162, b: 0.5748202, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -10966,12 +10966,22 @@ MonoBehaviour:
     _seasonTerrain: {fileID: 2062557058}
     _otherActiveObjects: []
     _otherInactiveObjects: []
-    _elementSpawnOrder: 0000000004000000
+    _elementSpawnOrder: 0000000002000000010000000300000004000000
+  - _season: 2
+    _seasonTerrain: {fileID: 1828557415}
+    _otherActiveObjects: []
+    _otherInactiveObjects: []
+    _elementSpawnOrder: 0000000003000000020000000100000004000000
   - _season: 1
     _seasonTerrain: {fileID: 1873442667}
     _otherActiveObjects: []
     _otherInactiveObjects: []
-    _elementSpawnOrder: 0000000001000000
+    _elementSpawnOrder: 0300000000000000010000000200000004000000
+  - _season: 3
+    _seasonTerrain: {fileID: 869550260}
+    _otherActiveObjects: []
+    _otherInactiveObjects: []
+    _elementSpawnOrder: 03000000000000000100000002000000
   _fadeOutDuration: 5
   _fadeInDuration: 5
   _fadeMask: {fileID: 852455854}
