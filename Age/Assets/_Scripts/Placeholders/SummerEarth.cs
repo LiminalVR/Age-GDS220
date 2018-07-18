@@ -15,6 +15,8 @@ public class SummerEarth : MonoBehaviour {
 		if (Input.GetKey(KeyCode.Alpha1)) {
 			//Earth
 			anim.SetBool ("cFireDead", false);
+		} else {
+			anim.SetBool ("cFireDead", true);
 		}
 	}
 }
