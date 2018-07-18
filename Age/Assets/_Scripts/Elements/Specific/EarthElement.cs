@@ -5,30 +5,30 @@ using UnityEngine;
 public class EarthElement : BaseElement {
 
 	#region Summer
+	[Header("Summer")]
 	[SerializeField] private Animator _campAnim;
 	[SerializeField] private ParticleSystem _campSoilPT, _campSoilDirtPT;
 
-	[Header("Flowers")]
 	[SerializeField] private float _flowerClipDuration;
 	[SerializeField] private Vector3 _flowerGrowthTargetScale;
 	[SerializeField] private GameObject[] _flowers;
 	#endregion
 
 	#region Autumn
+	[Header("Autumn")]
 	[SerializeField] private List<ParticleSystem> _petalsPT = new List<ParticleSystem>();
 	#endregion
 
 	#region Winter
-
 	#endregion
 
 	#region Spring
-
 	#endregion
 
 	private void Start()
 	{
 		_flowers = GameObject.FindGameObjectsWithTag("PetalsOpen");
+
 		var _findPetalsPT = GameObject.FindObjectsOfType<ParticleSystem> ();
 
 		foreach (ParticleSystem p in _findPetalsPT) {

@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 198277384377668658}
   - component: {fileID: 199195962274420140}
   m_Layer: 0
-  m_Name: BloomSparklePT
-  m_TagString: Untagged
+  m_Name: BloomSparklePT(tigerpos)
+  m_TagString: BloomParticle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,12 +35,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1928865863453004}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 11.134, y: 0.677, z: 15.447}
+  m_LocalPosition: {x: 0.144, y: 0.553, z: 0.007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &198277384377668658
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -48,7 +48,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1928865863453004}
   serializedVersion: 5
-  lengthInSec: 1
+  lengthInSec: 0.8
   simulationSpeed: 1
   stopAction: 0
   looping: 0
@@ -98,10 +98,10 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1381384174
+  randomSeed: 1183369586
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -566,7 +566,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.102429524
+      value: 0.13299416
       mode: 0
       spread: 0
       speed:

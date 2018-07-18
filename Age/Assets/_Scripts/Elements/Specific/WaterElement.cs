@@ -4,19 +4,42 @@ using UnityEngine;
 
 public class WaterElement : BaseElement {
 
-    [Header("Flowers")]
+	#region Summer
+	[Header("Flowers")]
 	[SerializeField] private float _flowerGrowDuration, _flowerShrinkDuration;
 	[SerializeField] private Vector3 _flowerGrowthTargetScale, _flowerShrinkTargetScale;
 	[SerializeField] private GameObject[] _flowersOpen;
 	[SerializeField] private GameObject[] _flowersClose;
+	[SerializeField] private List<ParticleSystem> _bloomPT = new List<ParticleSystem>();
+	#endregion
 
+	#region Autumn
+
+	#endregion
+
+	#region Winter
+
+	#endregion
+
+	#region Spring
+
+	#endregion
 
     private void Start()
     {
         _flowersOpen = GameObject.FindGameObjectsWithTag("PetalsOpen");
 		_flowersClose = GameObject.FindGameObjectsWithTag("PetalsClosed");
+
+		var _findBloomPT = GameObject.FindObjectsOfType<ParticleSystem> ();
+
+		foreach (ParticleSystem p in _findBloomPT) {
+			if (p.CompareTag ("BloomParticle")) {
+				_bloomPT.Add (p);
+			}
+		}
     }
 
+	/*
 	//TEMPORARY TESTER
 	void Update () {
 		if (Input.GetKey(KeyCode.Alpha1)) {
@@ -24,6 +47,8 @@ public class WaterElement : BaseElement {
 			EnactSummerActions (true);
 		}
 	}
+	*/
+
 
     protected override void EnactSummerActions(bool initialAction)
     {
@@ -99,5 +124,9 @@ public class WaterElement : BaseElement {
             yield return null;
         }
         while(currentTime <= duration);
+
+		foreach (ParticleSystem p in _bloomPT) {
+			p.Play ();
+		}
     }
 }
