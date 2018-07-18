@@ -5,15 +5,25 @@ using UnityEngine;
 public class WaterElement : BaseElement {
 
     [Header("Flowers")]
-    [SerializeField] private float _flowerGrowDuration;
-    [SerializeField] private Vector3 _flowerGrowthTargetScale;
-    [SerializeField] private GameObject[] _flowers;
+	[SerializeField] private float _flowerGrowDuration, _flowerShrinkDuration;
+	[SerializeField] private Vector3 _flowerGrowthTargetScale, _flowerShrinkTargetScale;
+	[SerializeField] private GameObject[] _flowersOpen;
+	[SerializeField] private GameObject[] _flowersClose;
 
 
     private void Start()
     {
-        _flowers = GameObject.FindGameObjectsWithTag("Petals");
+        _flowersOpen = GameObject.FindGameObjectsWithTag("PetalsOpen");
+		_flowersClose = GameObject.FindGameObjectsWithTag("PetalsClosed");
     }
+
+	//TEMPORARY TESTER
+	void Update () {
+		if (Input.GetKey(KeyCode.Alpha1)) {
+
+			EnactSummerActions (true);
+		}
+	}
 
     protected override void EnactSummerActions(bool initialAction)
     {
@@ -65,10 +75,15 @@ public class WaterElement : BaseElement {
 
     void OpenFlower()
     {
-        foreach(GameObject flower in _flowers)
+        foreach(GameObject flower in _flowersOpen)
         {
             StartCoroutine(ScaleOverTime(flower, _flowerGrowDuration, _flowerGrowthTargetScale));
         }
+
+		foreach(GameObject flower in _flowersClose)
+		{
+			StartCoroutine(ScaleOverTime(flower, _flowerShrinkDuration, _flowerShrinkTargetScale));
+		}
     }
 
     private IEnumerator ScaleOverTime(GameObject obj, float duration, Vector3 scale)

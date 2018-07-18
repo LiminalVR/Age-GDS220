@@ -5,8 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - GameGod
-  - Petals
   - Tree
+  - Flowers(water)
+  - PetalsClosed
+  - PetalsOpen
+  - PetalParticle
   layers:
   - Default
   - TransparentFX
