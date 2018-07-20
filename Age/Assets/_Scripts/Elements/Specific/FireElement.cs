@@ -5,11 +5,16 @@ using UnityEngine;
 public class FireElement : BaseElement {
 
 	#region Summer
-	[SerializeField] ParticleSystem _sunrayPT;
-	[SerializeField] ParticleSystem _cloudsPT;
-	[SerializeField] Light _light;
-	[SerializeField] Color _cloudStartColour;
-	ParticleSystem.ColorOverLifetimeModule cloudModule;
+	[SerializeField] private ParticleSystem _sunrayPT;
+	[SerializeField] private ParticleSystem _cloudsPT;
+	[SerializeField] private Light _light;
+    [SerializeField] private Color _cloudStartColour;
+    [SerializeField] private float _minSunIntensity;
+    [SerializeField] private float _maxSunIntensity;
+    [SerializeField] private float _cloudPartEffectDuration;
+    [SerializeField] private float _shineDuration;
+    [SerializeField] private float _sunReturnDuration;
+	private ParticleSystem.ColorOverLifetimeModule cloudModule;
 	#endregion
 
 	#region Autumn
@@ -38,7 +43,7 @@ public class FireElement : BaseElement {
         if(initialAction)
         {
 			_sunrayPT.Play ();
-			StartCoroutine (CloudFade(6f));
+			StartCoroutine (Shine());
 		}
         else
         {
@@ -83,23 +88,35 @@ public class FireElement : BaseElement {
         }
     }
 
-	private IEnumerator CloudFade(float duration)
-	{
-		float currentTime = 0.0f;
-		cloudModule = _cloudsPT.colorOverLifetime;
+    private IEnumerator Shine()
+    {
+        StartCoroutine(ManipulateShine(true, _maxSunIntensity, _cloudPartEffectDuration));
 
-		var minIntensity = 1f;
-		var maxIntensity = minIntensity + 0.6f;
+        yield return new WaitForSeconds(_cloudPartEffectDuration + _shineDuration);
 
-		do
-		{
-			cloudModule.color = Color.Lerp(_cloudStartColour, Color.clear, currentTime);
+        StartCoroutine(ManipulateShine(false, _minSunIntensity, _sunReturnDuration));
 
-			_light.intensity = _light.intensity < maxIntensity ? _light.intensity + currentTime : maxIntensity;
+        yield return null;
+    }
 
-			currentTime += Time.deltaTime/duration;
-			yield return null;
-		}
-		while(currentTime <= duration);
-	}
+    private IEnumerator ManipulateShine(bool fadeCloudsOut, float targetSunIntensity, float duration)
+    {
+        float currentTime = 0.0f;
+        float startIntensity = _light.intensity;
+        cloudModule = _cloudsPT.colorOverLifetime;
+
+        do
+        {
+            currentTime += Time.deltaTime / duration;
+
+            if(fadeCloudsOut)
+                cloudModule.color = Color.Lerp(_cloudStartColour, Color.clear, currentTime);
+            else
+                cloudModule.color = Color.Lerp(Color.clear, _cloudStartColour, currentTime);
+
+            _light.intensity = Mathf.Lerp(startIntensity, targetSunIntensity, currentTime);
+            yield return null;
+        }
+        while(currentTime < duration);
+    }
 }

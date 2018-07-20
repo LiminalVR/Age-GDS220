@@ -41,6 +41,7 @@ public class SeasonManager : MonoBehaviour {
     private void Start()
     {
         _elementManager = GetComponent<ElementManager>();
+        _colourMaster = new ColourMaster();
 
         SetupTrees();
 
