@@ -16,6 +16,7 @@ public class EarthElement : BaseElement {
 	#region Autumn
 	[Header("Autumn")]
 	[SerializeField] private List<ParticleSystem> _petalsPT = new List<ParticleSystem>();
+	[SerializeField] private List<ParticleSystem> _treeLeavesPT = new List<ParticleSystem>();
 	#endregion
 
 	#region Winter
@@ -44,6 +45,9 @@ public class EarthElement : BaseElement {
 			case ("SoilParticle"):
 				_flowerSoilPT.Add (p);
 				break;
+			case ("TreeParticle"):
+				_treeLeavesPT.Add (p);
+				break;
 			default:
 				break;
 			}
@@ -60,6 +64,7 @@ public class EarthElement : BaseElement {
 	}
 	*/
 
+	//1: Fixes campfire and causes dirt tufts 2: Causes additional dirt tufts
     protected override void EnactSummerActions(bool initialAction)
     {
         if(initialAction)
@@ -73,6 +78,7 @@ public class EarthElement : BaseElement {
         }
     }
 
+	//1: Clips off flower petals incl particles 2: Causes tree leaves to fall
     protected override void EnactAutumnActions(bool initialAction)
     {
         if(initialAction)
@@ -85,10 +91,13 @@ public class EarthElement : BaseElement {
         }
         else
         {
-
+			foreach (ParticleSystem p in _treeLeavesPT) {
+				p.Play ();
+			}
         }
     }
 
+	//1: Causes dirt tufts at each flower growth position 2: ***
     protected override void EnactWinterActions(bool initialAction)
     {
         if(initialAction)
@@ -103,11 +112,13 @@ public class EarthElement : BaseElement {
         }
     }
 
+	//1: Dumps soil on campfire, extinguising it and knocking down 2: *** Regrows dandelion pollen particles
     protected override void EnactSpringActions(bool initialAction)
     {
         if(initialAction)
         {
 			_soilDumpPT.Play ();
+			_campAnim.SetBool("cFireDead", true);
         }
         else
         {

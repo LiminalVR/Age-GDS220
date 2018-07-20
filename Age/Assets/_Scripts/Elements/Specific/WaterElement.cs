@@ -16,7 +16,7 @@ public class WaterElement : BaseElement {
 	#endregion
 
 	#region Autumn
-
+	[SerializeField] private ParticleSystem _rainPT;
 	#endregion
 
 	#region Winter
@@ -72,11 +72,11 @@ public class WaterElement : BaseElement {
     {
         if(initialAction)
         {
-
+			_rainPT.Play ();
         }
         else
         {
-
+			_rainPT.Stop ();
         }
     }
 

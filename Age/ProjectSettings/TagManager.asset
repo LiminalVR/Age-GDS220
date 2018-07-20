@@ -13,6 +13,7 @@ TagManager:
   - BloomParticle
   - SoilParticle
   - DandelionStem
+  - TreeParticle
   layers:
   - Default
   - TransparentFX

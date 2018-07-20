@@ -15,14 +15,14 @@ public class FireElement : BaseElement {
 	#endregion
 
 	#region Autumn
-
+	[Header("Autumn")]
+	[SerializeField] private ParticleSystem _firePT, _kindlePT;
 	#endregion
 
 	#region Winter
 	[Header("Winter")]
-	[SerializeField] private ParticleSystem _campfirePT;
-	private ParticleSystem.EmissionModule emissionModule;
-	private ParticleSystem.ShapeModule shapeModule;
+	private ParticleSystem.EmissionModule fireEmissionModule;
+	private ParticleSystem.ShapeModule fireShapeModule;
 	[SerializeField] private float _minPTIntensity, _maxPTIntensity, minPTShape,maxPTShape;
 	#endregion
 
@@ -59,7 +59,8 @@ public class FireElement : BaseElement {
     {
         if(initialAction)
         {
-
+			_kindlePT.Play ();
+			_firePT.Play ();
         }
         else
         {
