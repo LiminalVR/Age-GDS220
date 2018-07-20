@@ -6,8 +6,8 @@ public class WaterElement : BaseElement {
 
 	#region Summer
 	[Header("Flowers")]
-	[SerializeField] private float _flowerGrowDuration, _flowerShrinkDuration;
-	[SerializeField] private Vector3 _flowerGrowthTargetScale, _flowerShrinkTargetScale;
+	[SerializeField] private float _flowerGrowDuration, _flowerShrinkDuration = 0f;
+	[SerializeField] private Vector3 _flowerGrowthTargetScale, _flowerShrinkTargetScale = Vector3.zero;
 	[SerializeField] private GameObject[] _flowersOpen;
 	[SerializeField] private GameObject[] _flowersClose;
 	[SerializeField] private List<ParticleSystem> _bloomPT = new List<ParticleSystem>();

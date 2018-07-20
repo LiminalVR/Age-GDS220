@@ -6,7 +6,23 @@ public class AirElement : BaseElement {
 
 	Terrain _Terrain;
 
+	#region Summer
+	[SerializeField] private ParticleSystem _airGustPT;
+	#endregion
 
+	#region Autumn
+
+	#endregion
+
+	#region Winter
+
+	#endregion
+
+	#region Spring
+
+	#endregion
+
+	/*
 	//TEMPORARY TESTER
 	void Update () {
 		if (Input.GetKey(KeyCode.Alpha1)) {
@@ -14,6 +30,7 @@ public class AirElement : BaseElement {
 			EnactSummerActions (true);
 		}
 	}
+	*/
 
 
     protected override void EnactSummerActions(bool initialAction)
@@ -21,11 +38,14 @@ public class AirElement : BaseElement {
         if(initialAction)
         {
 			_Terrain = FindObjectOfType<Terrain> ();
-			StartCoroutine (SummerGust(4.2f));
+			_airGustPT.Play ();
+			StartCoroutine (SummerGust(4.6f));
         }
         else
         {
-
+			_Terrain = FindObjectOfType<Terrain> ();
+			_airGustPT.Play ();
+			StartCoroutine (SummerGust(4.6f));
         }
     }
 
@@ -68,6 +88,8 @@ public class AirElement : BaseElement {
 	private IEnumerator SummerGust (float time) {
 
 		float currentTime = 0.0f;
+
+		yield return new WaitForSeconds(1.5f);
 
 		do {
 			_Terrain.terrainData.wavingGrassStrength = 1f;

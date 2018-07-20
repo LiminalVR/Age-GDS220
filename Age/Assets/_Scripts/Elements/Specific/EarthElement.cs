@@ -27,6 +27,8 @@ public class EarthElement : BaseElement {
 
 	private void Start()
 	{
+		_campAnim.SetBool("cFireDead", true);
+
 		_flowers = GameObject.FindGameObjectsWithTag("PetalsOpen");
 
 		var _findPetalsPT = GameObject.FindObjectsOfType<ParticleSystem> ();
@@ -52,7 +54,7 @@ public class EarthElement : BaseElement {
     {
         if(initialAction)
         {
-            _campAnim.SetBool("cFireDead", true);
+            _campAnim.SetBool("cFireDead", false);
 			_campSoilPT.Play ();
         }
         else
