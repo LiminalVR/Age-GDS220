@@ -8,7 +8,6 @@ public class EarthElement : BaseElement {
 	[Header("Summer")]
 	[SerializeField] private Animator _campAnim;
 	[SerializeField] private ParticleSystem _campSoilPT, _campSoilDirtPT;
-
 	[SerializeField] private float _flowerClipDuration;
 	[SerializeField] private Vector3 _flowerGrowthTargetScale;
 	[SerializeField] private GameObject[] _flowers;
@@ -25,6 +24,8 @@ public class EarthElement : BaseElement {
 	#endregion
 
 	#region Spring
+	[Header("Spring")]
+	[SerializeField] private ParticleSystem _soilDumpPT;
 	#endregion
 
 	private void Start()
@@ -36,9 +37,6 @@ public class EarthElement : BaseElement {
 		var _findParticles = GameObject.FindObjectsOfType<ParticleSystem> ();
 
 		foreach (ParticleSystem p in _findParticles) {
-
-
-
 			switch (p.tag) {
 			case ("PetalParticle"):
 				_petalsPT.Add (p);
@@ -49,12 +47,6 @@ public class EarthElement : BaseElement {
 			default:
 				break;
 			}
-
-			/*
-			if (p.CompareTag ("PetalParticle")) {
-				_petalsPT.Add (p);
-			}
-			*/
 		}
 	}
 
@@ -63,11 +55,10 @@ public class EarthElement : BaseElement {
 	void Update () {
 		if (Input.GetKey(KeyCode.Alpha1)) {
 			
-			EnactAutumnActions (true);
+			EnactWinterActions (true);
 		}
 	}
 	*/
-
 
     protected override void EnactSummerActions(bool initialAction)
     {
@@ -101,8 +92,10 @@ public class EarthElement : BaseElement {
     protected override void EnactWinterActions(bool initialAction)
     {
         if(initialAction)
-        {
-
+		{
+			foreach (ParticleSystem p in _flowerSoilPT) {
+				p.Play ();
+			}
         }
         else
         {
@@ -114,7 +107,7 @@ public class EarthElement : BaseElement {
     {
         if(initialAction)
         {
-            _campAnim.SetBool("cFireDead", false);
+			_soilDumpPT.Play ();
         }
         else
         {

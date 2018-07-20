@@ -20,17 +20,21 @@ public class SceneElement : BaseElement
 
     protected override void EnactSummerActions(bool initialAction)
     {
+		
     }
 
     protected override void EnactAutumnActions(bool initialAction)
     {
+		
     }
 
     protected override void EnactWinterActions(bool initialAction)
     {
+		
     }
 
     protected override void EnactSpringActions(bool initialAction)
     {
+		
     }
 }

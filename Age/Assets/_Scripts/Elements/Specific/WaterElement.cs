@@ -5,9 +5,11 @@ using UnityEngine;
 public class WaterElement : BaseElement {
 
 	#region Summer
-	[Header("Flowers")]
-	[SerializeField] private float _flowerGrowDuration, _flowerShrinkDuration = 0f;
-	[SerializeField] private Vector3 _flowerGrowthTargetScale, _flowerShrinkTargetScale = Vector3.zero;
+	[Header("Summer")]
+	[SerializeField] private float _flowerGrowDuration;
+	[SerializeField] private Vector3 _flowerGrowthTargetScale;
+	[SerializeField] private float _flowerShrinkDuration;
+	[SerializeField] private Vector3 _flowerShrinkTargetScale;
 	[SerializeField] private GameObject[] _flowersOpen;
 	[SerializeField] private GameObject[] _flowersClose;
 	[SerializeField] private List<ParticleSystem> _bloomPT = new List<ParticleSystem>();
@@ -18,7 +20,10 @@ public class WaterElement : BaseElement {
 	#endregion
 
 	#region Winter
-
+	[Header("Winter")]
+	[SerializeField] private GameObject[] _dandelionStem;
+	[SerializeField] private float _dandelionGrowDuration;
+	[SerializeField] private Vector3 _dandelionGrowthTargetScale;
 	#endregion
 
 	#region Spring
@@ -29,6 +34,7 @@ public class WaterElement : BaseElement {
     {
         _flowersOpen = GameObject.FindGameObjectsWithTag("PetalsOpen");
 		_flowersClose = GameObject.FindGameObjectsWithTag("PetalsClosed");
+		_dandelionStem = GameObject.FindGameObjectsWithTag("DandelionStem");
 
 		var _findBloomPT = GameObject.FindObjectsOfType<ParticleSystem> ();
 
@@ -78,7 +84,7 @@ public class WaterElement : BaseElement {
     {
         if(initialAction)
         {
-
+			GrowStem ();
         }
         else
         {
@@ -110,6 +116,14 @@ public class WaterElement : BaseElement {
 			StartCoroutine(ScaleOverTime(flower, _flowerShrinkDuration, _flowerShrinkTargetScale));
 		}
     }
+
+	void GrowStem()
+	{
+		foreach(GameObject stem in _dandelionStem)
+		{
+			StartCoroutine(ScaleOverTime(stem, _dandelionGrowDuration, _dandelionGrowthTargetScale));
+		}
+	}
 
     private IEnumerator ScaleOverTime(GameObject obj, float duration, Vector3 scale)
     {

@@ -12,6 +12,7 @@ TagManager:
   - PetalParticle
   - BloomParticle
   - SoilParticle
+  - DandelionStem
   layers:
   - Default
   - TransparentFX

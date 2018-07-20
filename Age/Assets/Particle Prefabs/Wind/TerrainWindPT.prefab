@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198139624859050862}
   - component: {fileID: 199778266195104026}
   m_Layer: 0
-  m_Name: TerrainWind
+  m_Name: TerrainWindPT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

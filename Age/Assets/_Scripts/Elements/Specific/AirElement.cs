@@ -7,11 +7,13 @@ public class AirElement : BaseElement {
 	Terrain _Terrain;
 
 	#region Summer
+	[Header("Summer")]
 	[SerializeField] private ParticleSystem _airGustPT;
 	#endregion
 
 	#region Autumn
-
+	[Header("Autumn")]
+	[SerializeField] private ParticleSystem _leavesPT;
 	#endregion
 
 	#region Winter
@@ -27,11 +29,10 @@ public class AirElement : BaseElement {
 	void Update () {
 		if (Input.GetKey(KeyCode.Alpha1)) {
 
-			EnactSummerActions (true);
+			EnactAutumnActions (true);
 		}
 	}
 	*/
-
 
     protected override void EnactSummerActions(bool initialAction)
     {
@@ -53,7 +54,8 @@ public class AirElement : BaseElement {
     {
         if(initialAction)
         {
-
+			_airGustPT.Play ();
+			_leavesPT.Play ();
         }
         else
         {
