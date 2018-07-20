@@ -11,24 +11,21 @@ public class Campfire : MonoBehaviour
 
 	void Update()
 	{
-		if (Input.GetKeyDown (KeyCode.Space)) {
+		if (Input.GetKey (KeyCode.Space)) {
 			// Get the system and the emission module.
 			myParticleSystem = GetComponent<ParticleSystem> ();
 			emissionModule = myParticleSystem.emission;
 			ParticleSystem.ShapeModule shape = myParticleSystem.shape;
 
-			GetValue ();
-			SetValue ();
 			shape.radius = 0.7f;
-	}
-}
-	void GetValue()
-	{
-		//print("The constant value is " + emissionModule.rate.constant);
-	}
+			emissionModule.rate = 100.0f;
+		} else {
+			myParticleSystem = GetComponent<ParticleSystem> ();
+			emissionModule = myParticleSystem.emission;
+			ParticleSystem.ShapeModule shape = myParticleSystem.shape;
 
-	void SetValue()
-	{
-		emissionModule.rate = 100.0f;
+			shape.radius = 0.5f;
+			emissionModule.rate = 20.0f;
+		}
 	}
 }
