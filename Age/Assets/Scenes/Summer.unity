@@ -3793,6 +3793,16 @@ Prefab:
       propertyPath: _cloudStartColour.a
       value: 0.7058824
       objectReference: {fileID: 0}
+    - target: {fileID: 114076693627184440, guid: 0b2fa53dc0c08ab40a78f08e63c1e015,
+        type: 2}
+      propertyPath: _interactionSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b2f628c864c4be444afbf5c2e8ff928a, type: 3}
+    - target: {fileID: 114076693627184440, guid: 0b2fa53dc0c08ab40a78f08e63c1e015,
+        type: 2}
+      propertyPath: _otherInteractionSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b2f628c864c4be444afbf5c2e8ff928a, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b2fa53dc0c08ab40a78f08e63c1e015, type: 2}
   m_IsPrefabParent: 0
@@ -45879,6 +45889,16 @@ Prefab:
       propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
       value: 30.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[2].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 92899bb59f59c274a9bbcc1ef384d460, type: 2}
   m_IsPrefabParent: 0
@@ -46166,6 +46186,16 @@ Prefab:
       propertyPath: _flowerShrinkDuration
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114966668290288946, guid: 9a6c3c0a03f965b45b9c01df6b3ee496,
+        type: 2}
+      propertyPath: _interactionSound
+      value: 
+      objectReference: {fileID: 8300000, guid: f79ec039f4e835346bf7946968bb0ea7, type: 3}
+    - target: {fileID: 114966668290288946, guid: 9a6c3c0a03f965b45b9c01df6b3ee496,
+        type: 2}
+      propertyPath: _otherInteractionSound
+      value: 
+      objectReference: {fileID: 8300000, guid: f79ec039f4e835346bf7946968bb0ea7, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9a6c3c0a03f965b45b9c01df6b3ee496, type: 2}
   m_IsPrefabParent: 0
@@ -46540,6 +46570,16 @@ Prefab:
         type: 2}
       propertyPath: InitialModule.startSize.scalar
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[2].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 30.0000
       objectReference: {fileID: 0}
     - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
         type: 2}
@@ -54866,6 +54906,16 @@ Prefab:
       propertyPath: _flowerClipDuration
       value: 0.6
       objectReference: {fileID: 0}
+    - target: {fileID: 114996222159102120, guid: dcf1847f0d6b7a1478b2b6a8625dc927,
+        type: 2}
+      propertyPath: _interactionSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 54903e0e0ea65ae45ad5906c2a5b8030, type: 3}
+    - target: {fileID: 114996222159102120, guid: dcf1847f0d6b7a1478b2b6a8625dc927,
+        type: 2}
+      propertyPath: _otherInteractionSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 54903e0e0ea65ae45ad5906c2a5b8030, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dcf1847f0d6b7a1478b2b6a8625dc927, type: 2}
   m_IsPrefabParent: 0
@@ -73427,6 +73477,16 @@ Prefab:
       propertyPath: _airGustPT
       value: 
       objectReference: {fileID: 459644557}
+    - target: {fileID: 114472438755267660, guid: 4e7c228d118bbe64fbfe7535f2bbe112,
+        type: 2}
+      propertyPath: _interactionSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b16b10c8bf08dc945979c573415b7299, type: 3}
+    - target: {fileID: 114472438755267660, guid: 4e7c228d118bbe64fbfe7535f2bbe112,
+        type: 2}
+      propertyPath: _otherInteractionSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b16b10c8bf08dc945979c573415b7299, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4e7c228d118bbe64fbfe7535f2bbe112, type: 2}
   m_IsPrefabParent: 0
