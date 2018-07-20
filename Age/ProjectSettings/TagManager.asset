@@ -11,6 +11,7 @@ TagManager:
   - PetalsOpen
   - PetalParticle
   - BloomParticle
+  - SoilParticle
   layers:
   - Default
   - TransparentFX

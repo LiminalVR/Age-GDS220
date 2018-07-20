@@ -20,6 +20,8 @@ public class EarthElement : BaseElement {
 	#endregion
 
 	#region Winter
+	[Header("Winter")]
+	[SerializeField] private List<ParticleSystem> _flowerSoilPT = new List<ParticleSystem>();
 	#endregion
 
 	#region Spring
@@ -31,12 +33,28 @@ public class EarthElement : BaseElement {
 
 		_flowers = GameObject.FindGameObjectsWithTag("PetalsOpen");
 
-		var _findPetalsPT = GameObject.FindObjectsOfType<ParticleSystem> ();
+		var _findParticles = GameObject.FindObjectsOfType<ParticleSystem> ();
 
-		foreach (ParticleSystem p in _findPetalsPT) {
+		foreach (ParticleSystem p in _findParticles) {
+
+
+
+			switch (p.tag) {
+			case ("PetalParticle"):
+				_petalsPT.Add (p);
+				break;
+			case ("SoilParticle"):
+				_flowerSoilPT.Add (p);
+				break;
+			default:
+				break;
+			}
+
+			/*
 			if (p.CompareTag ("PetalParticle")) {
 				_petalsPT.Add (p);
 			}
+			*/
 		}
 	}
 
@@ -49,6 +67,7 @@ public class EarthElement : BaseElement {
 		}
 	}
 	*/
+
 
     protected override void EnactSummerActions(bool initialAction)
     {
