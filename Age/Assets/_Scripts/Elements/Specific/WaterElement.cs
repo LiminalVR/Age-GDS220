@@ -10,9 +10,10 @@ public class WaterElement : BaseElement {
 	[SerializeField] private Vector3 _flowerGrowthTargetScale;
 	[SerializeField] private float _flowerShrinkDuration;
 	[SerializeField] private Vector3 _flowerShrinkTargetScale;
-	[SerializeField] private GameObject[] _flowersOpen;
-	[SerializeField] private GameObject[] _flowersClose;
-	[SerializeField] private List<ParticleSystem> _bloomPT = new List<ParticleSystem>();
+	private GameObject[] _flowersOpen;
+	private GameObject[] _flowersClose;
+	private List<ParticleSystem> _bloomPT = new List<ParticleSystem>();
+	private List<ParticleSystem> _splashPT = new List<ParticleSystem>();
 	#endregion
 
 	#region Autumn
@@ -36,11 +37,18 @@ public class WaterElement : BaseElement {
 		_flowersClose = GameObject.FindGameObjectsWithTag("PetalsClosed");
 		_dandelionStem = GameObject.FindGameObjectsWithTag("DandelionStem");
 
-		var _findBloomPT = GameObject.FindObjectsOfType<ParticleSystem> ();
+		var _findParticles = GameObject.FindObjectsOfType<ParticleSystem> ();
 
-		foreach (ParticleSystem p in _findBloomPT) {
-			if (p.CompareTag ("BloomParticle")) {
+		foreach (ParticleSystem p in _findParticles) {
+			switch (p.tag) {
+			case ("BloomParticle"):
 				_bloomPT.Add (p);
+				break;
+			case ("SplashParticle"):
+				_splashPT.Add (p);
+				break;
+			default:
+				break;
 			}
 		}
     }
@@ -55,7 +63,6 @@ public class WaterElement : BaseElement {
 	}
 	*/
 
-
     protected override void EnactSummerActions(bool initialAction)
     {
         if(initialAction)
@@ -64,7 +71,12 @@ public class WaterElement : BaseElement {
         }
         else
         {
-
+			foreach (ParticleSystem p in _splashPT) {
+				p.Play ();
+			}
+			foreach (ParticleSystem p in _bloomPT) {
+				p.Play ();
+			}
         }
     }
 

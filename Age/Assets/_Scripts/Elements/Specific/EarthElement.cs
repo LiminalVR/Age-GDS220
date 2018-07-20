@@ -14,14 +14,14 @@ public class EarthElement : BaseElement {
 	#endregion
 
 	#region Autumn
-	[Header("Autumn")]
-	[SerializeField] private List<ParticleSystem> _petalsPT = new List<ParticleSystem>();
-	[SerializeField] private List<ParticleSystem> _treeLeavesPT = new List<ParticleSystem>();
+	//[Header("Autumn")]
+	private List<ParticleSystem> _petalsPT = new List<ParticleSystem>();
+	private List<ParticleSystem> _treeLeavesPT = new List<ParticleSystem>();
 	#endregion
 
 	#region Winter
-	[Header("Winter")]
-	[SerializeField] private List<ParticleSystem> _flowerSoilPT = new List<ParticleSystem>();
+	//[Header("Winter")]
+	private List<ParticleSystem> _flowerSoilPT = new List<ParticleSystem>();
 	#endregion
 
 	#region Spring

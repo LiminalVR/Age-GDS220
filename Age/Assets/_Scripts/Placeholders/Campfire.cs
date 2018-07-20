@@ -18,7 +18,7 @@ public class Campfire : MonoBehaviour
 
 
 			shape.radius = 0.7f;
-			emissionModule.rate = 100.0f;
+			emissionModule.rateOverTime = 100.0f;
 
 
 		} else {
@@ -27,7 +27,7 @@ public class Campfire : MonoBehaviour
 			ParticleSystem.ShapeModule shape = myParticleSystem.shape;
 
 			shape.radius = 0.5f;
-			emissionModule.rate = 20.0f;
+			emissionModule.rateOverTime = 20.0f;
 		}
 	}
 }
