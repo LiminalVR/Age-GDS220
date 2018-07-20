@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public abstract class BaseElement : MonoBehaviour, IElement {
 
     [Header("Interaction")]
@@ -63,6 +64,7 @@ public abstract class BaseElement : MonoBehaviour, IElement {
 
     private void Awake()
     {
+        _as = GetComponent<AudioSource>();
         _colourMaster = new ColourMaster();
         _startColours = _colourMaster.GetColours(_renderersToFade);
     }
