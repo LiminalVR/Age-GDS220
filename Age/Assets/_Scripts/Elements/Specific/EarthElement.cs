@@ -7,7 +7,7 @@ public class EarthElement : BaseElement {
 	#region Summer
 	[Header("Summer")]
 	[SerializeField] private Animator _campAnim;
-	[SerializeField] private ParticleSystem _campSoilPT, _campSoilDirtPT;
+	[SerializeField] private ParticleSystem _campSoilPT, _campSoilWeakPT;
 	[SerializeField] private float _flowerClipDuration;
 	[SerializeField] private Vector3 _flowerGrowthTargetScale;
 	[SerializeField] private GameObject[] _flowers;
@@ -22,10 +22,11 @@ public class EarthElement : BaseElement {
 	#region Winter
 	//[Header("Winter")]
 	private List<ParticleSystem> _flowerSoilPT = new List<ParticleSystem>();
-	#endregion
+    private List<ParticleSystem> _flowerSoilTuftPT = new List<ParticleSystem>();
+    #endregion
 
-	#region Spring
-	[Header("Spring")]
+    #region Spring
+    [Header("Spring")]
 	[SerializeField] private ParticleSystem _soilDumpPT;
 	#endregion
 
@@ -48,21 +49,29 @@ public class EarthElement : BaseElement {
 			case ("TreeParticle"):
 				_treeLeavesPT.Add (p);
 				break;
-			default:
+            case ("SoilTuftParticle"):
+                _flowerSoilTuftPT.Add(p);
+                break;
+                default:
 				break;
 			}
 		}
 	}
 
-	/*
+	
 	//TEMPORARY TESTER
 	void Update () {
 		if (Input.GetKey(KeyCode.Alpha1)) {
 			
 			EnactWinterActions (true);
 		}
-	}
-	*/
+        if (Input.GetKey(KeyCode.Alpha2))
+        {
+            
+            EnactWinterActions(false);
+        }
+    }
+	
 
 	//1: Fixes campfire and causes dirt tufts 2: Causes additional dirt tufts
     protected override void EnactSummerActions(bool initialAction)
@@ -74,7 +83,7 @@ public class EarthElement : BaseElement {
         }
         else
         {
-			_campSoilDirtPT.Play ();
+			_campSoilWeakPT.Play ();
         }
     }
 
@@ -102,13 +111,17 @@ public class EarthElement : BaseElement {
     {
         if(initialAction)
 		{
-			foreach (ParticleSystem p in _flowerSoilPT) {
+			foreach (ParticleSystem p in _flowerSoilPT)
+            {
 				p.Play ();
 			}
         }
         else
         {
-
+            foreach (ParticleSystem p in _flowerSoilTuftPT)
+            {
+                p.Play();
+            }
         }
     }
 

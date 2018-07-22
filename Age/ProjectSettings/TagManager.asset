@@ -15,6 +15,7 @@ TagManager:
   - DandelionStem
   - TreeParticle
   - SplashParticle
+  - SoilTuftParticle
   layers:
   - Default
   - TransparentFX
