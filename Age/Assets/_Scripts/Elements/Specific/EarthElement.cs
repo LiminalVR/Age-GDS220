@@ -58,20 +58,21 @@ public class EarthElement : BaseElement {
 		}
 	}
 
-	
+	/*
 	//TEMPORARY TESTER
 	void Update () {
-		if (Input.GetKey(KeyCode.Alpha1)) {
+		if (Input.GetKey(KeyCode.Alpha1)) 
+		{
 			
-			EnactWinterActions (true);
+			EnactSpringActions (true);
 		}
         if (Input.GetKey(KeyCode.Alpha2))
         {
             
-            EnactWinterActions(false);
+            EnactSpringActions(false);
         }
     }
-	
+	*/
 
 	//1: Fixes campfire and causes dirt tufts 2: Causes additional dirt tufts
     protected override void EnactSummerActions(bool initialAction)
@@ -131,11 +132,11 @@ public class EarthElement : BaseElement {
         if(initialAction)
         {
 			_soilDumpPT.Play ();
-			_campAnim.SetBool("cFireDead", true);
         }
         else
         {
-
+			_soilDumpPT.Play ();
+			_campAnim.SetBool("cFireDead", true);
         }
     }
 

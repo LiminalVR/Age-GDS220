@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44658232, g: 0.4964162, b: 0.5748202, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465829, g: 0.49641728, b: 0.57482105, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -3896,6 +3896,26 @@ Prefab:
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
       value: 3.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3150db88c4d9d4142a5f63c81c163171, type: 2}
   m_IsPrefabParent: 0
@@ -4223,6 +4243,26 @@ Prefab:
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
       value: 1.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 198866529731101710, guid: 9fe53fb5f60cd624487585974d54c47c,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198866529731101710, guid: 9fe53fb5f60cd624487585974d54c47c,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198866529731101710, guid: 9fe53fb5f60cd624487585974d54c47c,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198866529731101710, guid: 9fe53fb5f60cd624487585974d54c47c,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 1.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9fe53fb5f60cd624487585974d54c47c, type: 2}
   m_IsPrefabParent: 0
@@ -4325,7 +4365,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1999715327816606, guid: 0b2fa53dc0c08ab40a78f08e63c1e015, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4666501800880736, guid: 0b2fa53dc0c08ab40a78f08e63c1e015, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -8795,6 +8835,10 @@ Prefab:
       propertyPath: m_TagString
       value: PetalParticle
       objectReference: {fileID: 0}
+    - target: {fileID: 1818797584773894, guid: 07943c1c1bc10064f952fb5151fc31ce, type: 2}
+      propertyPath: m_TagString
+      value: FlowerStem
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114266047426474048, guid: 07943c1c1bc10064f952fb5151fc31ce, type: 2}
     - {fileID: 114762869241115588, guid: 07943c1c1bc10064f952fb5151fc31ce, type: 2}
@@ -12657,6 +12701,10 @@ Prefab:
     - target: {fileID: 1739260119069146, guid: 542277e353122ae41ac88a0249dd4c01, type: 2}
       propertyPath: m_TagString
       value: PetalsClosed
+      objectReference: {fileID: 0}
+    - target: {fileID: 1047406407586446, guid: 542277e353122ae41ac88a0249dd4c01, type: 2}
+      propertyPath: m_TagString
+      value: FlowerStem
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114571828310272336, guid: 542277e353122ae41ac88a0249dd4c01, type: 2}
@@ -17649,6 +17697,10 @@ Prefab:
       propertyPath: m_TagString
       value: PetalsClosed
       objectReference: {fileID: 0}
+    - target: {fileID: 1047406407586446, guid: 542277e353122ae41ac88a0249dd4c01, type: 2}
+      propertyPath: m_TagString
+      value: FlowerStem
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114571828310272336, guid: 542277e353122ae41ac88a0249dd4c01, type: 2}
     - {fileID: 114871031216753436, guid: 542277e353122ae41ac88a0249dd4c01, type: 2}
@@ -17823,6 +17875,10 @@ Prefab:
     - target: {fileID: 1612165222454506, guid: 07943c1c1bc10064f952fb5151fc31ce, type: 2}
       propertyPath: m_TagString
       value: PetalParticle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818797584773894, guid: 07943c1c1bc10064f952fb5151fc31ce, type: 2}
+      propertyPath: m_TagString
+      value: FlowerStem
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114266047426474048, guid: 07943c1c1bc10064f952fb5151fc31ce, type: 2}
@@ -21943,6 +21999,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1818797584773894, guid: 07943c1c1bc10064f952fb5151fc31ce, type: 2}
+      propertyPath: m_TagString
+      value: FlowerStem
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114266047426474048, guid: 07943c1c1bc10064f952fb5151fc31ce, type: 2}
     - {fileID: 114762869241115588, guid: 07943c1c1bc10064f952fb5151fc31ce, type: 2}
@@ -25693,6 +25753,26 @@ Prefab:
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
       value: 3.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3150db88c4d9d4142a5f63c81c163171, type: 2}
   m_IsPrefabParent: 0
@@ -25759,7 +25839,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1842901715911726, guid: 338c09b90f1b5aa44b533e2b3b96dca8, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4740994115316202, guid: 338c09b90f1b5aa44b533e2b3b96dca8, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -36766,6 +36846,10 @@ Prefab:
     - target: {fileID: 4286923001706498, guid: 542277e353122ae41ac88a0249dd4c01, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1047406407586446, guid: 542277e353122ae41ac88a0249dd4c01, type: 2}
+      propertyPath: m_TagString
+      value: FlowerStem
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114571828310272336, guid: 542277e353122ae41ac88a0249dd4c01, type: 2}
@@ -50207,6 +50291,46 @@ Prefab:
       propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
       value: 30.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[2].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[2].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[2].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[2].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 92899bb59f59c274a9bbcc1ef384d460, type: 2}
   m_IsPrefabParent: 0
@@ -50371,6 +50495,10 @@ Prefab:
     - target: {fileID: 1739260119069146, guid: 542277e353122ae41ac88a0249dd4c01, type: 2}
       propertyPath: m_TagString
       value: PetalsClosed
+      objectReference: {fileID: 0}
+    - target: {fileID: 1047406407586446, guid: 542277e353122ae41ac88a0249dd4c01, type: 2}
+      propertyPath: m_TagString
+      value: FlowerStem
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114571828310272336, guid: 542277e353122ae41ac88a0249dd4c01, type: 2}
@@ -51024,6 +51152,26 @@ Prefab:
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
       value: 3.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3150db88c4d9d4142a5f63c81c163171, type: 2}
   m_IsPrefabParent: 0
@@ -51140,7 +51288,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1584831961560204, guid: 9a6c3c0a03f965b45b9c01df6b3ee496, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4570546808363796, guid: 9a6c3c0a03f965b45b9c01df6b3ee496, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -53591,6 +53739,46 @@ Prefab:
       propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
       value: 30.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[2].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[2].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[2].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[2].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 92899bb59f59c274a9bbcc1ef384d460, type: 2}
   m_IsPrefabParent: 0
@@ -53797,6 +53985,10 @@ Prefab:
     - target: {fileID: 1612165222454506, guid: 07943c1c1bc10064f952fb5151fc31ce, type: 2}
       propertyPath: m_TagString
       value: PetalParticle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818797584773894, guid: 07943c1c1bc10064f952fb5151fc31ce, type: 2}
+      propertyPath: m_TagString
+      value: FlowerStem
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114266047426474048, guid: 07943c1c1bc10064f952fb5151fc31ce, type: 2}
@@ -54022,6 +54214,10 @@ Prefab:
     - target: {fileID: 1612165222454506, guid: 07943c1c1bc10064f952fb5151fc31ce, type: 2}
       propertyPath: m_TagString
       value: PetalParticle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818797584773894, guid: 07943c1c1bc10064f952fb5151fc31ce, type: 2}
+      propertyPath: m_TagString
+      value: FlowerStem
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114266047426474048, guid: 07943c1c1bc10064f952fb5151fc31ce, type: 2}
@@ -54427,6 +54623,10 @@ Prefab:
     - target: {fileID: 1739260119069146, guid: 542277e353122ae41ac88a0249dd4c01, type: 2}
       propertyPath: m_TagString
       value: PetalsClosed
+      objectReference: {fileID: 0}
+    - target: {fileID: 1047406407586446, guid: 542277e353122ae41ac88a0249dd4c01, type: 2}
+      propertyPath: m_TagString
+      value: FlowerStem
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114571828310272336, guid: 542277e353122ae41ac88a0249dd4c01, type: 2}
@@ -58035,6 +58235,10 @@ Prefab:
       propertyPath: m_TagString
       value: PetalParticle
       objectReference: {fileID: 0}
+    - target: {fileID: 1818797584773894, guid: 07943c1c1bc10064f952fb5151fc31ce, type: 2}
+      propertyPath: m_TagString
+      value: FlowerStem
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114266047426474048, guid: 07943c1c1bc10064f952fb5151fc31ce, type: 2}
     - {fileID: 114762869241115588, guid: 07943c1c1bc10064f952fb5151fc31ce, type: 2}
@@ -61576,7 +61780,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1249449522351762, guid: dcf1847f0d6b7a1478b2b6a8625dc927, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114996222159102120, guid: dcf1847f0d6b7a1478b2b6a8625dc927,
         type: 2}
@@ -76987,8 +77191,8 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1919363830}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.89, y: -2.97, z: 10}
+  m_LocalRotation: {x: -0, y: -0.8421692, z: -0, w: 0.5392134}
+  m_LocalPosition: {x: 17.078215, y: -0.573, z: 14.898498}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1558619454}
@@ -76997,7 +77201,7 @@ Transform:
   - {fileID: 775997547}
   m_Father: {fileID: 838224712}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -114.740005, z: 0}
 --- !u!114 &1919363832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77192,6 +77396,10 @@ Prefab:
     - target: {fileID: 1739260119069146, guid: 542277e353122ae41ac88a0249dd4c01, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1047406407586446, guid: 542277e353122ae41ac88a0249dd4c01, type: 2}
+      propertyPath: m_TagString
+      value: FlowerStem
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114571828310272336, guid: 542277e353122ae41ac88a0249dd4c01, type: 2}
@@ -81444,6 +81652,10 @@ Prefab:
       propertyPath: m_TagString
       value: PetalParticle
       objectReference: {fileID: 0}
+    - target: {fileID: 1818797584773894, guid: 07943c1c1bc10064f952fb5151fc31ce, type: 2}
+      propertyPath: m_TagString
+      value: FlowerStem
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114266047426474048, guid: 07943c1c1bc10064f952fb5151fc31ce, type: 2}
     - {fileID: 114762869241115588, guid: 07943c1c1bc10064f952fb5151fc31ce, type: 2}
@@ -81589,7 +81801,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1221561139603768, guid: 4e7c228d118bbe64fbfe7535f2bbe112, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4955097633627228, guid: 4e7c228d118bbe64fbfe7535f2bbe112, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y

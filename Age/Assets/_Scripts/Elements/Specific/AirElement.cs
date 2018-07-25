@@ -39,6 +39,7 @@ public class AirElement : BaseElement {
 	*/
 
 	private void Start () {
+		//Particle declaration for enabling noise on campfire
 		fireNoiseModule = _firePT.noise;
 	}
 
@@ -86,7 +87,7 @@ public class AirElement : BaseElement {
         }
         else
         {
-			_airGustWeakerPT.Play ();
+			//Burst of ember particles
 			StartCoroutine (AirRainingEffects(3f));
         }
     }
@@ -95,11 +96,11 @@ public class AirElement : BaseElement {
     {
         if(initialAction)
         {
-
+			//Blow pollen off dandelions
         }
         else
         {
-
+			//Wind carrying pollen misc PT
         }
     }
 
@@ -138,5 +139,4 @@ public class AirElement : BaseElement {
 		_rainPT.transform.rotation = Quaternion.Euler (-90f, -45f, 90f);
 		fireNoiseModule.enabled = false;
 	}
-
 }

@@ -18,6 +18,7 @@ public class WaterElement : BaseElement {
 
 	#region Autumn
 	[SerializeField] private ParticleSystem _rainPT;
+	private ParticleSystem.MainModule _rainPTModule;
 	#endregion
 
 	#region Winter
@@ -28,15 +29,22 @@ public class WaterElement : BaseElement {
 	#endregion
 
 	#region Spring
-
+	[Header("Spring")]
+	[SerializeField] private GameObject[] _flowerStem;
 	#endregion
 
     private void Start()
     {
+		//Rain particle declaration (for modifying its speed)
+		_rainPTModule = _rainPT.main;
+
+		//Object arrays
         _flowersOpen = GameObject.FindGameObjectsWithTag("PetalsOpen");
 		_flowersClose = GameObject.FindGameObjectsWithTag("PetalsClosed");
 		_dandelionStem = GameObject.FindGameObjectsWithTag("DandelionStem");
+		_flowerStem = GameObject.FindGameObjectsWithTag("FlowerStem");
 
+		//Particle lists
 		var _findParticles = GameObject.FindObjectsOfType<ParticleSystem> ();
 
 		foreach (ParticleSystem p in _findParticles) {
@@ -56,9 +64,15 @@ public class WaterElement : BaseElement {
 	/*
 	//TEMPORARY TESTER
 	void Update () {
-		if (Input.GetKey(KeyCode.Alpha1)) {
+		if (Input.GetKey(KeyCode.Alpha1)) 
+		{
 
-			EnactSummerActions (true);
+			EnactSpringActions (true);
+		}
+		if (Input.GetKey(KeyCode.Alpha2))
+		{
+
+			EnactSpringActions(false);
 		}
 	}
 	*/
@@ -88,19 +102,21 @@ public class WaterElement : BaseElement {
         }
         else
         {
-			_rainPT.Stop ();
-        }
+			StartCoroutine (WaterRainingEffects (4.5f));
+		}
     }
 
     protected override void EnactWinterActions(bool initialAction)
     {
         if(initialAction)
         {
-			GrowStem ();
+			//Rainbow here
+			GrowStem (_dandelionStem);
+			_rainPT.Stop ();
         }
         else
         {
-
+			//Brighten rainbow
         }
     }
 
@@ -108,11 +124,15 @@ public class WaterElement : BaseElement {
     {
         if(initialAction)
         {
-
+			GrowStem (_flowerStem);
         }
         else
         {
+			foreach (ParticleSystem p in _splashPT) {
+				p.Play ();
+			}
 
+			OpenFlower();
         }
     }
 
@@ -129,9 +149,9 @@ public class WaterElement : BaseElement {
 		}
     }
 
-	void GrowStem()
+	void GrowStem(GameObject[] _objectArray)
 	{
-		foreach(GameObject stem in _dandelionStem)
+		foreach(GameObject stem in _objectArray)
 		{
 			StartCoroutine(ScaleOverTime(stem, _dandelionGrowDuration, _dandelionGrowthTargetScale));
 		}
@@ -155,4 +175,22 @@ public class WaterElement : BaseElement {
 			p.Play ();
 		}
     }
+
+	private IEnumerator WaterRainingEffects (float time) 
+	{
+
+		float currentTime = 0.0f;
+
+		yield return new WaitForSeconds(1.5f);
+
+		_rainPTModule.simulationSpeed = 0.3f;
+
+		do {
+			currentTime += Time.deltaTime;
+			yield return null;
+		} 
+		while (currentTime <= time);
+
+		_rainPTModule.simulationSpeed = 1f;
+	}
 }
