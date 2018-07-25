@@ -21,7 +21,8 @@ public class AirElement : BaseElement {
 	#endregion
 
 	#region Winter
-
+	[Header("Winter")]
+	[SerializeField] private ParticleSystem _emberPT;
 	#endregion
 
 	#region Spring
@@ -87,7 +88,7 @@ public class AirElement : BaseElement {
         }
         else
         {
-			//Burst of ember particles
+			_emberPT.Play ();
 			StartCoroutine (AirRainingEffects(3f));
         }
     }

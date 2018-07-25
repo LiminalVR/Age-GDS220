@@ -16,7 +16,7 @@ public class FireElement : BaseElement {
 
 	#region Autumn
 	[Header("Autumn")]
-	[SerializeField] private ParticleSystem _firePT, _kindlePT;
+	[SerializeField] private ParticleSystem _firePT, _kindlePT, _emberPT;
 	#endregion
 
 	#region Winter
@@ -41,6 +41,12 @@ public class FireElement : BaseElement {
 	*/
 
 
+	private void Start () 
+	{
+		fireShapeModule = _firePT.shape;
+		fireEmissionModule = _firePT.emission;
+	}
+
     protected override void EnactSummerActions(bool initialAction)
     {
         if(initialAction)
@@ -50,8 +56,8 @@ public class FireElement : BaseElement {
 		}
         else
         {
-			_sunrayPT.Play ();
-
+			//Pulse of light PT
+			StartCoroutine (Shine());
         }
     }
 
@@ -64,7 +70,7 @@ public class FireElement : BaseElement {
         }
         else
         {
-
+			_emberPT.Play ();
         }
     }
 
@@ -72,7 +78,9 @@ public class FireElement : BaseElement {
     {
         if(initialAction)
         {
-
+			//Put fire into coroutine
+			fireShapeModule.radius = 0.5f;
+			fireEmissionModule.rateOverTime = 80f;
         }
         else
         {
