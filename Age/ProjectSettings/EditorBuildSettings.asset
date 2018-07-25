@@ -8,12 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Summer.unity
     guid: 0da80b307c22d40408b258c2bc7b4e1b
-  - enabled: 1
-    path: Assets/Scenes/Autumn.unity
-    guid: 4b851de0dbf1f28408b997210eb829d4
-  - enabled: 1
-    path: Assets/Scenes/Summer 2.unity
-    guid: d9582733c55a5c945902fb9d9e9c32b0
-  - enabled: 1
-    path: Assets/Scenes/Summer 3.unity
-    guid: ee716949c1c213242ae3bba619e4aa8e
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
