@@ -6,7 +6,6 @@ TagManager:
   tags:
   - GameGod
   - Tree
-  - Flowers(water)
   - PetalsClosed
   - PetalsOpen
   - PetalParticle
@@ -18,6 +17,7 @@ TagManager:
   - SoilTuftParticle
   - FlowerStem
   - StemPopParticle
+  - StemBase
   layers:
   - Default
   - TransparentFX

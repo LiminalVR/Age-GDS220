@@ -12,6 +12,7 @@ public class WaterElement : BaseElement {
 	[SerializeField] private Vector3 _flowerShrinkTargetScale;
 	private GameObject[] _flowersOpen;
 	private GameObject[] _flowersClose;
+    private GameObject[] _stemBase;
 	private List<ParticleSystem> _bloomPT = new List<ParticleSystem>();
 	private List<ParticleSystem> _splashPT = new List<ParticleSystem>();
 	#endregion
@@ -29,8 +30,8 @@ public class WaterElement : BaseElement {
 	#endregion
 
 	#region Spring
-	[Header("Spring")]
-	[SerializeField] private GameObject[] _flowerStem;
+	//[Header("Spring")]
+	private GameObject[] _flowerStem;
     private List<ParticleSystem> _stemPopPT = new List<ParticleSystem>();
     #endregion
 
@@ -42,6 +43,7 @@ public class WaterElement : BaseElement {
 		//Object arrays
         _flowersOpen = GameObject.FindGameObjectsWithTag("PetalsOpen");
 		_flowersClose = GameObject.FindGameObjectsWithTag("PetalsClosed");
+        _stemBase = GameObject.FindGameObjectsWithTag("StemBase");
 		_dandelionStem = GameObject.FindGameObjectsWithTag("DandelionStem");
 		_flowerStem = GameObject.FindGameObjectsWithTag("FlowerStem");
 
@@ -65,21 +67,21 @@ public class WaterElement : BaseElement {
 		}
     }
 
-	/*
+	
 	//TEMPORARY TESTER
 	void Update () {
 		if (Input.GetKey(KeyCode.Alpha1)) 
 		{
 
-			EnactSpringActions (true);
+			EnactSummerActions (true);
 		}
 		if (Input.GetKey(KeyCode.Alpha2))
 		{
 
-			EnactSpringActions(false);
+			EnactSummerActions(false);
 		}
 	}
-	*/
+	
 
     protected override void EnactSummerActions(bool initialAction)
     {
@@ -95,6 +97,8 @@ public class WaterElement : BaseElement {
 			foreach (ParticleSystem p in _bloomPT) {
 				p.Play ();
 			}
+
+            Wiggle(_stemBase);
         }
     }
 
@@ -167,6 +171,14 @@ public class WaterElement : BaseElement {
 		}
 	}
 
+    void Wiggle(GameObject[] _objectArray)
+    {
+        foreach(GameObject g in _stemBase)
+        {
+            StartCoroutine(StemRotate(1.8f));
+        }
+    }
+
     private IEnumerator ScaleOverTime(GameObject obj, float duration, Vector3 scale)
     {
         Vector3 originalScale = obj.transform.localScale;
@@ -186,7 +198,27 @@ public class WaterElement : BaseElement {
 		}
     }
 
-	private IEnumerator WaterRainingEffects (float time) 
+    private IEnumerator StemRotate (float time)
+    {
+        {
+
+            float currentTime = 0.0f;
+
+            yield return new WaitForSeconds(0.8f);
+
+            do
+            {
+                
+              
+                currentTime += Time.deltaTime;
+                yield return null;
+            }
+            while (currentTime <= time);
+
+        }
+    }
+
+    private IEnumerator WaterRainingEffects (float time) 
 	{
 
 		float currentTime = 0.0f;
