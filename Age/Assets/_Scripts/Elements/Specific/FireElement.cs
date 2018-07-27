@@ -16,14 +16,16 @@ public class FireElement : BaseElement {
 
 	#region Autumn
 	[Header("Autumn")]
-	[SerializeField] private ParticleSystem _firePT, _kindlePT, _emberPT;
-	#endregion
+	[SerializeField] private ParticleSystem _firePT;
+    [SerializeField] private ParticleSystem _kindlePT;
+    [SerializeField] private ParticleSystem _emberPT;
+    #endregion
 
-	#region Winter
-	[Header("Winter")]
-	private ParticleSystem.EmissionModule fireEmissionModule;
+    #region Winter
+    [Header("Winter")]
+    [SerializeField] private ParticleSystem _smokePT;
+    private ParticleSystem.EmissionModule fireEmissionModule;
 	private ParticleSystem.ShapeModule fireShapeModule;
-	[SerializeField] private float _minPTIntensity, _maxPTIntensity, minPTShape,maxPTShape;
 	#endregion
 
 	#region Spring
@@ -78,13 +80,11 @@ public class FireElement : BaseElement {
     {
         if(initialAction)
         {
-			//Put fire into coroutine
-			fireShapeModule.radius = 0.5f;
-			fireEmissionModule.rateOverTime = 80f;
+            StartCoroutine(FirePulseEffects(4f));
         }
         else
         {
-
+            _smokePT.Play();
         }
     }
 
@@ -131,5 +131,24 @@ public class FireElement : BaseElement {
         		yield return null;
         }
         while(currentTime < duration);
+    }
+
+    private IEnumerator FirePulseEffects(float time)
+    {
+
+        float currentTime = 0.0f;
+
+        fireShapeModule.radius = 0.65f;
+        fireEmissionModule.rateOverTime = 35f;
+
+        do
+        {
+            currentTime += Time.deltaTime;
+            yield return null;
+        }
+        while (currentTime <= time);
+
+        fireShapeModule.radius = 0.5f;
+        fireEmissionModule.rateOverTime = 20f;
     }
 }

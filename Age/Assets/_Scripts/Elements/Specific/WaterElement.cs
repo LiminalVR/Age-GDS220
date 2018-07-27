@@ -31,7 +31,8 @@ public class WaterElement : BaseElement {
 	#region Spring
 	[Header("Spring")]
 	[SerializeField] private GameObject[] _flowerStem;
-	#endregion
+    private List<ParticleSystem> _stemPopPT = new List<ParticleSystem>();
+    #endregion
 
     private void Start()
     {
@@ -55,7 +56,10 @@ public class WaterElement : BaseElement {
 			case ("SplashParticle"):
 				_splashPT.Add (p);
 				break;
-			default:
+            case ("StemPopParticle"):
+                _stemPopPT.Add(p);
+                break;
+                default:
 				break;
 			}
 		}
@@ -124,11 +128,17 @@ public class WaterElement : BaseElement {
     {
         if(initialAction)
         {
-			GrowStem (_flowerStem);
+            foreach (ParticleSystem p in _stemPopPT)
+            {
+                p.Play();
+            }
+
+            GrowStem (_flowerStem);
         }
         else
         {
-			foreach (ParticleSystem p in _splashPT) {
+			foreach (ParticleSystem p in _splashPT)
+            {
 				p.Play ();
 			}
 

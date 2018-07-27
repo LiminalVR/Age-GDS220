@@ -15,8 +15,9 @@ public class AirElement : BaseElement {
 	#region Autumn
 	[Header("Autumn")]
 	[SerializeField] private ParticleSystem _firePT;
-	[SerializeField] private ParticleSystem _leavesPT, _leavesWeakPT;
-	ParticleSystem.NoiseModule fireNoiseModule;
+	[SerializeField] private ParticleSystem _leavesPT;
+    [SerializeField] private ParticleSystem _leavesWeakPT;
+    ParticleSystem.NoiseModule fireNoiseModule;
 	[SerializeField] private GameObject _rainPT;
 	#endregion
 
