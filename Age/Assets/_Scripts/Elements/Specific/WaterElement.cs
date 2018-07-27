@@ -8,12 +8,14 @@ public class WaterElement : BaseElement {
 	[Header("Summer")]
 	[SerializeField] private float _flowerGrowDuration;
 	[SerializeField] private Vector3 _flowerGrowthTargetScale;
-	[SerializeField] private float _flowerShrinkDuration;
-	[SerializeField] private Vector3 _flowerShrinkTargetScale;
-	private GameObject[] _flowersOpen;
+    [SerializeField] private float _flowerShrinkDuration;
+    [SerializeField] private Vector3 _flowerShrinkTargetScale;
+    private GameObject[] _flowersOpen;
 	private GameObject[] _flowersClose;
-    private GameObject[] _stemBase;
-	private List<ParticleSystem> _bloomPT = new List<ParticleSystem>();
+    [SerializeField] private GameObject[] _stemBase;
+    [SerializeField] private float _wiggleDuration;
+    [SerializeField] private float _wiggleAngle;
+    private List<ParticleSystem> _bloomPT = new List<ParticleSystem>();
 	private List<ParticleSystem> _splashPT = new List<ParticleSystem>();
 	#endregion
 
@@ -173,9 +175,9 @@ public class WaterElement : BaseElement {
 
     void Wiggle(GameObject[] _objectArray)
     {
-        foreach(GameObject g in _stemBase)
+        foreach (GameObject g in _objectArray)
         {
-            StartCoroutine(StemRotate(1.8f));
+            StartCoroutine(RotateTo (g, _wiggleDuration));
         }
     }
 
@@ -198,25 +200,34 @@ public class WaterElement : BaseElement {
 		}
     }
 
-    private IEnumerator StemRotate (float time)
+    private IEnumerator RotateTo (GameObject g, float time)
     {
         {
-
             float currentTime = 0.0f;
 
-            yield return new WaitForSeconds(0.8f);
-
-            do
             {
-                
-              
-                currentTime += Time.deltaTime;
-                yield return null;
-            }
-            while (currentTime <= time);
+                do
+                {
+                    g.transform.localEulerAngles = new Vector3(g.transform.rotation.eulerAngles.x, g.transform.rotation.eulerAngles.y, Mathf.PingPong(currentTime * 50, _wiggleAngle));
 
+                    currentTime += Time.deltaTime;
+                    yield return null;
+                }
+                    while (currentTime <= time);
+            }
         }
     }
+
+    // Notes.
+    //This is how quaternion.lerp works
+    //origin = original rotation.
+    //maxRotation = the maximum you want to bend in the animation effect.
+    //newRotation is what you set your rotation to each frame/update/whatever.
+    //newRotation = Quaternion.Lerp(origin, maxRotation, time);
+    //newRotation equals origin if time = 0
+    //newRotation equals maxRotation if time = 1
+    //newRotation equals some value in between if time = 0-1 not inclusive.
+    //make time go from 0, to 1, back to 0.
 
     private IEnumerator WaterRainingEffects (float time) 
 	{
