@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Liminal.SDK.VR.Input;
 
 public class PlayerController : MonoBehaviour {
 
@@ -9,6 +10,8 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float _maxDis;
     [SerializeField] private float _mouseSensitivity = 15.0f;
     private IElement _selectedElement;
+
+    [SerializeField] private bool _isVR;
 
     private float _xRot;
     private float _yRot;
@@ -24,47 +27,85 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Update()
-    {
-
-
-
-        _xRot += Input.GetAxis("Mouse X") * _mouseSensitivity;
-        _yRot += Input.GetAxis("Mouse Y") * _mouseSensitivity;
-        transform.localRotation = _originalRot * Quaternion.AngleAxis(_xRot, Vector3.up) * Quaternion.AngleAxis(_yRot, -Vector3.right);
-
-       if(Input.GetButtonDown(_buttonName))
-       {
-            Ray ray = new Ray(transform.position, transform.forward);
-            RaycastHit raycastHit;
-
-            if(Physics.Raycast(ray, out raycastHit, _maxDis, _interactionLayers))
-            {
-                _selectedElement = raycastHit.collider.gameObject.GetComponent<IElement>();
-            }
-       }
-
-        if(Input.GetButton(_buttonName))
+    {   
+        if(!_isVR)
         {
-            Ray ray = new Ray(transform.position, transform.forward);
-            RaycastHit raycastHit;
+            _xRot += Input.GetAxis("Mouse X") * _mouseSensitivity;
+            _yRot += Input.GetAxis("Mouse Y") * _mouseSensitivity;
+            transform.localRotation = _originalRot * Quaternion.AngleAxis(_xRot, Vector3.up) * Quaternion.AngleAxis(_yRot, -Vector3.right);
 
-            if(Physics.Raycast(ray, out raycastHit, _maxDis, _interactionLayers))
+            if(Input.GetButtonDown(_buttonName))
             {
-                _lineRenderer.SetPosition(1, new Vector3(0, 0, raycastHit.distance));
+                Ray ray = new Ray(transform.position, transform.forward);
+                RaycastHit raycastHit;
+
+                if(Physics.Raycast(ray, out raycastHit, _maxDis, _interactionLayers))
+                {
+                    _selectedElement = raycastHit.collider.gameObject.GetComponent<IElement>();
+                }
             }
 
-            if(_selectedElement != null)
+            if(Input.GetButton(_buttonName))
             {
-                _selectedElement.ConfirmationTime += Time.deltaTime;
+                Ray ray = new Ray(transform.position, transform.forward);
+                RaycastHit raycastHit;
+
+                if(Physics.Raycast(ray, out raycastHit, _maxDis, _interactionLayers))
+                {
+                    _lineRenderer.SetPosition(1, new Vector3(0, 0, raycastHit.distance));
+                }
+
+                if(_selectedElement != null)
+                {
+                    _selectedElement.ConfirmationTime += Time.deltaTime;
+                }
+            }
+
+            if(Input.GetButtonUp(_buttonName))
+            {
+                if(_selectedElement != null)
+                {
+                    _selectedElement.ConfirmationTime = 0;
+                    _selectedElement = null;
+                }
             }
         }
-
-        if(Input.GetButtonUp(_buttonName))
+        else
         {
-            if(_selectedElement != null)
+            if(Input.GetButtonDown(VRButton.One))
             {
-                _selectedElement.ConfirmationTime = 0;
-                _selectedElement = null;
+                Ray ray = new Ray(transform.position, transform.forward);
+                RaycastHit raycastHit;
+
+                if(Physics.Raycast(ray, out raycastHit, _maxDis, _interactionLayers))
+                {
+                    _selectedElement = raycastHit.collider.gameObject.GetComponent<IElement>();
+                }
+            }
+
+            if(Input.GetButton(VRButton.One))
+            {
+                Ray ray = new Ray(transform.position, transform.forward);
+                RaycastHit raycastHit;
+
+                if(Physics.Raycast(ray, out raycastHit, _maxDis, _interactionLayers))
+                {
+                    _lineRenderer.SetPosition(1, new Vector3(0, 0, raycastHit.distance));
+                }
+
+                if(_selectedElement != null)
+                {
+                    _selectedElement.ConfirmationTime += Time.deltaTime;
+                }
+            }
+
+            if(Input.GetButtonUp(VRButton.One))
+            {
+                if(_selectedElement != null)
+                {
+                    _selectedElement.ConfirmationTime = 0;
+                    _selectedElement = null;
+                }
             }
         }
     }
