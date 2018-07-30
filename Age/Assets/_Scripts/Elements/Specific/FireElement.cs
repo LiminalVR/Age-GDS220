@@ -11,6 +11,7 @@ public class FireElement : BaseElement {
     [SerializeField] private ParticleSystem _cloudsPT;
     [SerializeField] private Light _sunLight;
     [SerializeField] private float _minSunIntensity, _maxSunIntensity, _cloudPartEffectDuration, _shineDuration, _sunReturnDuration;
+    bool fadingCloudsOut;
     [SerializeField] Gradient _cloudsGradient;
     private GradientAlphaKey[] _cGAK;
     private GradientColorKey[] _cGCK;
@@ -49,6 +50,7 @@ public class FireElement : BaseElement {
 
 	private void Start () 
 	{
+        //Cloud colour gradient settings
         _cloudModule = _cloudsPT.colorOverLifetime;
         _cloudsGradient = new Gradient();
 
@@ -61,13 +63,11 @@ public class FireElement : BaseElement {
         _cGAK[2].time = 0.9f;
         _cGAK[3].alpha = 0.0f;
         _cGAK[3].time = 1.0f;
-
         _cGCK = new GradientColorKey[2];
         _cGCK[0].color = Color.white;
         _cGCK[0].time = 0.0f;
         _cGCK[1].color = Color.white;
         _cGCK[1].time = 1.0f;
-
         _cloudsGradient.SetKeys(_cGCK, _cGAK);
 
         _cloudModule.color = _cloudsGradient;
@@ -131,16 +131,18 @@ public class FireElement : BaseElement {
 
     private IEnumerator Shine()
     {
-        StartCoroutine(ManipulateShine(true, _maxSunIntensity, _cloudPartEffectDuration));
+        fadingCloudsOut = true;
+        StartCoroutine(ManipulateShine(_maxSunIntensity, _cloudPartEffectDuration));
 
-        yield return new WaitForSeconds(_cloudPartEffectDuration + _shineDuration);
+        yield return new WaitForSeconds (_cloudPartEffectDuration + _shineDuration);
 
-        StartCoroutine(ManipulateShine(false, _minSunIntensity, _sunReturnDuration));
+        fadingCloudsOut = false;
+        StartCoroutine(ManipulateShine(_minSunIntensity, _sunReturnDuration));
 
         yield return null;
     }
 
-    private IEnumerator ManipulateShine(bool fadeCloudsOut, float targetSunIntensity, float duration)
+    private IEnumerator ManipulateShine(float targetSunIntensity, float duration)
     {
         float currentTime = 0.0f;
 
@@ -148,28 +150,30 @@ public class FireElement : BaseElement {
 
         do
         {
-            currentTime += Time.deltaTime / duration;
+            currentTime += Time.deltaTime;
+            Debug.Log(currentTime);
 
-            if (fadeCloudsOut == true)
+            //Sets a colour gradient manually, this was visually better than color.white / clear
+            if (fadingCloudsOut == true)
             {
                 _cloudModule.color = _cloudsGradient;
 
-                _cGCK[0].color = Color.Lerp(Color.white, Color.clear, currentTime);
-                _cGCK[1].color = Color.Lerp(Color.white, Color.clear, currentTime);
+                _cGAK[1].alpha = Mathf.Lerp(0.7f, 0f, currentTime / duration);
+                _cGAK[2].alpha = Mathf.Lerp(0.7f, 0f, currentTime / duration);
                 _cloudsGradient.SetKeys(_cGCK, _cGAK);
             }
             else
             {
                 _cloudModule.color = _cloudsGradient;
 
-                _cGCK[0].color = Color.Lerp(Color.white, Color.white, currentTime);
-                _cGCK[1].color = Color.Lerp(Color.white, Color.white, currentTime);
+                _cGAK[1].alpha = Mathf.Lerp(0f, 0.7f, currentTime / duration);
+                _cGAK[2].alpha = Mathf.Lerp(0f, 0.7f, currentTime / duration);
                 _cloudsGradient.SetKeys(_cGCK, _cGAK);
             }
 
             _sunLight.intensity = Mathf.Lerp(startIntensity, targetSunIntensity, currentTime);
 
-        		yield return null;
+            yield return null;
         }
         while(currentTime < duration);
     }
