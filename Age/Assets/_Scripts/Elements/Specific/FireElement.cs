@@ -7,11 +7,14 @@ public class FireElement : BaseElement {
 	#region Summer
 	[Header("Summer")]
 	[SerializeField] private ParticleSystem _sunrayPT;
-	[SerializeField] private ParticleSystem _cloudsPT;
-	[SerializeField] private Light _sunLight;
-    [SerializeField] private Color _cloudStartColour;
-	[SerializeField] private float _minSunIntensity, _maxSunIntensity, _cloudPartEffectDuration, _shineDuration, _sunReturnDuration;
-	private ParticleSystem.ColorOverLifetimeModule cloudModule;
+    [SerializeField] private ParticleSystem _sunrayPulsePT;
+    [SerializeField] private ParticleSystem _cloudsPT;
+    [SerializeField] private Light _sunLight;
+    [SerializeField] private float _minSunIntensity, _maxSunIntensity, _cloudPartEffectDuration, _shineDuration, _sunReturnDuration;
+    [SerializeField] Gradient _cloudsGradient;
+    private GradientAlphaKey[] _cGAK;
+    private GradientColorKey[] _cGCK;
+	private ParticleSystem.ColorOverLifetimeModule _cloudModule;
 	#endregion
 
 	#region Autumn
@@ -26,6 +29,7 @@ public class FireElement : BaseElement {
     [SerializeField] private ParticleSystem _smokePT;
     private ParticleSystem.EmissionModule fireEmissionModule;
 	private ParticleSystem.ShapeModule fireShapeModule;
+    [SerializeField] private float _minRadius, _maxRadius, _minRate, _maxRate;
 	#endregion
 
 	#region Spring
@@ -45,7 +49,30 @@ public class FireElement : BaseElement {
 
 	private void Start () 
 	{
-		fireShapeModule = _firePT.shape;
+        _cloudModule = _cloudsPT.colorOverLifetime;
+        _cloudsGradient = new Gradient();
+
+        _cGAK = new GradientAlphaKey[4];
+        _cGAK[0].alpha = 0.0f;
+        _cGAK[0].time = 0.0f;
+        _cGAK[1].alpha = 0.7f;
+        _cGAK[1].time = 0.1f;
+        _cGAK[2].alpha = 0.7f;
+        _cGAK[2].time = 0.9f;
+        _cGAK[3].alpha = 0.0f;
+        _cGAK[3].time = 1.0f;
+
+        _cGCK = new GradientColorKey[2];
+        _cGCK[0].color = Color.white;
+        _cGCK[0].time = 0.0f;
+        _cGCK[1].color = Color.white;
+        _cGCK[1].time = 1.0f;
+
+        _cloudsGradient.SetKeys(_cGCK, _cGAK);
+
+        _cloudModule.color = _cloudsGradient;
+
+        fireShapeModule = _firePT.shape;
 		fireEmissionModule = _firePT.emission;
 	}
 
@@ -58,7 +85,7 @@ public class FireElement : BaseElement {
 		}
         else
         {
-			//Pulse of light PT
+            _sunrayPulsePT.Play();
 			StartCoroutine (Shine());
         }
     }
@@ -80,7 +107,7 @@ public class FireElement : BaseElement {
     {
         if(initialAction)
         {
-            StartCoroutine(FirePulseEffects(4f));
+            StartCoroutine(FirePulseEffects(4f, _minRadius, _maxRadius, _minRate, _maxRate));
         }
         else
         {
@@ -90,13 +117,15 @@ public class FireElement : BaseElement {
 
     protected override void EnactSpringActions(bool initialAction)
     {
-        if(initialAction)
+        if (initialAction)
         {
-
+            _sunrayPT.Play();
+            StartCoroutine(Shine());
         }
         else
         {
-
+            _sunrayPulsePT.Play();
+            StartCoroutine(Shine());
         }
     }
 
@@ -114,32 +143,44 @@ public class FireElement : BaseElement {
     private IEnumerator ManipulateShine(bool fadeCloudsOut, float targetSunIntensity, float duration)
     {
         float currentTime = 0.0f;
+
         float startIntensity = _sunLight.intensity;
-        cloudModule = _cloudsPT.colorOverLifetime;
 
         do
         {
             currentTime += Time.deltaTime / duration;
 
-            if(fadeCloudsOut)
-                cloudModule.color = Color.Lerp(_cloudStartColour, Color.clear, currentTime);
-            else
-                cloudModule.color = Color.Lerp(Color.clear, _cloudStartColour, currentTime);
+            if (fadeCloudsOut == true)
+            {
+                _cloudModule.color = _cloudsGradient;
 
-           		_sunLight.intensity = Mathf.Lerp(startIntensity, targetSunIntensity, currentTime);
+                _cGCK[0].color = Color.Lerp(Color.white, Color.clear, currentTime);
+                _cGCK[1].color = Color.Lerp(Color.white, Color.clear, currentTime);
+                _cloudsGradient.SetKeys(_cGCK, _cGAK);
+            }
+            else
+            {
+                _cloudModule.color = _cloudsGradient;
+
+                _cGCK[0].color = Color.Lerp(Color.white, Color.white, currentTime);
+                _cGCK[1].color = Color.Lerp(Color.white, Color.white, currentTime);
+                _cloudsGradient.SetKeys(_cGCK, _cGAK);
+            }
+
+            _sunLight.intensity = Mathf.Lerp(startIntensity, targetSunIntensity, currentTime);
 
         		yield return null;
         }
         while(currentTime < duration);
     }
 
-    private IEnumerator FirePulseEffects(float time)
+    private IEnumerator FirePulseEffects(float time, float _minRadius, float _maxRadius, float _minRate, float _maxRate)
     {
 
         float currentTime = 0.0f;
 
-        fireShapeModule.radius = 0.65f;
-        fireEmissionModule.rateOverTime = 35f;
+        fireShapeModule.radius = _maxRadius;
+        fireEmissionModule.rateOverTime = _maxRate;
 
         do
         {
@@ -148,7 +189,7 @@ public class FireElement : BaseElement {
         }
         while (currentTime <= time);
 
-        fireShapeModule.radius = 0.5f;
-        fireEmissionModule.rateOverTime = 20f;
+        fireShapeModule.radius = _minRadius;
+        fireEmissionModule.rateOverTime = _minRate;
     }
 }
