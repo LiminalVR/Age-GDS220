@@ -24,13 +24,13 @@ public class AirElement : BaseElement {
 	#region Winter
 	[Header("Winter")]
 	[SerializeField] private ParticleSystem _emberPT;
-	#endregion
+    #endregion
 
-	#region Spring
+    #region Spring
+    private List<ParticleSystem> _dandelionStillPT = new List<ParticleSystem>();
+    #endregion
 
-	#endregion
-
-	/*
+    /*
 	//TEMPORARY TESTER
 	void Update () {
 		if (Input.GetKey(KeyCode.Alpha1)) {
@@ -40,10 +40,24 @@ public class AirElement : BaseElement {
 	}
 	*/
 
-	private void Start () {
+    private void Start () {
 		//Particle declaration for enabling noise on campfire
 		fireNoiseModule = _firePT.noise;
-	}
+
+        var _findParticles = GameObject.FindObjectsOfType<ParticleSystem>();
+
+        foreach (ParticleSystem p in _findParticles)
+        {
+            switch (p.tag)
+            {
+                case ("DandelionStillParticle"):
+                    _dandelionStillPT.Add(p);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
 
     protected override void EnactSummerActions(bool initialAction)
     {
@@ -98,7 +112,11 @@ public class AirElement : BaseElement {
     {
         if(initialAction)
         {
-			//Blow pollen off dandelions
+            //Blow pollen off dandelions
+            foreach (ParticleSystem p in _dandelionStillPT)
+            {
+                p.Play();
+            }
         }
         else
         {

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731189, g: 0.38073924, b: 0.35872707, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -4921,6 +4921,51 @@ Prefab:
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
       value: 3.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3150db88c4d9d4142a5f63c81c163171, type: 2}
   m_IsPrefabParent: 0
@@ -6273,6 +6318,51 @@ Prefab:
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
       value: 1.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 198866529731101710, guid: 9fe53fb5f60cd624487585974d54c47c,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198866529731101710, guid: 9fe53fb5f60cd624487585974d54c47c,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198866529731101710, guid: 9fe53fb5f60cd624487585974d54c47c,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198866529731101710, guid: 9fe53fb5f60cd624487585974d54c47c,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198866529731101710, guid: 9fe53fb5f60cd624487585974d54c47c,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198866529731101710, guid: 9fe53fb5f60cd624487585974d54c47c,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198866529731101710, guid: 9fe53fb5f60cd624487585974d54c47c,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198866529731101710, guid: 9fe53fb5f60cd624487585974d54c47c,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198866529731101710, guid: 9fe53fb5f60cd624487585974d54c47c,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 1.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9fe53fb5f60cd624487585974d54c47c, type: 2}
   m_IsPrefabParent: 0
@@ -6372,7 +6462,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1437385953}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.569, y: 0.717, z: 14.612}
+  m_LocalPosition: {x: 16.501598, y: 0.8, z: 14.6777}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 280331912}
@@ -6393,7 +6483,7 @@ GameObject:
   - component: {fileID: 53962153}
   m_Layer: 0
   m_Name: PetalStationaryPT
-  m_TagString: Untagged
+  m_TagString: DandelionStillParticle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6528,7 +6618,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 501894977
+  randomSeed: 1261877936
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -10314,7 +10404,7 @@ Transform:
   m_GameObject: {fileID: 406368185}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 12.029, y: 1.8512328, z: 6.9812}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 269964584}
   - {fileID: 1697218710}
@@ -15381,7 +15471,7 @@ Transform:
   m_GameObject: {fileID: 270155932}
   m_LocalRotation: {x: -0, y: -0.35787648, z: -0, w: 0.933769}
   m_LocalPosition: {x: 8.0878525, y: 1.8089066, z: 9.826093}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 131037535}
   - {fileID: 170406139}
@@ -16001,7 +16091,7 @@ Transform:
   m_GameObject: {fileID: 622975560}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 11.937599, y: 1.0507295, z: 8.891388}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 486776339}
   - {fileID: 2094053257}
@@ -16019,7 +16109,7 @@ Transform:
   m_GameObject: {fileID: 1343632532}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 11.25712, y: 2.577, z: 6.026741}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 768428534}
   - {fileID: 1773806596}
@@ -16547,7 +16637,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 670390865
+  randomSeed: 1935928259
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -21402,7 +21492,7 @@ GameObject:
   - component: {fileID: 654050069}
   m_Layer: 0
   m_Name: PetalStationaryPT
-  m_TagString: Untagged
+  m_TagString: DandelionStillParticle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21537,7 +21627,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 2086648088
+  randomSeed: 1249824032
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -28332,7 +28422,7 @@ Transform:
   m_GameObject: {fileID: 1509126967}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 9.890663, y: -0.005867243, z: 16.645088}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1998220730}
   - {fileID: 1029927355}
@@ -29692,6 +29782,51 @@ Prefab:
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
       value: 3.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3150db88c4d9d4142a5f63c81c163171, type: 2}
   m_IsPrefabParent: 0
@@ -29714,15 +29849,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4740994115316202, guid: 338c09b90f1b5aa44b533e2b3b96dca8, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 16.246323
+      value: 16.3604
       objectReference: {fileID: 0}
     - target: {fileID: 4740994115316202, guid: 338c09b90f1b5aa44b533e2b3b96dca8, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.717
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 4740994115316202, guid: 338c09b90f1b5aa44b533e2b3b96dca8, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 15.139487
+      value: 14.9907
       objectReference: {fileID: 0}
     - target: {fileID: 4740994115316202, guid: 338c09b90f1b5aa44b533e2b3b96dca8, type: 2}
       propertyPath: m_LocalRotation.x
@@ -29982,6 +30117,70 @@ Prefab:
     - target: {fileID: 4336342667122426, guid: 230fa769aaa69b846b1e1ddaf65d8487, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 198188417266494762, guid: 230fa769aaa69b846b1e1ddaf65d8487,
+        type: 2}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198188417266494762, guid: 230fa769aaa69b846b1e1ddaf65d8487,
+        type: 2}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198188417266494762, guid: 230fa769aaa69b846b1e1ddaf65d8487,
+        type: 2}
+      propertyPath: randomSeed
+      value: -1703507480
+      objectReference: {fileID: 0}
+    - target: {fileID: 198188417266494762, guid: 230fa769aaa69b846b1e1ddaf65d8487,
+        type: 2}
+      propertyPath: ColorModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198188417266494762, guid: 230fa769aaa69b846b1e1ddaf65d8487,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.key1.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198188417266494762, guid: 230fa769aaa69b846b1e1ddaf65d8487,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.atime1
+      value: 56283
+      objectReference: {fileID: 0}
+    - target: {fileID: 198188417266494762, guid: 230fa769aaa69b846b1e1ddaf65d8487,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.atime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 198188417266494762, guid: 230fa769aaa69b846b1e1ddaf65d8487,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.m_NumAlphaKeys
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 198188417266494762, guid: 230fa769aaa69b846b1e1ddaf65d8487,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198188417266494762, guid: 230fa769aaa69b846b1e1ddaf65d8487,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.maxCurve.m_Curve.Array.data[1].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198188417266494762, guid: 230fa769aaa69b846b1e1ddaf65d8487,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.maxCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198188417266494762, guid: 230fa769aaa69b846b1e1ddaf65d8487,
+        type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1339278763896852, guid: 230fa769aaa69b846b1e1ddaf65d8487, type: 2}
+      propertyPath: m_TagString
+      value: DandelionStillParticle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 230fa769aaa69b846b1e1ddaf65d8487, type: 2}
@@ -30323,7 +30522,7 @@ GameObject:
   - component: {fileID: 809400115}
   m_Layer: 0
   m_Name: PetalStationaryPT
-  m_TagString: Untagged
+  m_TagString: DandelionStillParticle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30458,7 +30657,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1069497996
+  randomSeed: -629906320
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -41078,7 +41277,7 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 3
   m_TerrainData: {fileID: 15600000, guid: 3c29f53d6ab3f1f45bebfbc38fa21c58, type: 2}
-  m_TreeDistance: 5000
+  m_TreeDistance: 2000
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 50
@@ -45186,7 +45385,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -2077590367
+  randomSeed: -1362921172
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -48619,6 +48818,16 @@ Prefab:
       propertyPath: lengthInSec
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 198164214607520974, guid: bbd9bf675b5c3e743bab361b8ef31341,
+        type: 2}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 198164214607520974, guid: bbd9bf675b5c3e743bab361b8ef31341,
+        type: 2}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.04
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bbd9bf675b5c3e743bab361b8ef31341, type: 2}
   m_IsPrefabParent: 0
@@ -49427,7 +49636,7 @@ Transform:
   m_GameObject: {fileID: 1983348887}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 6.746976, y: 1.1343718, z: 19.298626}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1212323433}
   - {fileID: 226674102}
@@ -49550,13 +49759,13 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1208830331}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.00041454352, y: -0.016918778, z: 0.009214967, w: 0.99981433}
+  m_LocalPosition: {x: 0.04000002, y: 0, z: 0.0000009648502}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 208952173}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.030000001, y: -1.9390001, z: 1.057}
 --- !u!114 &1208830333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49694,7 +49903,7 @@ Transform:
   m_GameObject: {fileID: 541399559}
   m_LocalRotation: {x: -0, y: -0.5371093, z: -0, w: 0.84351265}
   m_LocalPosition: {x: 13.485931, y: 0.6107325, z: 8.473862}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1669426874}
   - {fileID: 1213795937}
@@ -49810,7 +50019,7 @@ Light:
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
-    m_Resolution: -1
+    m_Resolution: 0
     m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0.05
@@ -49837,7 +50046,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1219783746}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.19, y: 3, z: 0}
+  m_LocalPosition: {x: 16.481, y: 7.358, z: 5.589}
   m_LocalScale: {x: 1, y: 1.0000001, z: 1}
   m_Children: []
   m_Father: {fileID: 838224712}
@@ -53542,7 +53751,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 475896658
+  randomSeed: -1854290585
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -56812,7 +57021,7 @@ GameObject:
   - component: {fileID: 1258247576}
   m_Layer: 0
   m_Name: PetalStationaryPT
-  m_TagString: Untagged
+  m_TagString: DandelionStillParticle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56947,7 +57156,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 416932662
+  randomSeed: 1689148554
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -63805,6 +64014,96 @@ Prefab:
       propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
       value: 30.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[2].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[2].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[2].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[2].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[2].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[2].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[2].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[2].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[2].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 92899bb59f59c274a9bbcc1ef384d460, type: 2}
   m_IsPrefabParent: 0
@@ -65693,6 +65992,51 @@ Prefab:
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
       value: 3.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198647323008922652, guid: 3150db88c4d9d4142a5f63c81c163171,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 3.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3150db88c4d9d4142a5f63c81c163171, type: 2}
   m_IsPrefabParent: 0
@@ -65818,7 +66162,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 435155866}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.730333, y: 0.717, z: 14.34826}
+  m_LocalPosition: {x: 16.583033, y: 0.8, z: 14.53936}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 626182154}
@@ -65835,7 +66179,7 @@ Transform:
   m_GameObject: {fileID: 976208786}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 6.6044903, y: 2.7261949, z: 11.709193}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 181167289}
   - {fileID: 1222958169}
@@ -65853,7 +66197,7 @@ Transform:
   m_GameObject: {fileID: 95946682}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 10.171923, y: -0.005867243, z: 19.965923}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1730677040}
   - {fileID: 1841687849}
@@ -65985,6 +66329,10 @@ Prefab:
     - target: {fileID: 4442084490928826, guid: 1c0d27d33467e484fa15a5691607c737, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1852549263395312, guid: 1c0d27d33467e484fa15a5691607c737, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1c0d27d33467e484fa15a5691607c737, type: 2}
@@ -70466,6 +70814,96 @@ Prefab:
       propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
       value: 30.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[2].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[2].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[2].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[2].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[2].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[2].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[2].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[2].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[2].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198287548120722888, guid: 92899bb59f59c274a9bbcc1ef384d460,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 92899bb59f59c274a9bbcc1ef384d460, type: 2}
   m_IsPrefabParent: 0
@@ -70530,7 +70968,7 @@ Transform:
   m_GameObject: {fileID: 1054250529}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 9.220433, y: 0.38365886, z: 10.662212}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2029319864}
   - {fileID: 636272853}
@@ -74994,7 +75432,7 @@ GameObject:
   - component: {fileID: 1654478677}
   m_Layer: 0
   m_Name: PetalStationaryPT
-  m_TagString: Untagged
+  m_TagString: DandelionStillParticle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75129,7 +75567,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1451201705
+  randomSeed: 1951088977
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -78511,7 +78949,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 86089888}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.89167, y: 0.717, z: 14.084518}
+  m_LocalPosition: {x: 16.674, y: 0.8, z: 14.385}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 914367738}
@@ -79205,7 +79643,7 @@ GameObject:
   - component: {fileID: 1756023845}
   m_Layer: 0
   m_Name: PetalStationaryPT
-  m_TagString: Untagged
+  m_TagString: DandelionStillParticle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79340,7 +79778,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1622493687
+  randomSeed: 1125944848
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -86625,7 +87063,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1158931892
+  randomSeed: 737721996
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -90218,7 +90656,7 @@ GameObject:
   - component: {fileID: 1850896008}
   m_Layer: 0
   m_Name: PetalStationaryPT
-  m_TagString: Untagged
+  m_TagString: DandelionStillParticle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90353,7 +90791,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 811041751
+  randomSeed: -1777511786
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -93898,7 +94336,7 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 3
   m_TerrainData: {fileID: 15600000, guid: 1104c8e5b2ecbbf4794940d7e932f3e9, type: 2}
-  m_TreeDistance: 5000
+  m_TreeDistance: 2000
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 50
@@ -94034,7 +94472,7 @@ GameObject:
   - component: {fileID: 1911713794}
   m_Layer: 0
   m_Name: PetalStationaryPT
-  m_TagString: Untagged
+  m_TagString: DandelionStillParticle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94169,7 +94607,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1543027040
+  randomSeed: -1698784377
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -97534,7 +97972,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 629767653}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.407667, y: 0.717, z: 14.875741}
+  m_LocalPosition: {x: 16.4315, y: 0.8, z: 14.8279}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 977267837}
@@ -98187,7 +98625,7 @@ GameObject:
   - component: {fileID: 2054854572}
   m_Layer: 0
   m_Name: PetalStationaryPT
-  m_TagString: Untagged
+  m_TagString: DandelionStillParticle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98322,7 +98760,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1903432051
+  randomSeed: 1856128050
   InitialModule:
     serializedVersion: 3
     enabled: 1
