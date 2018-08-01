@@ -52,4 +52,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rainbow: {fileID: 1939719151674460, guid: b80bdf56ee765494795dc55006b16b7b, type: 2}
-  shootForce: 3000
+  shootForce: 9
