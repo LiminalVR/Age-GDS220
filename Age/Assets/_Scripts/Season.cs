@@ -11,6 +11,16 @@ public class Season {
     [SerializeField] private GameObject[] _otherActiveObjects;
     [SerializeField] private GameObject[] _otherInactiveObjects;
 
+
+    //variables for atmosphere thickness in the skybox settings
+	float summerSun=1f;
+	float autumnSun=0.5f;
+	float winterSun=2f;
+	float springSun=0.5f;
+
+	//skybox material
+	Material skyMat;
+
     [Header("Aesthetics")]
     public Texture _seasonTreeTex;
 
@@ -19,6 +29,7 @@ public class Season {
 
     public void StartSeason()
     {
+		skyMat = RenderSettings.skybox;
         // Activates appropriate terrain.
         _seasonTerrain.SetActive(true);
 
@@ -37,17 +48,34 @@ public class Season {
         // Produces effects relative to specified season.
         switch(_season)
         {
-            case SeasonManager.SeasonType.SUMMER:
-                break;
+		case SeasonManager.SeasonType.SUMMER:
+			if(_season == SeasonManager.SeasonType.SUMMER){
+				Debug.Log("Summer Active");
+				skyMat.SetFloat ("_AtmosphereThickness", summerSun); //Adjusts skybox atmosphere thickness 
+			}
+			break;
 
-            case SeasonManager.SeasonType.WINTER:
-                break;
+       case SeasonManager.SeasonType.AUTUMN:
+			if(_season == SeasonManager.SeasonType.AUTUMN){
+				Debug.Log("Autumn Active");
+				Debug.Log("Atmosphere = " + autumnSun);
+				skyMat.SetFloat ("_AtmosphereThickness", autumnSun); //Adjusts skybox atmosphere thickness 	
+			}
+			break;
 
-            case SeasonManager.SeasonType.AUTUMN:
-                break;
+		case SeasonManager.SeasonType.WINTER:
+			if(_season == SeasonManager.SeasonType.WINTER){
+				Debug.Log("Winter Active");
+				skyMat.SetFloat ("_AtmosphereThickness", winterSun); //Adjusts skybox atmosphere thickness 	
+			}
+			break;
 
-            case SeasonManager.SeasonType.SPRING:
-                break;
+       case SeasonManager.SeasonType.SPRING:
+			if(_season == SeasonManager.SeasonType.SPRING){
+				Debug.Log("Spring Active");
+				skyMat.SetFloat ("_AtmosphereThickness", springSun); //Adjusts skybox atmosphere thickness 	
+			}
+			break;
         }
     }
 
