@@ -1,5 +1,7 @@
 fileFormatVersion: 2
-guid: 41894bb6ce1a85c45b1e892268d39fc7
+guid: 6c0ebf21860ee46459b7a654190f5596
+timeCreated: 1533107254
+licenseType: Pro
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -701,10 +703,6 @@ ModelImporter:
     400690: pasted__pSphere1
     400692: pCylinder1
     400694: pCylinder2
-    2100000: Wood_Brown
-    2100002: Light_wood
-    2100004: Rock_grey
-    2100006: pasted__Rock_grey
     2300000: pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pSphere1
     2300002: pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pSphere1
     2300004: pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pSphere1
@@ -809,37 +807,34 @@ ModelImporter:
     4300062: pasted__pCylinder3
     4300064: pasted__pasted__pasted__pasted__pCylinder4
     4300066: pasted__pasted__pasted__pasted__pasted__pasted__pasted__pasted__pSphere1
-    7400000: Idle
-    7400002: Destroy
-    7400004: (Old dont use)
+    7400000: Repair
     9500000: //RootNode
-    2186277476908879412: ImportLogs
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Light_wood
-    second: {fileID: 2100000, guid: 8e4eb5176ecfa5849a14f5811d3ddd81, type: 2}
+    second: {fileID: 2100000, guid: 62631c71fdc3b7a42ba7e9c1d519a0f2, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Rock_grey
-    second: {fileID: 2100000, guid: 3a521e5efd051b442b11ff16b292fbf6, type: 2}
+    second: {fileID: 2100000, guid: 640293d0593293f4084c81002687b15a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Wood_Brown
-    second: {fileID: 2100000, guid: 13ad2591d85bb624093db1d6c9cf6140, type: 2}
+    second: {fileID: 2100000, guid: 5ef5e53d9a9d1d64c844f74605d2012b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: pasted__Rock_grey
-    second: {fileID: 2100000, guid: 3a521e5efd051b442b11ff16b292fbf6, type: 2}
+    second: {fileID: 2100000, guid: 640293d0593293f4084c81002687b15a, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -862,65 +857,9 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle
-      takeName: Take 001
-      firstFrame: 2
-      lastFrame: 2
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Destroy
+      name: Repair
       takeName: Take 001
       firstFrame: 0
-      lastFrame: 300
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: (Old dont use)
-      takeName: Take 001
-      firstFrame: 2
       lastFrame: 600
       wrapMode: 0
       orientationOffsetY: 0
