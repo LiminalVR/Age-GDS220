@@ -69,21 +69,19 @@ public class WaterElement : BaseElement {
 		}
     }
 
-	
+	/*
 	//TEMPORARY TESTER
 	void Update () {
 		if (Input.GetKey(KeyCode.Alpha1)) 
 		{
-
 			EnactSummerActions (true);
 		}
 		if (Input.GetKey(KeyCode.Alpha2))
 		{
-
 			EnactSummerActions(false);
 		}
 	}
-	
+	*/
 
     protected override void EnactSummerActions(bool initialAction)
     {

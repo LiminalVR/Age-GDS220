@@ -151,7 +151,6 @@ public class FireElement : BaseElement {
         do
         {
             currentTime += Time.deltaTime;
-            Debug.Log(currentTime);
 
             //Sets a colour gradient manually, this was visually better than color.white / clear
             if (fadingCloudsOut == true)

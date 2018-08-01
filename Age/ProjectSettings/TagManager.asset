@@ -19,6 +19,7 @@ TagManager:
   - StemPopParticle
   - StemBase
   - DandelionStillParticle
+  - DandelionBlowParticle
   layers:
   - Default
   - TransparentFX

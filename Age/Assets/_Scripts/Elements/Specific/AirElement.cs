@@ -27,7 +27,10 @@ public class AirElement : BaseElement {
     #endregion
 
     #region Spring
+    [Header("Spring")]
+    [SerializeField] private ParticleSystem _dandelionWindPT;
     private List<ParticleSystem> _dandelionStillPT = new List<ParticleSystem>();
+    private List<ParticleSystem> _dandelionBlowPT = new List<ParticleSystem>();
     #endregion
 
     /*
@@ -52,6 +55,9 @@ public class AirElement : BaseElement {
             {
                 case ("DandelionStillParticle"):
                     _dandelionStillPT.Add(p);
+                    break;
+                case ("DandelionBlowParticle"):
+                    _dandelionBlowPT.Add(p);
                     break;
                 default:
                     break;
@@ -113,7 +119,7 @@ public class AirElement : BaseElement {
         if(initialAction)
         {
             //Blow pollen off dandelions
-            foreach (ParticleSystem p in _dandelionStillPT)
+            foreach (ParticleSystem p in _dandelionBlowPT)
             {
                 p.Play();
             }
