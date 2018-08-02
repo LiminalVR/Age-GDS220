@@ -30,10 +30,11 @@ public class WaterElement : BaseElement {
 	[SerializeField] private float _dandelionGrowDuration;
 	[SerializeField] private Vector3 _dandelionGrowthTargetScale;
     [SerializeField] RainbowLaunch _rainbowLaunch;
-	#endregion
+    private List<ParticleSystem> _dandBloomPT = new List<ParticleSystem>();
+    #endregion
 
-	#region Spring
-	[Header("Spring")]
+    #region Spring
+    [Header("Spring")]
     [SerializeField] private ParticleSystem _skySparklePT;
     private GameObject[] _flowerStem;
     private List<ParticleSystem> _stemPopPT = new List<ParticleSystem>();
@@ -59,7 +60,10 @@ public class WaterElement : BaseElement {
 			case ("BloomParticle"):
 				_bloomPT.Add (p);
 				break;
-			case ("SplashParticle"):
+            case ("DandBloomParticle"):
+                _dandBloomPT.Add(p);
+                break;
+            case ("SplashParticle"):
 				_splashPT.Add (p);
 				break;
             case ("StemPopParticle"):
@@ -71,19 +75,19 @@ public class WaterElement : BaseElement {
 		}
     }
 
-    /*
+    
 	//TEMPORARY TESTER
 	void Update () {
 		if (Input.GetKey(KeyCode.Alpha1)) 
 		{
-			EnactSummerActions (true);
+			EnactWinterActions (true);
 		}
 		if (Input.GetKey(KeyCode.Alpha2))
 		{
-			EnactSummerActions(false);
+			EnactWinterActions(false);
 		}
 	}
-	*/
+	
 
     protected override void EnactSummerActions(bool initialAction)
     {
@@ -156,12 +160,12 @@ public class WaterElement : BaseElement {
     {
         foreach(GameObject flower in _flowersOpen)
         {
-            StartCoroutine(ScaleOverTime(flower, _flowerGrowDuration, _flowerGrowthTargetScale));
+            StartCoroutine(ScaleOverTime(flower, _flowerGrowDuration, _flowerGrowthTargetScale, _bloomPT));
         }
 
 		foreach(GameObject flower in _flowersClose)
 		{
-			StartCoroutine(ScaleOverTime(flower, _flowerShrinkDuration, _flowerShrinkTargetScale));
+			StartCoroutine(ScaleOverTime(flower, _flowerShrinkDuration, _flowerShrinkTargetScale, _bloomPT));
 		}
     }
 
@@ -169,7 +173,7 @@ public class WaterElement : BaseElement {
 	{
 		foreach(GameObject stem in _objectArray)
 		{
-			StartCoroutine(ScaleOverTime(stem, _dandelionGrowDuration, _dandelionGrowthTargetScale));
+			StartCoroutine(ScaleOverTime(stem, _dandelionGrowDuration, _dandelionGrowthTargetScale, _dandBloomPT));
 		}
 	}
 
@@ -181,7 +185,7 @@ public class WaterElement : BaseElement {
         }
     }
 
-    private IEnumerator ScaleOverTime(GameObject obj, float duration, Vector3 scale)
+    private IEnumerator ScaleOverTime(GameObject obj, float duration, Vector3 scale, List<ParticleSystem> _ptList)
     {
         Vector3 originalScale = obj.transform.localScale;
 
@@ -195,7 +199,8 @@ public class WaterElement : BaseElement {
         }
         while(currentTime <= duration);
 
-		foreach (ParticleSystem p in _bloomPT) {
+        //This plays flower blooming particles even for dandelions, fix variables<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+		foreach (ParticleSystem p in _ptList) {
 			p.Play ();
 		}
     }
@@ -217,17 +222,6 @@ public class WaterElement : BaseElement {
             }
         }
     }
-
-    // Notes.
-    //This is how quaternion.lerp works
-    //origin = original rotation.
-    //maxRotation = the maximum you want to bend in the animation effect.
-    //newRotation is what you set your rotation to each frame/update/whatever.
-    //newRotation = Quaternion.Lerp(origin, maxRotation, time);
-    //newRotation equals origin if time = 0
-    //newRotation equals maxRotation if time = 1
-    //newRotation equals some value in between if time = 0-1 not inclusive.
-    //make time go from 0, to 1, back to 0.
 
     private IEnumerator WaterRainingEffects (float time) 
 	{

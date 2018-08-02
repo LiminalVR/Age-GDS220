@@ -29,7 +29,7 @@ public class RainbowLaunch : MonoBehaviour
 
         float _target_Distance = Vector3.Distance(_rbProjectile.position, _rbTarget.position);
 
-        float _projectile_Velocity = _target_Distance / (Mathf.Sin(2 * _rbAngle * Mathf.Deg2Rad));
+        float _projectile_Velocity = _target_Distance / (Mathf.Sin(2 * _rbAngle * Mathf.Deg2Rad)) / 2;
 
         float xVel = Mathf.Sqrt(_projectile_Velocity) * Mathf.Cos(_rbAngle * Mathf.Deg2Rad);
         float yVel = Mathf.Sqrt(_projectile_Velocity) * Mathf.Sin(_rbAngle * Mathf.Deg2Rad);
