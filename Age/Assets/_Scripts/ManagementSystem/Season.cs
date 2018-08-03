@@ -50,29 +50,24 @@ public class Season {
         {
 		case SeasonManager.SeasonType.SUMMER:
 			if(_season == SeasonManager.SeasonType.SUMMER){
-				Debug.Log("Summer Active");
 				skyMat.SetFloat ("_AtmosphereThickness", summerSun); //Adjusts skybox atmosphere thickness 
 			}
 			break;
 
        case SeasonManager.SeasonType.AUTUMN:
 			if(_season == SeasonManager.SeasonType.AUTUMN){
-				Debug.Log("Autumn Active");
-				Debug.Log("Atmosphere = " + autumnSun);
 				skyMat.SetFloat ("_AtmosphereThickness", autumnSun); //Adjusts skybox atmosphere thickness 	
 			}
 			break;
 
 		case SeasonManager.SeasonType.WINTER:
 			if(_season == SeasonManager.SeasonType.WINTER){
-				Debug.Log("Winter Active");
 				skyMat.SetFloat ("_AtmosphereThickness", winterSun); //Adjusts skybox atmosphere thickness 	
 			}
 			break;
 
        case SeasonManager.SeasonType.SPRING:
 			if(_season == SeasonManager.SeasonType.SPRING){
-				Debug.Log("Spring Active");
 				skyMat.SetFloat ("_AtmosphereThickness", springSun); //Adjusts skybox atmosphere thickness 	
 			}
 			break;

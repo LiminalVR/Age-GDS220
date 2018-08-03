@@ -83,8 +83,6 @@ public abstract class BaseElement : MonoBehaviour, IElement {
 
     public virtual void Interact()
     {
-        Debug.Log(SeasonManager._currentSeasonType);
-
         switch(SeasonManager._currentSeasonType)
         {
             case SeasonManager.SeasonType.SUMMER:
@@ -134,8 +132,6 @@ public abstract class BaseElement : MonoBehaviour, IElement {
 
             if(_interactionEffect != null)
                 activeEffect = Instantiate(_interactionEffect, transform.position, transform.rotation, transform);
-
-            Debug.Log(activeEffect);
 
             while(activeEffect != null)
             {
