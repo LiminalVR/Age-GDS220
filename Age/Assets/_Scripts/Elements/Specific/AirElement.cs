@@ -33,16 +33,6 @@ public class AirElement : BaseElement {
     private List<ParticleSystem> _dandelionBlowPT = new List<ParticleSystem>();
     #endregion
 
-    /*
-	//TEMPORARY TESTER
-	void Update () {
-		if (Input.GetKey(KeyCode.Alpha1)) {
-
-			EnactAutumnActions (true);
-		}
-	}
-	*/
-
     private void Start () {
 		//Particle declaration for enabling noise on campfire
 		fireNoiseModule = _firePT.noise;

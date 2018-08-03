@@ -58,7 +58,7 @@ public abstract class BaseElement : MonoBehaviour, IElement {
                 Interact();
             }
 
-            Debug.Log(_confirmationTime);
+            //Debug.Log(_confirmationTime);
         }
     }
 
@@ -83,6 +83,8 @@ public abstract class BaseElement : MonoBehaviour, IElement {
 
     public virtual void Interact()
     {
+        Debug.Log(SeasonManager._currentSeasonType);
+
         switch(SeasonManager._currentSeasonType)
         {
             case SeasonManager.SeasonType.SUMMER:

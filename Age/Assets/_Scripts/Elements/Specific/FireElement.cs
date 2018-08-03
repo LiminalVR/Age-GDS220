@@ -38,17 +38,6 @@ public class FireElement : BaseElement {
 
 	#endregion
 
-	/*
-	//TEMPORARY TESTER
-	void Update () {
-		if (Input.GetKey(KeyCode.Alpha1)) {
-
-			EnactSummerActions (true);
-		}
-	}
-	*/
-
-
 	private void Start () 
 	{
         //Cloud colour gradient settings

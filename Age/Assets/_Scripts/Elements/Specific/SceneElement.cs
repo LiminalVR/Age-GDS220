@@ -16,7 +16,7 @@ public class SceneElement : BaseElement
 
     [Header("Light")]
     [SerializeField] private GameObject _sceneLight;
-    [SerializeField] private Vector3 smRotate, auRotate, wnRotate, spRotate;
+    [SerializeField] private Vector3 smRotate = Vector3.zero, auRotate = Vector3.zero, wnRotate = Vector3.zero, spRotate = Vector3.zero;
 
     [Header("Flowers")]
     [SerializeField] private float _growDuration;

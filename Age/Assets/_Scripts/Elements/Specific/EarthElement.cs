@@ -58,22 +58,6 @@ public class EarthElement : BaseElement {
 		}
 	}
 
-	/*
-	//TEMPORARY TESTER
-	void Update () {
-		if (Input.GetKey(KeyCode.Alpha1)) 
-		{
-			
-			EnactSpringActions (true);
-		}
-        if (Input.GetKey(KeyCode.Alpha2))
-        {
-            
-            EnactSpringActions(false);
-        }
-    }
-	*/
-
 	//1: Fixes campfire and causes dirt tufts 2: Causes additional dirt tufts
     protected override void EnactSummerActions(bool initialAction)
     {

@@ -70,7 +70,27 @@ public class SeasonManager : MonoBehaviour {
     private void SetupSeasons()
     {
         // Selects correct current season and implements its specific season actions.
+
         _currentSeason = _seasons[_currentSeasonNum];
+        
+        switch (_currentSeasonNum)
+        {
+            case 0:
+                _currentSeasonType = SeasonType.SUMMER;
+                break;
+            case 1:
+                _currentSeasonType = SeasonType.AUTUMN;
+                break;
+            case 2:
+                _currentSeasonType = SeasonType.WINTER;
+                break;
+            case 3:
+                _currentSeasonType = SeasonType.SPRING;
+                break;
+            default:
+                break;
+        }
+ 
         _currentSeason.StartSeason();
 
         // Resets elements.
