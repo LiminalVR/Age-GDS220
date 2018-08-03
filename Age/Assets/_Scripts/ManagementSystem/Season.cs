@@ -12,14 +12,16 @@ public class Season {
     [SerializeField] private GameObject[] _otherInactiveObjects;
 
 
-    //variables for atmosphere thickness in the skybox settings
-	float summerSun=1f;
-	float autumnSun=0.5f;
-	float winterSun=2f;
-	float springSun=0.5f;
+    // Variables for atmosphere thickness in the skybox settings
+    [Header("Atmosphere")]
+    [SerializeField] private float _atmosphereThickness;
+    //[SerializeField] private float _summerSun = 1f;
+    //[SerializeField] private float _autumnSun = 0.5f;
+    //[SerializeField] private float _winterSun = 2f;
+    //[SerializeField] private float _springSun = 0.5f;
 
 	//skybox material
-	Material skyMat;
+	private Material _skyMat;
 
     [Header("Aesthetics")]
     public Texture _seasonTreeTex;
@@ -29,7 +31,8 @@ public class Season {
 
     public void StartSeason()
     {
-		skyMat = RenderSettings.skybox;
+		_skyMat = RenderSettings.skybox;
+
         // Activates appropriate terrain.
         _seasonTerrain.SetActive(true);
 
@@ -45,33 +48,29 @@ public class Season {
             go.SetActive(false);
         }
 
+        // 
+        SetAtmosphere(_atmosphereThickness);
+
         // Produces effects relative to specified season.
         switch(_season)
         {
-		case SeasonManager.SeasonType.SUMMER:
-			if(_season == SeasonManager.SeasonType.SUMMER){
-				skyMat.SetFloat ("_AtmosphereThickness", summerSun); //Adjusts skybox atmosphere thickness 
-			}
-			break;
+		    case SeasonManager.SeasonType.SUMMER:
+                break;
 
-       case SeasonManager.SeasonType.AUTUMN:
-			if(_season == SeasonManager.SeasonType.AUTUMN){
-				skyMat.SetFloat ("_AtmosphereThickness", autumnSun); //Adjusts skybox atmosphere thickness 	
-			}
-			break;
+            case SeasonManager.SeasonType.AUTUMN:
+			    break;
 
-		case SeasonManager.SeasonType.WINTER:
-			if(_season == SeasonManager.SeasonType.WINTER){
-				skyMat.SetFloat ("_AtmosphereThickness", winterSun); //Adjusts skybox atmosphere thickness 	
-			}
-			break;
+		    case SeasonManager.SeasonType.WINTER:
+			    break;
 
-       case SeasonManager.SeasonType.SPRING:
-			if(_season == SeasonManager.SeasonType.SPRING){
-				skyMat.SetFloat ("_AtmosphereThickness", springSun); //Adjusts skybox atmosphere thickness 	
-			}
-			break;
+            case SeasonManager.SeasonType.SPRING:
+                break;
         }
+    }
+
+    private void SetAtmosphere(float thickness)
+    {
+        _skyMat.SetFloat("_AtmosphereThickness", thickness);
     }
 
     public void EndSeason()

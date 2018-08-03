@@ -15,14 +15,14 @@ public class EarthElement : BaseElement {
 
 	#region Autumn
 	//[Header("Autumn")]
-	private List<ParticleSystem> _petalsPT = new List<ParticleSystem>();
-	private List<ParticleSystem> _treeLeavesPT = new List<ParticleSystem>();
+	private List<ParticleSystem> _petalsPT;
+	private List<ParticleSystem> _treeLeavesPT;
 	#endregion
 
 	#region Winter
 	//[Header("Winter")]
-	private List<ParticleSystem> _flowerSoilPT = new List<ParticleSystem>();
-    private List<ParticleSystem> _flowerSoilTuftPT = new List<ParticleSystem>();
+	private List<ParticleSystem> _flowerSoilPT;
+    private List<ParticleSystem> _flowerSoilTuftPT;
     #endregion
 
     #region Spring
@@ -32,11 +32,17 @@ public class EarthElement : BaseElement {
 
 	private void Start()
 	{
+        _petalsPT = new List<ParticleSystem>();
+        _treeLeavesPT = new List<ParticleSystem>();
+
+        _flowerSoilPT = new List<ParticleSystem>();
+        _flowerSoilTuftPT = new List<ParticleSystem>();
+
 		_campAnim.SetBool("cFireDead", true);
 
 		_flowers = GameObject.FindGameObjectsWithTag("PetalsOpen");
 
-		var _findParticles = GameObject.FindObjectsOfType<ParticleSystem> ();
+		var _findParticles = FindObjectsOfType<ParticleSystem>();
 
 		foreach (ParticleSystem p in _findParticles) {
 			switch (p.tag) {

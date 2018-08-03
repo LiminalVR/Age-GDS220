@@ -37,7 +37,7 @@ public class AirElement : BaseElement {
 		//Particle declaration for enabling noise on campfire
 		fireNoiseModule = _firePT.noise;
 
-        var _findParticles = GameObject.FindObjectsOfType<ParticleSystem>();
+        var _findParticles = FindObjectsOfType<ParticleSystem>();
 
         foreach (ParticleSystem p in _findParticles)
         {

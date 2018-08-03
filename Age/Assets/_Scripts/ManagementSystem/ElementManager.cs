@@ -56,11 +56,8 @@ public class ElementManager : MonoBehaviour {
 
     public void ElementActivated()
     {
-        print("Element Activated: " + _selectedElement);
-
         if(_nextElementIndex < _currentElementOrder.Length)
         {
-            print("Spawning next element...");
             SelectNextElement();
             SpawnElement();
         }
