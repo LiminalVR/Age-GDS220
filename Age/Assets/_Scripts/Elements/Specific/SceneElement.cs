@@ -17,7 +17,11 @@ public class SceneElement : BaseElement
     [Header("Light")]
     [SerializeField] private GameObject _sceneLight;
     [SerializeField] private Vector3 smRotate, auRotate, wnRotate, spRotate;
-    
+
+    [Header("Flowers")]
+    [SerializeField] private float _growDuration;
+    [SerializeField] private Vector3 _growthTargetScale;
+
     private void Start()
     {
         _seasonManager = GameObject.FindGameObjectWithTag("GameGod").GetComponent<SeasonManager>();
@@ -44,6 +48,8 @@ public class SceneElement : BaseElement
         _cloudEmissionModule.rateOverTime = wnRate;
 
         StartCoroutine(LightRotate(wnRotate, 5f));
+
+        GrowStem(_Water._flowerStem);
     }
 
     protected override void EnactWinterActions(bool initialAction)
@@ -78,5 +84,28 @@ public class SceneElement : BaseElement
             yield return null;
         }
         while (currentTime <= time);
+    }
+
+    private void GrowStem(GameObject[] _objectArray)
+    {
+        foreach (GameObject stem in _objectArray)
+        {
+            StartCoroutine(ScaleOverTime(stem, _growDuration, _growthTargetScale));
+        }
+    }
+
+    private IEnumerator ScaleOverTime(GameObject obj, float duration, Vector3 scale)
+    {
+        Vector3 originalScale = obj.transform.localScale;
+
+        float currentTime = 0.0f;
+
+        do
+        {
+            obj.transform.localScale = Vector3.Lerp(originalScale, scale, currentTime / duration);
+            currentTime += Time.deltaTime;
+            yield return null;
+        }
+        while (currentTime <= duration);
     }
 }

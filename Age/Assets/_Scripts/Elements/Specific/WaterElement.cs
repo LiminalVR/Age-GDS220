@@ -37,7 +37,7 @@ public class WaterElement : BaseElement {
     #region Spring
     [Header("Spring")]
     [SerializeField] private ParticleSystem _skySparklePT;
-    private GameObject[] _flowerStem;
+    [HideInInspector] public GameObject[] _flowerStem;
     private List<ParticleSystem> _stemPopPT = new List<ParticleSystem>();
     #endregion
 
@@ -76,7 +76,7 @@ public class WaterElement : BaseElement {
 		}
     }
 
-    
+    /*
 	//TEMPORARY TESTER
 	void Update () {
 		if (Input.GetKey(KeyCode.Alpha1)) 
@@ -88,7 +88,7 @@ public class WaterElement : BaseElement {
 			EnactWinterActions(false);
 		}
 	}
-    
+    */
 
     protected override void EnactSummerActions(bool initialAction)
     {
@@ -157,7 +157,7 @@ public class WaterElement : BaseElement {
         }
     }
 
-    IEnumerator WaterHose()
+    private IEnumerator WaterHose()
     {
         _wateringHose.BeginEffect();
 
@@ -168,7 +168,7 @@ public class WaterElement : BaseElement {
         yield return null;
     }
 
-    void OpenFlower()
+    private void OpenFlower()
     {
         foreach(GameObject flower in _flowersOpen)
         {
@@ -181,7 +181,7 @@ public class WaterElement : BaseElement {
 		}
     }
 
-	void GrowStem(GameObject[] _objectArray)
+    private void GrowStem(GameObject[] _objectArray)
 	{
 		foreach(GameObject stem in _objectArray)
 		{
@@ -189,7 +189,7 @@ public class WaterElement : BaseElement {
 		}
 	}
 
-    void Wiggle(GameObject[] _objectArray)
+    private void Wiggle(GameObject[] _objectArray)
     {
         foreach (GameObject g in _objectArray)
         {
@@ -211,7 +211,6 @@ public class WaterElement : BaseElement {
         }
         while(currentTime <= duration);
 
-        //This plays flower blooming particles even for dandelions, fix variables<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 		foreach (ParticleSystem p in _ptList) {
 			p.Play ();
 		}
