@@ -13,7 +13,7 @@ public class SeasonManager : MonoBehaviour {
     [Header("Seasons")]
     [SerializeField] private Season[] _seasons;
     private Season _currentSeason;
-    private int _currentSeasonNum = 0;
+    [SerializeField] private int _currentSeasonNum = 0;
 
     [Header("Transition")]
     [SerializeField] private float _fadeOutDuration;
@@ -30,11 +30,12 @@ public class SeasonManager : MonoBehaviour {
     private Material[] _treeMaterials;
     private int _albedoID;
 
+    /*
     [Header("Sun")]
     [SerializeField] private GameObject _sun;
     [SerializeField] private Vector3 _sunTargetRotation;
     [SerializeField] private float _sunRotationDuration;
-
+    */
     private ColourMaster _colourMaster;
     private ElementManager _elementManager;
 
@@ -77,7 +78,9 @@ public class SeasonManager : MonoBehaviour {
 
         // Applying global aesthetic changes.
         ChangeTrees();
-        StartCoroutine(RotateObject(_sun, _sunTargetRotation, _sunRotationDuration));
+
+        //Currently sun rotation is done within SceneElement
+        //StartCoroutine(RotateObject(_sun, _sunTargetRotation, _sunRotationDuration));
 
         // Fade in.
         StartCoroutine(ManipulateFadeMask(_fadeInDuration, 0));
@@ -128,6 +131,7 @@ public class SeasonManager : MonoBehaviour {
         }
     }
 
+    /*
     // Rotates an object's Transform over a set duration to a specific target.
     public IEnumerator RotateObject(GameObject obj, Vector3 target, float duration)
     {
@@ -146,4 +150,5 @@ public class SeasonManager : MonoBehaviour {
 
         yield return null;
     }
+    */
 }

@@ -8,10 +8,11 @@ public class FireElement : BaseElement {
 	[Header("Summer")]
 	[SerializeField] private ParticleSystem _sunrayPT;
     [SerializeField] private ParticleSystem _sunrayPulsePT;
-    [SerializeField] private ParticleSystem _cloudsPT;
+    public ParticleSystem _cloudsPT;
     [SerializeField] private Light _sunLight;
     [SerializeField] private float _minSunIntensity, _maxSunIntensity, _cloudPartEffectDuration, _shineDuration, _sunReturnDuration;
-    bool fadingCloudsOut;
+    private bool fadingCloudsOut;
+
     [SerializeField] Gradient _cloudsGradient;
     private GradientAlphaKey[] _cGAK;
     private GradientColorKey[] _cGCK;
@@ -76,6 +77,7 @@ public class FireElement : BaseElement {
 		fireEmissionModule = _firePT.emission;
 	}
 
+    //1: Fade clouds and show sun ray particles 2: Pulse of sunlight and cloud fade
     protected override void EnactSummerActions(bool initialAction)
     {
         if(initialAction)
@@ -90,6 +92,7 @@ public class FireElement : BaseElement {
         }
     }
 
+    //1: Kindle fire alight 2: Large ember particle drifts away
     protected override void EnactAutumnActions(bool initialAction)
     {
         if(initialAction)
@@ -103,6 +106,7 @@ public class FireElement : BaseElement {
         }
     }
 
+    //1: Fire burns brighter 2: Smoke trail effect
     protected override void EnactWinterActions(bool initialAction)
     {
         if(initialAction)
@@ -115,6 +119,7 @@ public class FireElement : BaseElement {
         }
     }
 
+    //1: Sun rays, see summer 2: Pulse of light, see summer
     protected override void EnactSpringActions(bool initialAction)
     {
         if (initialAction)

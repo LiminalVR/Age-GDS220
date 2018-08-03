@@ -76,7 +76,7 @@ public class WaterElement : BaseElement {
 		}
     }
 
-    /*
+    
 	//TEMPORARY TESTER
 	void Update () {
 		if (Input.GetKey(KeyCode.Alpha1)) 
@@ -88,7 +88,7 @@ public class WaterElement : BaseElement {
 			EnactWinterActions(false);
 		}
 	}
-    */
+    
 
     protected override void EnactSummerActions(bool initialAction)
     {

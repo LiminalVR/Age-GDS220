@@ -29,7 +29,7 @@ public class AirElement : BaseElement {
     #region Spring
     [Header("Spring")]
     [SerializeField] private ParticleSystem _dandelionWindPT;
-    private List<ParticleSystem> _dandelionStillPT = new List<ParticleSystem>();
+    [HideInInspector] public List<ParticleSystem> _dandelionStillPT = new List<ParticleSystem>();
     private List<ParticleSystem> _dandelionBlowPT = new List<ParticleSystem>();
     #endregion
 
@@ -65,6 +65,7 @@ public class AirElement : BaseElement {
         }
     }
 
+    //1: Air gust particles and terrain grass wind strength 2: Repeat with lessened effect
     protected override void EnactSummerActions(bool initialAction)
     {
         if(initialAction)
@@ -81,6 +82,7 @@ public class AirElement : BaseElement {
         }
     }
 
+    //1: Air and leaves particles, tilt rain particles if applicable 2: Repeat with lessened effect, tilt rain particles if applicable
     protected override void EnactAutumnActions(bool initialAction)
     {
         if(initialAction)
@@ -89,7 +91,6 @@ public class AirElement : BaseElement {
 			_leavesPT.Play ();
 
 			StartCoroutine (AirRainingEffects(4.6f));
-		
         }
         else
         {
@@ -100,6 +101,7 @@ public class AirElement : BaseElement {
         }
     }
 
+    //1: Air gust, tilt rain / fire if applicable 2: Fire ember particle burst
     protected override void EnactWinterActions(bool initialAction)
     {
         if(initialAction)
@@ -114,11 +116,16 @@ public class AirElement : BaseElement {
         }
     }
 
+    //1: Blows dandelion pollen in wind 2: Carries dandelion pollen around scene
     protected override void EnactSpringActions(bool initialAction)
     {
         if(initialAction)
         {
             //Blow pollen off dandelions
+            foreach (ParticleSystem p in _dandelionStillPT)
+            {
+                p.Stop();
+            }
             foreach (ParticleSystem p in _dandelionBlowPT)
             {
                 p.Play();
@@ -126,7 +133,7 @@ public class AirElement : BaseElement {
         }
         else
         {
-			//Wind carrying pollen misc PT
+            _dandelionWindPT.Play();
         }
     }
 
