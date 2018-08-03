@@ -17,6 +17,7 @@ public class WaterElement : BaseElement {
     [SerializeField] private float _wiggleAngle;
     private List<ParticleSystem> _bloomPT = new List<ParticleSystem>();
 	private List<ParticleSystem> _splashPT = new List<ParticleSystem>();
+    [SerializeField] WateringHose _wateringHose;
 	#endregion
 
 	#region Autumn
@@ -75,7 +76,7 @@ public class WaterElement : BaseElement {
 		}
     }
 
-    
+    /*
 	//TEMPORARY TESTER
 	void Update () {
 		if (Input.GetKey(KeyCode.Alpha1)) 
@@ -87,13 +88,13 @@ public class WaterElement : BaseElement {
 			EnactWinterActions(false);
 		}
 	}
-	
+    */
 
     protected override void EnactSummerActions(bool initialAction)
     {
         if(initialAction)
         {
-            OpenFlower();
+            StartCoroutine(WaterHose());
         }
         else
         {
@@ -154,6 +155,17 @@ public class WaterElement : BaseElement {
 
 			OpenFlower();
         }
+    }
+
+    IEnumerator WaterHose()
+    {
+        _wateringHose.BeginEffect();
+
+        yield return new WaitForSeconds(15f);
+
+        OpenFlower();
+
+        yield return null;
     }
 
     void OpenFlower()
