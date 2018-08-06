@@ -64,6 +64,11 @@ public abstract class BaseElement : MonoBehaviour, IElement {
 
     private void Awake()
     {
+    }
+
+    // Temp.
+    private void Setup()
+    {
         _as = GetComponent<AudioSource>();
         _colourMaster = new ColourMaster();
         _startColours = _colourMaster.GetColours(_renderersToFade);
@@ -71,6 +76,9 @@ public abstract class BaseElement : MonoBehaviour, IElement {
 
     public void ResetElement()
     {
+        // Temp.
+        Setup();
+
         if(gameObject.activeSelf)
         {
             _isActive = false;

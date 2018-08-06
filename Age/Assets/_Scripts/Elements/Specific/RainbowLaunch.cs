@@ -9,13 +9,11 @@ public class RainbowLaunch : MonoBehaviour
     [SerializeField] float _rbGravity = 0f;
     [SerializeField] Transform _rbProjectile;
     private Transform _rbTransform;
-    
 
-    private void Awake()
+    private void Start()
     {
         _rbTransform = transform;
     }
-
     public void LaunchRainbow()
     {
         StartCoroutine(SimulateProjectile());
