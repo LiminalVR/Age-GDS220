@@ -103,21 +103,21 @@ public class SeasonManager : MonoBehaviour {
         //StartCoroutine(RotateObject(_sun, _sunTargetRotation, _sunRotationDuration));
 
         // Fade in.
-        StartCoroutine(ManipulateFadeMask(_fadeInDuration, 0));
+        StartCoroutine(ManipulateFadeMask(_fadeInDuration, Color.clear));
     }
 
     // Simple lerp to fade in or out the mask.
-    public IEnumerator ManipulateFadeMask(float duration, float targetAlpha)
+    public IEnumerator ManipulateFadeMask(float duration, Color desiredColour)
     {
         // Starting Values.
         var step = 0.0f;
         Color startColour = _fadeMask.color;
-        Color targetColor = _colourMaster.ChangeAlpha(startColour, targetAlpha);
+        Color targetColour = desiredColour;
 
         while(step < 1)
         {
             step += Time.deltaTime / duration;
-            _fadeMask.color = Color.Lerp(startColour, targetColor, step);
+            _fadeMask.color = Color.Lerp(startColour, targetColour, step);
             yield return null;
         }
 
@@ -128,7 +128,7 @@ public class SeasonManager : MonoBehaviour {
     public IEnumerator ChangeSeason()
     {
         // Fades out scene.
-        StartCoroutine(ManipulateFadeMask(_fadeOutDuration, 1));
+        StartCoroutine(ManipulateFadeMask(_fadeOutDuration, _currentSeason._transitionColour));
 
         yield return new WaitForSeconds(_fadeOutDuration);
 

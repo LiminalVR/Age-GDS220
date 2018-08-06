@@ -11,6 +11,9 @@ public class Season {
     [SerializeField] private GameObject[] _otherActiveObjects;
     [SerializeField] private GameObject[] _otherInactiveObjects;
 
+    [Header("Transition")]
+    public Color _transitionColour;
+
 
     // Variables for atmosphere thickness in the skybox settings
     [Header("Atmosphere")]
