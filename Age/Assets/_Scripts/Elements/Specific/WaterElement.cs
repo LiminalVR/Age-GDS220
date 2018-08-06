@@ -22,11 +22,12 @@ public class WaterElement : BaseElement {
 
 	#region Autumn
 	[SerializeField] private ParticleSystem _rainPT;
-	private ParticleSystem.MainModule _rainPTModule;
-	#endregion
+	private ParticleSystem.MainModule _rainPTMainModule;
+    private ParticleSystem.EmissionModule _rainPTEmissionModule;
+    #endregion
 
-	#region Winter
-	[Header("Winter")]
+    #region Winter
+    [Header("Winter")]
 	[SerializeField] private GameObject[] _dandelionStem;
 	[SerializeField] private float _dandelionGrowDuration;
 	[SerializeField] private Vector3 _dandelionGrowthTargetScale;
@@ -44,7 +45,7 @@ public class WaterElement : BaseElement {
     private void Start()
     {
 		//Rain particle declaration (for modifying its speed)
-		_rainPTModule = _rainPT.main;
+		_rainPTMainModule = _rainPT.main;
 
 		//Object arrays
         _flowersOpen = GameObject.FindGameObjectsWithTag("PetalsOpen");
@@ -225,16 +226,20 @@ public class WaterElement : BaseElement {
 
 		float currentTime = 0.0f;
 
-		yield return new WaitForSeconds(1.5f);
+        float initialSpeed = _rainPTMainModule.simulationSpeed;
 
-		_rainPTModule.simulationSpeed = 0.3f;
+        _rainPT.Emit(100);
+
+       yield return new WaitForSeconds(1f);
 
 		do {
-			currentTime += Time.deltaTime;
+            _rainPTMainModule.simulationSpeed = Mathf.Lerp(initialSpeed, 0.1f, currentTime);
+
+            currentTime += Time.deltaTime;
 			yield return null;
 		} 
 		while (currentTime <= time);
 
-		_rainPTModule.simulationSpeed = 1f;
+		_rainPTMainModule.simulationSpeed = initialSpeed;
 	}
 }

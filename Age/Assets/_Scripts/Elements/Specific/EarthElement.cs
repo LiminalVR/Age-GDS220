@@ -28,6 +28,7 @@ public class EarthElement : BaseElement {
     #region Spring
     [Header("Spring")]
 	[SerializeField] private ParticleSystem _soilDumpPT;
+    [SerializeField] private ParticleSystem _firePT;
 	#endregion
 
 	private void Start()
@@ -122,6 +123,7 @@ public class EarthElement : BaseElement {
         if(initialAction)
         {
 			_soilDumpPT.Play ();
+            _firePT.Stop();
         }
         else
         {

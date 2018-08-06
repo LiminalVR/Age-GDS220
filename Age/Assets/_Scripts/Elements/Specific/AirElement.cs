@@ -15,7 +15,6 @@ public class AirElement : BaseElement {
 	#region Autumn
 	[Header("Autumn")]
 	[SerializeField] private ParticleSystem _firePT;
-	[SerializeField] private ParticleSystem _leavesPT;
     [SerializeField] private ParticleSystem _leavesWeakPT;
     ParticleSystem.NoiseModule fireNoiseModule;
 	[SerializeField] private GameObject _rainPT;
@@ -62,13 +61,13 @@ public class AirElement : BaseElement {
         {
 			_Terrain = FindObjectOfType<Terrain> ();
 			_airGustPT.Play ();
-			StartCoroutine (SummerGust(4.6f));
+			StartCoroutine (SummerGust(5.4f));
         }
         else
         {
 			_Terrain = FindObjectOfType<Terrain> ();
 			_airGustWeakerPT.Play ();
-			StartCoroutine (SummerGust(3.6f));
+			StartCoroutine (SummerGust(4.4f));
         }
     }
 
@@ -78,16 +77,16 @@ public class AirElement : BaseElement {
         if(initialAction)
         {
 			_airGustPT.Play ();
-			_leavesPT.Play ();
+			_leavesWeakPT.Play ();
 
-			StartCoroutine (AirRainingEffects(4.6f));
+			StartCoroutine (AirRainingEffects(5.4f));
         }
         else
         {
 			_airGustWeakerPT.Play ();
 			_leavesWeakPT.Play ();
 
-			StartCoroutine (AirRainingEffects(3.6f));
+			StartCoroutine (AirRainingEffects(4.4f));
         }
     }
 
