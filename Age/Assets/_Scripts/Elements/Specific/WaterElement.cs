@@ -31,7 +31,7 @@ public class WaterElement : BaseElement {
 	[SerializeField] private GameObject[] _dandelionStem;
 	[SerializeField] private float _dandelionGrowDuration;
 	[SerializeField] private Vector3 _dandelionGrowthTargetScale;
-    [SerializeField] RainbowLaunch _rainbowLaunch;
+    [SerializeField] RainbowLaunch _rainbowLauncher1, _rainbowLauncher2;
     private List<ParticleSystem> _dandBloomPT = new List<ParticleSystem>();
     #endregion
 
@@ -112,8 +112,9 @@ public class WaterElement : BaseElement {
     {
         if(initialAction)
         {
-            _rainbowLaunch.LaunchRainbow();
-			GrowStem (_dandelionStem);
+            _rainbowLauncher1.LaunchRainbow();
+            _rainbowLauncher2.LaunchRainbow();
+            GrowStem (_dandelionStem);
 			_rainPT.Stop ();
         }
         else
