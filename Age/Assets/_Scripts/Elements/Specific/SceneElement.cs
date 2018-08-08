@@ -19,8 +19,8 @@ public class SceneElement : BaseElement
     [SerializeField] private Vector3 smRotate = Vector3.zero, auRotate = Vector3.zero, wnRotate = Vector3.zero, spRotate = Vector3.zero;
 
     [Header("Flowers")]
-    [SerializeField] private float _growDuration;
-    [SerializeField] private Vector3 _growthTargetScale;
+    [SerializeField] private float _shrinkDuration;
+    [SerializeField] private Vector3 _shrinkTargetScale;
 
     private void Start()
     {
@@ -49,7 +49,7 @@ public class SceneElement : BaseElement
 
         StartCoroutine(LightRotate(wnRotate, 5f));
 
-        GrowStem(_Water._flowerStem);
+        GrowStem(_Water._flowerStem, _shrinkDuration, _shrinkTargetScale);
     }
 
     protected override void EnactWinterActions(bool initialAction)
@@ -86,15 +86,15 @@ public class SceneElement : BaseElement
         while (currentTime <= time);
     }
 
-    private void GrowStem(GameObject[] _objectArray)
+    private void GrowStem(GameObject[] _objectArray, float _scaleDuration, Vector3 _scale)
     {
         foreach (GameObject stem in _objectArray)
         {
-            StartCoroutine(ScaleOverTime(stem, _growDuration, _growthTargetScale));
+            StartCoroutine(ScaleOverTime(stem, _scaleDuration, _scale));
         }
     }
 
-    private IEnumerator ScaleOverTime(GameObject obj, float duration, Vector3 scale)
+    private IEnumerator ScaleOverTime(GameObject obj, float duration, Vector3 _scale)
     {
         Vector3 originalScale = obj.transform.localScale;
 
@@ -102,7 +102,7 @@ public class SceneElement : BaseElement
 
         do
         {
-            obj.transform.localScale = Vector3.Lerp(originalScale, scale, currentTime / duration);
+            obj.transform.localScale = Vector3.Lerp(originalScale, _scale, currentTime / duration);
             currentTime += Time.deltaTime;
             yield return null;
         }

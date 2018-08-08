@@ -26,12 +26,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Stem
-    second: {fileID: 2100000, guid: 591597263a1018849a20a24c19f8ed12, type: 2}
+    second: {fileID: 2100000, guid: e6675d1a6c25cef44b48e5e87cdcdcfc, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: StemHead
-    second: {fileID: 2100000, guid: 1b4d2aee215ab1948924d54458dd038a, type: 2}
+    second: {fileID: 2100000, guid: a0a05a428d5cfb4449d61333800ef92d, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -62,12 +62,12 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 2
-    meshCompression: 0
+    meshCompression: 1
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -84,7 +84,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
