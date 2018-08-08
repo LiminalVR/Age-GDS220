@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private string _buttonName;
     [SerializeField] private float _maxDis;
     [SerializeField] private float _mouseSensitivity = 15.0f;
-    [SerializeField] private GameObject _toDespawn;
     private IElement _selectedElement;
 
     [SerializeField] private bool _isVR;
@@ -22,7 +21,6 @@ public class PlayerController : MonoBehaviour {
 
     private void Start()
     {
-        
         _lineRenderer = GetComponent<LineRenderer>();
         _lineRenderer.useWorldSpace = false;
         _lineRenderer.positionCount = 2;
@@ -80,8 +78,6 @@ public class PlayerController : MonoBehaviour {
         {
             if(Input.GetButtonDown(VRButton.One) || OVRInput.GetDown(OVRInput.Button.One))
             {
-                _toDespawn.SetActive(false);
-
                 Ray ray = new Ray(transform.position, transform.forward);
                 RaycastHit raycastHit;
 
