@@ -20,9 +20,11 @@ public class PlayerController : MonoBehaviour {
 
     private void Start()
     {
+        
         _lineRenderer = GetComponent<LineRenderer>();
         _lineRenderer.useWorldSpace = false;
         _lineRenderer.positionCount = 2;
+        
         _originalRot = transform.localRotation;
     }
 
@@ -50,10 +52,12 @@ public class PlayerController : MonoBehaviour {
                 Ray ray = new Ray(transform.position, transform.forward);
                 RaycastHit raycastHit;
 
+                
                 if(Physics.Raycast(ray, out raycastHit, _maxDis, _interactionLayers))
                 {
                     _lineRenderer.SetPosition(1, new Vector3(0, 0, raycastHit.distance));
                 }
+                
 
                 if(_selectedElement != null)
                 {
@@ -88,10 +92,12 @@ public class PlayerController : MonoBehaviour {
                 Ray ray = new Ray(transform.position, transform.forward);
                 RaycastHit raycastHit;
 
+                
                 if(Physics.Raycast(ray, out raycastHit, _maxDis, _interactionLayers))
                 {
                     _lineRenderer.SetPosition(1, new Vector3(0, 0, raycastHit.distance));
                 }
+                
 
                 if(_selectedElement != null)
                 {
