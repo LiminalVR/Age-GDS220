@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.VR;
 using UnityEngine;
 using Liminal.SDK.VR.Input;
 
@@ -77,7 +78,7 @@ public class PlayerController : MonoBehaviour {
         }
         else
         {
-            if(Input.GetButtonDown(VRButton.One))
+            if(Input.GetButtonDown(VRButton.One) || OVRInput.GetDown(OVRInput.Button.One))
             {
                 _toDespawn.SetActive(false);
 
@@ -90,7 +91,7 @@ public class PlayerController : MonoBehaviour {
                 }
             }
 
-            if(Input.GetButton(VRButton.One))
+            if(Input.GetButton(VRButton.One) || OVRInput.Get(OVRInput.Button.One))
             {
                 Ray ray = new Ray(transform.position, transform.forward);
                 RaycastHit raycastHit;
@@ -108,7 +109,7 @@ public class PlayerController : MonoBehaviour {
                 }
             }
 
-            if(Input.GetButtonUp(VRButton.One))
+            if(Input.GetButtonUp(VRButton.One) || OVRInput.GetUp(OVRInput.Button.One))
             {
                 if(_selectedElement != null)
                 {
