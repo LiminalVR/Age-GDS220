@@ -20152,6 +20152,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4167345712240988, guid: e9b19d7f13e8efd4293fc214b23bec3a,
     type: 2}
   m_PrefabInternal: {fileID: 507000096}
+--- !u!1 &507000098 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1405902961599688, guid: e9b19d7f13e8efd4293fc214b23bec3a,
+    type: 2}
+  m_PrefabInternal: {fileID: 507000096}
 --- !u!1 &541399559
 GameObject:
   m_ObjectHideFlags: 0
@@ -64126,6 +64131,7 @@ MonoBehaviour:
   _buttonName: Fire1
   _maxDis: 20
   _mouseSensitivity: 1
+  _toDespawn: {fileID: 507000098}
   _isVR: 1
 --- !u!1 &1558619453
 GameObject:

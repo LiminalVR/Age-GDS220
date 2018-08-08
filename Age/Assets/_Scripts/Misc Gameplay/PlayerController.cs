@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private string _buttonName;
     [SerializeField] private float _maxDis;
     [SerializeField] private float _mouseSensitivity = 15.0f;
+    [SerializeField] private GameObject _toDespawn;
     private IElement _selectedElement;
 
     [SerializeField] private bool _isVR;
@@ -78,6 +79,8 @@ public class PlayerController : MonoBehaviour {
         {
             if(Input.GetButtonDown(VRButton.One))
             {
+                _toDespawn.SetActive(false);
+
                 Ray ray = new Ray(transform.position, transform.forward);
                 RaycastHit raycastHit;
 
