@@ -161,7 +161,7 @@ public class WaterElement : BaseElement {
 
         OpenFlower();
 
-        yield return new WaitForSeconds(3.2f);
+        yield return new WaitForSeconds(4.5f);
 
         Wiggle(_stemBase);
 
@@ -233,7 +233,7 @@ public class WaterElement : BaseElement {
             {
                 do
                 {
-                    g.transform.localEulerAngles = new Vector3(g.transform.rotation.eulerAngles.x, g.transform.rotation.eulerAngles.y, Mathf.PingPong(currentTime * 50, _wiggleAngle));
+                    g.transform.localEulerAngles = new Vector3(g.transform.rotation.eulerAngles.x, g.transform.rotation.eulerAngles.y, Mathf.PingPong(currentTime * 20, _wiggleAngle));
 
                     currentTime += Time.deltaTime;
                     yield return null;

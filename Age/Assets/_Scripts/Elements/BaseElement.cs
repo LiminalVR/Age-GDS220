@@ -11,7 +11,6 @@ public abstract class BaseElement : MonoBehaviour, IElement {
     [SerializeField] protected AudioClip _interactionSound;
     [SerializeField] protected GameObject _interactionEffect;
     [SerializeField] protected AudioClip _otherInteractionSound;
-    [SerializeField] protected GameObject _otherInteractionEffect;
     private Color[] _startColours;
     private ColourMaster _colourMaster;
 
@@ -152,9 +151,6 @@ public abstract class BaseElement : MonoBehaviour, IElement {
         {
             if(_otherInteractionSound != null)
                 _as.PlayOneShot(_otherInteractionSound);
-
-            if(_otherInteractionEffect != null)
-                activeEffect = Instantiate(_otherInteractionEffect, transform.position, transform.rotation, transform);
         }
 
         yield return null;

@@ -136,7 +136,7 @@ public class AirElement : BaseElement {
 
 		float currentTime = 0.0f;
 
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(3f);
 
         Wiggle(_stemBase);
 
@@ -166,7 +166,7 @@ public class AirElement : BaseElement {
             {
                 do
                 {
-                    g.transform.localEulerAngles = new Vector3(g.transform.rotation.eulerAngles.x, g.transform.rotation.eulerAngles.y, Mathf.PingPong(currentTime * 10, _wiggleAngle));
+                    g.transform.localEulerAngles = new Vector3(g.transform.rotation.eulerAngles.x, g.transform.rotation.eulerAngles.y, Mathf.PingPong(currentTime * 12, _wiggleAngle));
 
                     currentTime += Time.deltaTime;
                     yield return null;

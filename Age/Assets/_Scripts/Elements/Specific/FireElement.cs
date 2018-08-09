@@ -9,7 +9,7 @@ public class FireElement : BaseElement {
 	[SerializeField] private ParticleSystem _sunrayPT;
     public ParticleSystem _cloudsPT;
     private ParticleSystem.MainModule cloudsMainModule;
-    private Color cloudOpaque = Color.white;
+    [SerializeField] private Color cloudOpaque;
     [SerializeField] private Light _sunLight;
     [SerializeField] private float _minSunIntensity = 0f, _maxSunIntensity = 0f, _cloudPartEffectDuration = 0f, _shineDuration = 0f, _sunReturnDuration = 0f;
 	#endregion
