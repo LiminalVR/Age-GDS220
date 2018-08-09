@@ -11,13 +11,15 @@ public abstract class BaseElement : MonoBehaviour, IElement {
     [SerializeField] protected AudioClip _interactionSound;
     [SerializeField] protected GameObject _interactionEffect;
     [SerializeField] protected AudioClip _otherInteractionSound;
-    private Color[] _startColours;
-    private ColourMaster _colourMaster;
+    //private Color[] _startColours;
+    //private ColourMaster _colourMaster;
 
+    /*
     [Header("Fade")]
     [SerializeField] private Renderer[] _renderersToFade;
     [SerializeField] private float _targetAlpha;
     [SerializeField] private float _fadeDuration;
+    */
 
     protected AudioSource _as;
     protected bool _isActive = false;
@@ -61,16 +63,12 @@ public abstract class BaseElement : MonoBehaviour, IElement {
         }
     }
 
-    private void Awake()
-    {
-    }
-
     // Temp.
     private void Setup()
     {
         _as = GetComponent<AudioSource>();
-        _colourMaster = new ColourMaster();
-        _startColours = _colourMaster.GetColours(_renderersToFade);
+        //_colourMaster = new ColourMaster();
+        //_startColours = _colourMaster.GetColours(_renderersToFade);
     }
 
     public void ResetElement()
@@ -82,7 +80,7 @@ public abstract class BaseElement : MonoBehaviour, IElement {
         {
             _isActive = false;
             _isConfirming = false;
-            _colourMaster.ChangeColours(_renderersToFade, _startColours);
+            //_colourMaster.ChangeColours(_renderersToFade, _startColours);
 
             gameObject.SetActive(false);
         }
@@ -145,7 +143,7 @@ public abstract class BaseElement : MonoBehaviour, IElement {
                 yield return null;
             }
 
-            StartCoroutine(Fade(_renderersToFade, _targetAlpha, _fadeDuration));
+            //StartCoroutine(Fade(_renderersToFade, _targetAlpha, _fadeDuration));
         }
         else
         {
@@ -156,6 +154,7 @@ public abstract class BaseElement : MonoBehaviour, IElement {
         yield return null;
     }
 
+    /*
     private IEnumerator Fade(Renderer[] renderers, float alpha, float duration)
     {
         Color[] startColours = _colourMaster.GetColours(_renderersToFade);
@@ -181,4 +180,5 @@ public abstract class BaseElement : MonoBehaviour, IElement {
 
         yield return null;
     }
+    */
 }

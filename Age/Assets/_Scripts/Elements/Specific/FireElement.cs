@@ -22,7 +22,7 @@ public class FireElement : BaseElement {
 
     #region Winter
     [Header("Winter")]
-    [SerializeField] private ParticleSystem _smokePT;
+    [SerializeField] private ParticleSystem _smokeTrailPT;
     private ParticleSystem.EmissionModule fireEmissionModule;
 	private ParticleSystem.ShapeModule fireShapeModule;
     [SerializeField] private float _minRadius = 0f, _maxRadius = 0f, _minRate = 0f, _maxRate = 0f;
@@ -78,7 +78,7 @@ public class FireElement : BaseElement {
     {
         StartCoroutine(FirePulseEffects(4f, _minRadius, _maxRadius, _minRate, _maxRate));
 
-        _smokePT.Play();
+        _smokeTrailPT.Play();
 
         if (initialAction)
         {

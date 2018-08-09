@@ -16,10 +16,10 @@ public class RainbowLaunch : MonoBehaviour
     }
     public void LaunchRainbow()
     {
-        StartCoroutine(SimulateProjectile());
+        StartCoroutine(SimulateProjectile(10f));
     }
 
-    IEnumerator SimulateProjectile()
+    IEnumerator SimulateProjectile(float duration)
     {
         yield return new WaitForSeconds(2f);
 
@@ -32,13 +32,11 @@ public class RainbowLaunch : MonoBehaviour
         float xVel = Mathf.Sqrt(_projectile_Velocity) * Mathf.Cos(_rbAngle * Mathf.Deg2Rad);
         float yVel = Mathf.Sqrt(_projectile_Velocity) * Mathf.Sin(_rbAngle * Mathf.Deg2Rad);
 
-        float flightDuration = _target_Distance / xVel;
-
         _rbProjectile.rotation = Quaternion.LookRotation(_rbTarget.position - _rbProjectile.position);
 
         float elapse_time = 0f;
 
-        while (elapse_time < flightDuration)
+        while (elapse_time < duration)
         {
             _rbProjectile.Translate(0f, (yVel - (_rbGravity * elapse_time)) * Time.deltaTime /4f, xVel * Time.deltaTime /4f);
 

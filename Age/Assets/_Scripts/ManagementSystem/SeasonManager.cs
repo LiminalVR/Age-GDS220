@@ -30,13 +30,6 @@ public class SeasonManager : MonoBehaviour {
     private Material[] _treeMaterials;
     private int _albedoID;
 
-    /*
-    [Header("Sun")]
-    [SerializeField] private GameObject _sun;
-    [SerializeField] private Vector3 _sunTargetRotation;
-    [SerializeField] private float _sunRotationDuration;
-    */
-
     private ColourMaster _colourMaster;
     private ElementManager _elementManager;
 
@@ -100,9 +93,6 @@ public class SeasonManager : MonoBehaviour {
         // Applying global aesthetic changes.
         ChangeTrees();
 
-        //Currently sun rotation is done within SceneElement
-        //StartCoroutine(RotateObject(_sun, _sunTargetRotation, _sunRotationDuration));
-
         // Fade in.
         StartCoroutine(ManipulateFadeMask(_fadeInDuration, Color.clear));
     }
@@ -151,25 +141,4 @@ public class SeasonManager : MonoBehaviour {
             mat.SetTexture(_albedoID, _currentSeason._seasonTreeTex);
         }
     }
-
-    /*
-    // Rotates an object's Transform over a set duration to a specific target.
-    public IEnumerator RotateObject(GameObject obj, Vector3 target, float duration)
-    {
-        // Starting values.
-        Quaternion startRot = obj.transform.rotation;
-        Quaternion targetRot = Quaternion.Euler(target);
-        float step = 0.0f;
-
-        while(step < 1)
-        {
-            step += Time.deltaTime / duration;
-
-            obj.transform.rotation = Quaternion.Lerp(startRot, targetRot, step);
-            yield return null;
-        }
-
-        yield return null;
-    }
-    */
 }

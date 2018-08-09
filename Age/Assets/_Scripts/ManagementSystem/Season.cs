@@ -18,13 +18,14 @@ public class Season {
     // Variables for atmosphere thickness in the skybox settings
     [Header("Atmosphere")]
     [SerializeField] private float _atmosphereThickness;
+    [SerializeField] private float _exposure;
     //[SerializeField] private float _summerSun = 1f;
     //[SerializeField] private float _autumnSun = 0.5f;
     //[SerializeField] private float _winterSun = 2f;
     //[SerializeField] private float _springSun = 0.5f;
 
-	//skybox material
-	private Material _skyMat;
+    //skybox material
+    private Material _skyMat;
 
     [Header("Aesthetics")]
     public Texture _seasonTreeTex;
@@ -52,7 +53,7 @@ public class Season {
         }
 
         // 
-        SetAtmosphere(_atmosphereThickness);
+        SetAtmosphere(_atmosphereThickness, _exposure);
 
         // Produces effects relative to specified season.
         switch(_season)
@@ -71,9 +72,10 @@ public class Season {
         }
     }
 
-    private void SetAtmosphere(float thickness)
+    private void SetAtmosphere(float thickness, float exposure)
     {
         _skyMat.SetFloat("_AtmosphereThickness", thickness);
+        _skyMat.SetFloat("_Exposure", exposure);
     }
 
     public void EndSeason()

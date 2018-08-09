@@ -10,12 +10,14 @@ public class ElementManager : MonoBehaviour {
     [HideInInspector] public ElementType[] _currentElementOrder;
     private int _nextElementIndex = 0;
 
+    
     [Header("Sizes")]
     [SerializeField] private Vector3 _normalSize;
     [SerializeField] private Vector3 _shrunkenSize;
     [SerializeField] private Vector3 _enlargedSize;
     [SerializeField] private float _adjustmentDuration;
     [SerializeField] private float _stagnentDuration;
+    
 
     private List<BaseElement> _elementList;
 
@@ -83,6 +85,7 @@ public class ElementManager : MonoBehaviour {
         }
     }
 
+    
     private IEnumerator AdjustElements(ElementType activatedType, BaseElement activatedElement)
     {
         // Shrinking.
@@ -114,7 +117,7 @@ public class ElementManager : MonoBehaviour {
 
         yield return null;
     }
-
+    
     private IEnumerator ResizeElement(BaseElement targetElement, Vector3 targetSize, float duration)
     {
         Vector3 startSize = targetElement.gameObject.transform.localScale;
