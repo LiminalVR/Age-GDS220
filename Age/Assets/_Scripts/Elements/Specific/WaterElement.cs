@@ -17,7 +17,7 @@ public class WaterElement : BaseElement {
     [SerializeField] private float _wiggleAngle;
     private List<ParticleSystem> _bloomPT = new List<ParticleSystem>();
 	private List<ParticleSystem> _splashPT = new List<ParticleSystem>();
-    [SerializeField] WateringHose _wateringHose;
+    [SerializeField] private ParticleSystem waterShower1, waterShower2;
     #endregion
 
     #region Autumn
@@ -81,20 +81,15 @@ public class WaterElement : BaseElement {
 
     protected override void EnactSummerActions(bool initialAction)
     {
-        if(initialAction)
+        StartCoroutine(WaterFlowers());
+
+        if (initialAction)
         {
-            StartCoroutine(WaterHose());
+           
         }
         else
         {
-			foreach (ParticleSystem p in _splashPT) {
-				p.Play ();
-			}
-			foreach (ParticleSystem p in _bloomPT) {
-				p.Play ();
-			}
-
-            Wiggle(_stemBase);
+			
         }
     }
 
@@ -112,16 +107,21 @@ public class WaterElement : BaseElement {
 
     protected override void EnactWinterActions(bool initialAction)
     {
-        if(initialAction)
+        _rainbowLauncher1.LaunchRainbow();
+        _rainbowLauncher2.LaunchRainbow();
+
+        GrowStem(_dandelionStem, _dandelionGrowDuration, _dandelionGrowthTargetScale, _dandBloomPT);
+
+        _rainPT.Stop();
+        _skySparklePT.Play();
+
+        if (initialAction)
         {
-            _rainbowLauncher1.LaunchRainbow();
-            _rainbowLauncher2.LaunchRainbow();
-            GrowStem (_dandelionStem, _dandelionGrowDuration, _dandelionGrowthTargetScale, _dandBloomPT);
-			_rainPT.Stop ();
+
         }
         else
         {
-            _skySparklePT.Play();
+            
         }
     }
 
@@ -152,13 +152,27 @@ public class WaterElement : BaseElement {
         }
     }
 
-    private IEnumerator WaterHose()
+    private IEnumerator WaterFlowers()
     {
-        _wateringHose.BeginEffect();
+        waterShower1.Play();
+        waterShower2.Play();
 
-        yield return new WaitForSeconds(15f);
+        yield return new WaitForSeconds(5f);
 
         OpenFlower();
+
+        yield return new WaitForSeconds(3.2f);
+
+        Wiggle(_stemBase);
+
+        foreach (ParticleSystem p in _splashPT)
+        {
+            p.Play();
+        }
+        foreach (ParticleSystem p in _bloomPT)
+        {
+            p.Play();
+        }
 
         yield return null;
     }

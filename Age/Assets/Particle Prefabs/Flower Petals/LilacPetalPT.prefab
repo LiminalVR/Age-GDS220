@@ -20,11 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4756546645127538}
   - component: {fileID: 198758019427032334}
-  - component: {fileID: 114735392892524422}
   - component: {fileID: 199670928520674940}
   m_Layer: 0
   m_Name: LilacPetalPT
-  m_TagString: Untagged
+  m_TagString: PetalParticle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,17 +41,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!114 &114735392892524422
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1406204104455340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4b493fa5304fe34abd300ca7000f6d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!198 &198758019427032334
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -61,7 +49,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1406204104455340}
   serializedVersion: 5
   lengthInSec: 2
-  simulationSpeed: 1
+  simulationSpeed: 0.4
   stopAction: 2
   looping: 0
   prewarm: 0
@@ -113,7 +101,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 807548875
+  randomSeed: -295822463
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -161,7 +149,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.08
+      scalar: 0.06
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -264,8 +252,8 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     startSize:
       serializedVersion: 2
-      minMaxState: 3
-      scalar: 0.18
+      minMaxState: 0
+      scalar: 0.1
       minScalar: 0.12
       maxCurve:
         serializedVersion: 2
@@ -305,7 +293,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 3
+      minMaxState: 0
       scalar: 0.1
       minScalar: 1
       maxCurve:
@@ -346,7 +334,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 3
+      minMaxState: 0
       scalar: 0.1
       minScalar: 1
       maxCurve:
@@ -800,7 +788,7 @@ ParticleSystem:
       cycleCount: 1
       repeatInterval: 0.01
   SizeModule:
-    enabled: 0
+    enabled: 1
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -812,18 +800,18 @@ ParticleSystem:
         - serializedVersion: 2
           time: 0
           value: 0
-          inSlope: 0
-          outSlope: 1
+          inSlope: 8.88516
+          outSlope: 8.88516
           tangentMode: 0
         - serializedVersion: 2
           time: 1
           value: 1
-          inSlope: 1
-          outSlope: 0
+          inSlope: 1.6436616
+          outSlope: 1.6436616
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_RotationOrder: 0
       minCurve:
         serializedVersion: 2
         m_Curve:
@@ -930,8 +918,8 @@ ParticleSystem:
     x:
       serializedVersion: 2
       minMaxState: 3
-      scalar: -3.1415925
-      minScalar: 3.1415925
+      scalar: 0
+      minScalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -971,8 +959,8 @@ ParticleSystem:
     y:
       serializedVersion: 2
       minMaxState: 3
-      scalar: -3.1415925
-      minScalar: 3.1415925
+      scalar: 0
+      minScalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1012,8 +1000,8 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 3
-      scalar: -3.1415925
-      minScalar: 3.1415925
+      scalar: 1.5707963
+      minScalar: -1.5707963
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1050,7 +1038,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    separateAxes: 1
+    separateAxes: 0
   ColorModule:
     enabled: 1
     gradient:

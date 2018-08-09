@@ -9,25 +9,26 @@ public class AirElement : BaseElement {
 	#region Summer
 	[Header("Summer")]
 	[SerializeField] private ParticleSystem _airGustPT;
-	[SerializeField] private ParticleSystem _airGustWeakerPT;
-	#endregion
+    private GameObject[] _stemBase;
+    [SerializeField] private float _wiggleDuration;
+    [SerializeField] private float _wiggleAngle;
+    #endregion
 
-	#region Autumn
-	[Header("Autumn")]
+    #region Autumn
+    [Header("Autumn")]
 	[SerializeField] private ParticleSystem _firePT;
-    [SerializeField] private ParticleSystem _leavesWeakPT;
+    [SerializeField] private ParticleSystem _auLeafTuftPT;
     ParticleSystem.NoiseModule fireNoiseModule;
 	[SerializeField] private GameObject _rainPT;
 	#endregion
 
 	#region Winter
 	[Header("Winter")]
-	[SerializeField] private ParticleSystem _emberPT;
+	[SerializeField] private ParticleSystem _emberBurstPT;
     #endregion
 
     #region Spring
-    [Header("Spring")]
-    [SerializeField] private ParticleSystem _dandelionWindPT;
+    //[Header("Spring")]
     [HideInInspector] public List<ParticleSystem> _dandelionStillPT = new List<ParticleSystem>();
     private List<ParticleSystem> _dandelionBlowPT = new List<ParticleSystem>();
     #endregion
@@ -35,6 +36,8 @@ public class AirElement : BaseElement {
     private void Start () {
 		//Particle declaration for enabling noise on campfire
 		fireNoiseModule = _firePT.noise;
+
+        _stemBase = GameObject.FindGameObjectsWithTag("StemBase");
 
         var _findParticles = FindObjectsOfType<ParticleSystem>();
 
@@ -54,75 +57,80 @@ public class AirElement : BaseElement {
         }
     }
 
-    //1: Air gust particles and terrain grass wind strength 2: Repeat with lessened effect
+    //Air gust particles and terrain grass wind strength
     protected override void EnactSummerActions(bool initialAction)
     {
-        if(initialAction)
+        _Terrain = FindObjectOfType<Terrain>();
+        _airGustPT.Play();
+        StartCoroutine(SummerGust(5.4f));
+
+        Wiggle(_stemBase);
+
+        if (initialAction)
         {
-			_Terrain = FindObjectOfType<Terrain> ();
-			_airGustPT.Play ();
-			StartCoroutine (SummerGust(5.4f));
+			
         }
         else
         {
-			_Terrain = FindObjectOfType<Terrain> ();
-			_airGustWeakerPT.Play ();
-			StartCoroutine (SummerGust(4.4f));
+			
         }
     }
 
-    //1: Air and leaves particles, tilt rain particles if applicable 2: Repeat with lessened effect, tilt rain particles if applicable
+    //Air and leaves particles, tilt rain particles if applicable
     protected override void EnactAutumnActions(bool initialAction)
     {
-        if(initialAction)
-        {
-			_airGustPT.Play ();
-			_leavesWeakPT.Play ();
+        _airGustPT.Play();
+        _auLeafTuftPT.Play();
 
-			StartCoroutine (AirRainingEffects(5.4f));
+        StartCoroutine(AirRainingEffects(5.4f));
+
+        if (initialAction)
+        {
+			
         }
         else
         {
-			_airGustWeakerPT.Play ();
-			_leavesWeakPT.Play ();
-
-			StartCoroutine (AirRainingEffects(4.4f));
+			
         }
     }
 
-    //1: Air gust, tilt rain / fire if applicable 2: Fire ember particle burst
+    //Air gust, fire ember, tilt rain / fire if applicable
     protected override void EnactWinterActions(bool initialAction)
     {
-        if(initialAction)
+        _airGustPT.Play();
+        _emberBurstPT.Play();
+        StartCoroutine(AirRainingEffects(3.8f));
+
+        if (initialAction)
         {
-			_airGustPT.Play ();
-			StartCoroutine (AirRainingEffects(3.8f));
+			
         }
         else
         {
-			_emberPT.Play ();
-			StartCoroutine (AirRainingEffects(3f));
+		
         }
     }
 
-    //1: Blows dandelion pollen in wind 2: Carries dandelion pollen around scene
+    //Blows dandelion pollen in wind
     protected override void EnactSpringActions(bool initialAction)
     {
-        if(initialAction)
+        //Blow pollen off dandelions
+        foreach (ParticleSystem p in _dandelionStillPT)
         {
-            //Blow pollen off dandelions
-            foreach (ParticleSystem p in _dandelionStillPT)
-            {
-                p.Stop();
-            }
-            foreach (ParticleSystem p in _dandelionBlowPT)
-            {
-                p.Play();
-            }
+            p.Stop();
+        }
+        foreach (ParticleSystem p in _dandelionBlowPT)
+        {
+            p.Play();
+        }
+
+        if (initialAction)
+        {
+            
         }
         else
         {
-            _dandelionWindPT.Play();
+            
         }
     }
 
@@ -142,7 +150,33 @@ public class AirElement : BaseElement {
 		_Terrain.terrainData.wavingGrassStrength = 0.3f;
 	}
 
-	private IEnumerator AirRainingEffects (float time) {
+    private void Wiggle(GameObject[] _objectArray)
+    {
+        foreach (GameObject g in _objectArray)
+        {
+            StartCoroutine(RotateTo(g, _wiggleDuration));
+        }
+    }
+
+    private IEnumerator RotateTo(GameObject g, float time)
+    {
+        {
+            float currentTime = 0.0f;
+
+            {
+                do
+                {
+                    g.transform.localEulerAngles = new Vector3(g.transform.rotation.eulerAngles.x, g.transform.rotation.eulerAngles.y, Mathf.PingPong(currentTime, _wiggleAngle));
+
+                    currentTime += Time.deltaTime;
+                    yield return null;
+                }
+                while (currentTime <= time);
+            }
+        }
+    }
+
+    private IEnumerator AirRainingEffects (float time) {
 
 		float currentTime = 0.0f;
 

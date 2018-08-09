@@ -12,15 +12,23 @@ public class SceneElement : BaseElement
 
     [Header("Clouds")]
     private ParticleSystem.EmissionModule _cloudEmissionModule;
-    [SerializeField] private float auRate, wnRate, spRate;
+    [SerializeField] private float auRate = 0f, wnRate = 0f, spRate = 0f;
 
     [Header("Light")]
     [SerializeField] private GameObject _sceneLight;
-    [SerializeField] private Vector3 smRotate = Vector3.zero, auRotate = Vector3.zero, wnRotate = Vector3.zero, spRotate = Vector3.zero;
+    [SerializeField] private Vector3 auRotate = Vector3.zero, wnRotate = Vector3.zero, spRotate = Vector3.zero;
 
     [Header("Flowers")]
     [SerializeField] private float _shrinkDuration;
     [SerializeField] private Vector3 _shrinkTargetScale;
+
+    [Header("Leaves")]
+    [SerializeField] private ParticleSystem _auTreeLeavesPT;
+    [SerializeField] private ParticleSystem _auTerrainLeavesPT;
+
+    [Header("Spring")]
+    [SerializeField] private ParticleSystem _spTerrainPollenPT;
+
 
     private void Start()
     {
@@ -41,6 +49,9 @@ public class SceneElement : BaseElement
         _cloudEmissionModule.rateOverTime = auRate;
 
         StartCoroutine (LightRotate(auRotate, 5f));
+
+        _auTreeLeavesPT.Play();
+        _auTerrainLeavesPT.Play();
     }
 
     protected override void EnactAutumnActions(bool initialAction)
@@ -62,7 +73,11 @@ public class SceneElement : BaseElement
         {
             p.Play();
         }
-        
+
+        _auTreeLeavesPT.Stop();
+        _auTerrainLeavesPT.Stop();
+
+        _spTerrainPollenPT.Play();
     }
 
     protected override void EnactSpringActions(bool initialAction)

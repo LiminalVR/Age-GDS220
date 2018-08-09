@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 199208031273378000}
   m_Layer: 0
   m_Name: TigerPetalPT
-  m_TagString: Untagged
+  m_TagString: PetalParticle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,7 +49,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1837839640201992}
   serializedVersion: 5
   lengthInSec: 2
-  simulationSpeed: 1
+  simulationSpeed: 0.4
   stopAction: 2
   looping: 0
   prewarm: 0
@@ -101,7 +101,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1418928538
+  randomSeed: 489299779
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -149,7 +149,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.07739507
+      scalar: 0.06
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -788,7 +788,7 @@ ParticleSystem:
       cycleCount: 1
       repeatInterval: 0.01
   SizeModule:
-    enabled: 0
+    enabled: 1
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -800,18 +800,18 @@ ParticleSystem:
         - serializedVersion: 2
           time: 0
           value: 0
-          inSlope: 0
-          outSlope: 1
+          inSlope: 8.88516
+          outSlope: 8.88516
           tangentMode: 0
         - serializedVersion: 2
           time: 1
           value: 1
-          inSlope: 1
-          outSlope: 0
+          inSlope: 1.6436616
+          outSlope: 1.6436616
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_RotationOrder: 0
       minCurve:
         serializedVersion: 2
         m_Curve:

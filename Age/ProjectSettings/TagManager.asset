@@ -10,9 +10,7 @@ TagManager:
   - PetalsOpen
   - PetalParticle
   - BloomParticle
-  - SoilParticle
   - DandelionStem
-  - TreeParticle
   - SplashParticle
   - SoilTuftParticle
   - FlowerStem
