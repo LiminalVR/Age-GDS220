@@ -36,6 +36,7 @@ public class SeasonManager : MonoBehaviour {
     [SerializeField] private Vector3 _sunTargetRotation;
     [SerializeField] private float _sunRotationDuration;
     */
+
     private ColourMaster _colourMaster;
     private ElementManager _elementManager;
 

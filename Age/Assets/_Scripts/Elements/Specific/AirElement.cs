@@ -64,8 +64,6 @@ public class AirElement : BaseElement {
         _airGustPT.Play();
         StartCoroutine(SummerGust(5.4f));
 
-        Wiggle(_stemBase);
-
         if (initialAction)
         {
 			
@@ -138,9 +136,11 @@ public class AirElement : BaseElement {
 
 		float currentTime = 0.0f;
 
-		yield return new WaitForSeconds(1.5f);
+		yield return new WaitForSeconds(2f);
 
-		do {
+        Wiggle(_stemBase);
+
+        do {
 			_Terrain.terrainData.wavingGrassStrength = 1f;
 			currentTime += Time.deltaTime;
 			yield return null;
@@ -166,7 +166,7 @@ public class AirElement : BaseElement {
             {
                 do
                 {
-                    g.transform.localEulerAngles = new Vector3(g.transform.rotation.eulerAngles.x, g.transform.rotation.eulerAngles.y, Mathf.PingPong(currentTime, _wiggleAngle));
+                    g.transform.localEulerAngles = new Vector3(g.transform.rotation.eulerAngles.x, g.transform.rotation.eulerAngles.y, Mathf.PingPong(currentTime * 10, _wiggleAngle));
 
                     currentTime += Time.deltaTime;
                     yield return null;

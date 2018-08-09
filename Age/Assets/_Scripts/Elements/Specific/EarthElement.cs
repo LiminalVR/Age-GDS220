@@ -58,10 +58,12 @@ public class EarthElement : BaseElement {
 	//Fixes campfire and causes dirt tufts
     protected override void EnactSummerActions(bool initialAction)
     {
-        if(initialAction)
+        _campAnim.SetBool("cFireDead", false);
+        _campSoilPT.Play();
+
+        if (initialAction)
         {
-            _campAnim.SetBool("cFireDead", false);
-			_campSoilPT.Play ();
+            
         }
         else
         {

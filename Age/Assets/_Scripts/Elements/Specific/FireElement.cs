@@ -8,6 +8,8 @@ public class FireElement : BaseElement {
 	[Header("Summer")]
 	[SerializeField] private ParticleSystem _sunrayPT;
     public ParticleSystem _cloudsPT;
+    private ParticleSystem.MainModule cloudsMainModule;
+    private Color cloudOpaque = Color.white;
     [SerializeField] private Light _sunLight;
     [SerializeField] private float _minSunIntensity = 0f, _maxSunIntensity = 0f, _cloudPartEffectDuration = 0f, _shineDuration = 0f, _sunReturnDuration = 0f;
 	#endregion
@@ -32,6 +34,9 @@ public class FireElement : BaseElement {
 
 	private void Start () 
 	{
+        cloudsMainModule = _cloudsPT.main;
+        cloudsMainModule.startColor = cloudOpaque;
+
         fireShapeModule = _firePT.shape;
 		fireEmissionModule = _firePT.emission;
 	}
@@ -103,16 +108,16 @@ public class FireElement : BaseElement {
 
     private IEnumerator Shine()
     {
-        StartCoroutine(ManipulateShine(_maxSunIntensity, _cloudPartEffectDuration));
+        StartCoroutine(ManipulateShine(_maxSunIntensity, _cloudPartEffectDuration, true));
 
         yield return new WaitForSeconds (_cloudPartEffectDuration + _shineDuration);
 
-        StartCoroutine(ManipulateShine(_minSunIntensity, _sunReturnDuration));
+        StartCoroutine(ManipulateShine(_minSunIntensity, _sunReturnDuration, false));
 
         yield return null;
     }
 
-    private IEnumerator ManipulateShine(float targetSunIntensity, float duration)
+    private IEnumerator ManipulateShine(float targetSunIntensity, float duration, bool fading)
     {
         float currentTime = 0.0f;
 
@@ -122,7 +127,14 @@ public class FireElement : BaseElement {
         {
             currentTime += Time.deltaTime;
 
-            //FADE CLOUDS HERE
+            if (fading)
+            {
+                cloudsMainModule.startColor = Color.Lerp(cloudOpaque, Color.clear, currentTime);
+            }
+            else
+            {
+                cloudsMainModule.startColor = Color.Lerp(Color.clear, cloudOpaque, currentTime);
+            }
 
             _sunLight.intensity = Mathf.Lerp(startIntensity, targetSunIntensity, currentTime);
 
