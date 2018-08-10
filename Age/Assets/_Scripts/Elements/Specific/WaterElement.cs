@@ -43,7 +43,7 @@ public class WaterElement : BaseElement {
         waterShower1.Play();
         waterShower2.Play();
 
-        StartCoroutine(BloomFlowers(5f));
+        StartCoroutine(BloomFlowers(3.0f));
     }
 
     //Begin rain + slowmo effect
@@ -77,7 +77,7 @@ public class WaterElement : BaseElement {
 
         _elementManager.ScaleDoodad(_elementManager._stemBase, _scaleDuration, _scale);
 
-        StartCoroutine(BloomFlowers(5f));
+        StartCoroutine(BloomFlowers(5.0f));
     }
 
     private IEnumerator BloomFlowers(float _delay)
@@ -86,7 +86,6 @@ public class WaterElement : BaseElement {
 
         foreach (Animator a in _elementManager._flowerAnims)
         {
-            Debug.Log("save the wqaorkjasdf");
             a.SetBool("Bloomed", true);
         }
 

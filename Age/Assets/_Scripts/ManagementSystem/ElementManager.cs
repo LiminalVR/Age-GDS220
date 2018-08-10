@@ -10,12 +10,9 @@ public class ElementManager : MonoBehaviour {
     [HideInInspector] public ElementType[] _currentElementOrder;
     private int _nextElementIndex = 0;
 
-    protected float testNum;
-
     [Header("Global Variables")]
     [HideInInspector] public GameObject[] _stemBase;
     public ParticleSystem _cloudsPT;
-
 
     [HideInInspector] public List<ParticleSystem> _bloomPT;
     [HideInInspector] public List<ParticleSystem> _dandelionBloomPT;

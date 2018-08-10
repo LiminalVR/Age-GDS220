@@ -42,10 +42,7 @@ public class ColourMaster {
 
         foreach(Renderer rend in renderers)
         {
-            if(rend.material.color != null)
-            {
-                colours.Add(rend.material.color);
-            }
+            colours.Add(rend.material.color);
 
             ParticleSystem partSys = rend.GetComponent<ParticleSystem>();
             if(partSys != null)
