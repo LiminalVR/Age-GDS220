@@ -19,6 +19,8 @@ public abstract class BaseElement : MonoBehaviour, IElement {
     [SerializeField] private float _maxAlpha;
     [SerializeField] private float _fadeDuration;
 
+    public ElementManager _elementManager;
+
     protected AudioSource _as;
     protected bool _isActive = false;
     protected bool _isConfirming = false;
@@ -31,28 +33,27 @@ public abstract class BaseElement : MonoBehaviour, IElement {
         {
             if(_isActive == false)
             {
-                {
-                    _isConfirming = false;
+                
+                _isConfirming = false;
 
-                    if(_confirmingEffect.activeSelf)
-                        _confirmingEffect.SetActive(false);
-                }
-                else
-                {
-                    _isConfirming = true;
+                if(_confirmingEffect.activeSelf)
+                    _confirmingEffect.SetActive(false);
+            }
+            else
+            {
+                _isConfirming = true;
 
-                    if(!_confirmingEffect.activeSelf)
-                        _confirmingEffect.SetActive(true);
-                }
+                if(!_confirmingEffect.activeSelf)
+                    _confirmingEffect.SetActive(true);
+            }
 
-                _confirmationTime = value;
+            _confirmationTime = value;
 
-                if(_confirmationTime > _confirmationDuration)
-                {
+            if(_confirmationTime > _confirmationDuration)
+            {
                     _confirmationTime = 0;
                     _isConfirming = false;
                     Interact();
-                }
             }
         }
     }
@@ -60,6 +61,7 @@ public abstract class BaseElement : MonoBehaviour, IElement {
     // Temp.
     private void Setup()
     {
+        _elementManager = FindObjectOfType<ElementManager>();
         _as = GetComponent<AudioSource>();
         _colourMaster = new ColourMaster();
         _startColours = _colourMaster.GetColours(_renderersToFade);

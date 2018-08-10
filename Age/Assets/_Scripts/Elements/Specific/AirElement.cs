@@ -7,16 +7,16 @@ public class AirElement : BaseElement {
 	#region Summer
 	[Header("Summer")]
 	[SerializeField] private ParticleSystem _airGustPT;
-    private GameObject[] _stemBase;
-    [SerializeField] private float _wiggleDuration;
-    [SerializeField] private float _wiggleAngle;
+    [SerializeField] private float _delay;
+    [SerializeField] private float _duration;
+    [SerializeField] private float _angle;
     #endregion
 
     #region Autumn
     [Header("Autumn")]
 	[SerializeField] private ParticleSystem _firePT;
     [SerializeField] private ParticleSystem _auLeafTuftPT;
-    ParticleSystem.NoiseModule fireNoiseModule;
+    private ParticleSystem.NoiseModule fireNoiseModule;
 	[SerializeField] private GameObject _rainPT;
 	#endregion
 
@@ -26,117 +26,67 @@ public class AirElement : BaseElement {
     #endregion
 
     #region Spring
-    //[Header("Spring")]
-    private List<ParticleSystem> _dandelionStillPT;
-    private List<ParticleSystem> _dandelionBlowPT;
+
     #endregion
 
     private void Start ()
     {
-        _dandelionStillPT = new List<ParticleSystem>();
-        _dandelionBlowPT = new List<ParticleSystem>();
-
         //Particle declaration for enabling noise on campfire
         fireNoiseModule = _firePT.noise;
-
-        _stemBase = GameObject.FindGameObjectsWithTag("StemBase");
-
-        var _findParticles = FindObjectsOfType<ParticleSystem>();
-
-        foreach (ParticleSystem p in _findParticles)
-        {
-            switch (p.tag)
-            {
-                case ("DandelionStillParticle"):
-                    _dandelionStillPT.Add(p);
-                    break;
-                case ("DandelionBlowParticle"):
-                    _dandelionBlowPT.Add(p);
-                    break;
-                default:
-                    break;
-            }
-        }
     }
 
     //Air gust particles and terrain grass wind strength
     protected override void EnactSummerActions()
     {
-        StartCoroutine(WindGust(5.4f));
+        StartCoroutine(WindGust(_delay));
     }
 
     //Air and leaves particles, tilt rain particles if applicable
     protected override void EnactAutumnActions()
     {
-        StartCoroutine(WindGust(5.4f));
+        StartCoroutine(WindGust(_delay));
 
         _auLeafTuftPT.Play();
 
-        StartCoroutine(AirRainingEffects(5.4f));
+        StartCoroutine(AirRainingEffects(_duration));
     }
 
     //Air gust, fire ember, tilt rain / fire if applicable
     protected override void EnactWinterActions()
     {
-        StartCoroutine(WindGust(5.4f));
+        StartCoroutine(WindGust(_delay));
 
         _emberBurstPT.Play();
 
-        StartCoroutine(AirRainingEffects(3.8f));
+        StartCoroutine(AirRainingEffects(_duration));
     }
 
     //Blows dandelion pollen in wind
     protected override void EnactSpringActions()
     {
         //Blow pollen off dandelions
-        foreach (ParticleSystem p in _dandelionStillPT)
+        foreach (ParticleSystem p in _elementManager._dandelionStillPT)
         {
             p.Stop();
         }
-        foreach (ParticleSystem p in _dandelionBlowPT)
+        foreach (ParticleSystem p in _elementManager._dandelionBlowPT)
         {
             p.Play();
         }
     }
 
-	private IEnumerator WindGust (float delay) {
+	private IEnumerator WindGust (float _delay) {
 
         _airGustPT.Play();
 
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(_delay);
 
-        Wiggle(_stemBase);
+        _elementManager.Wiggle(_elementManager._stemBase, _duration, _angle);
 
         yield return null;
     }
 
-    private void Wiggle(GameObject[] _objectArray)
-    {
-        foreach (GameObject g in _objectArray)
-        {
-            StartCoroutine(RotateTo(g, _wiggleDuration));
-        }
-    }
-
-    private IEnumerator RotateTo(GameObject g, float time)
-    {
-        {
-            float currentTime = 0.0f;
-
-            {
-                do
-                {
-                    g.transform.localEulerAngles = new Vector3(g.transform.rotation.eulerAngles.x, g.transform.rotation.eulerAngles.y, Mathf.PingPong(currentTime * 5f, _wiggleAngle));
-
-                    currentTime += Time.deltaTime;
-                    yield return null;
-                }
-                while (currentTime <= time);
-            }
-        }
-    }
-
-    private IEnumerator AirRainingEffects (float time) {
+    private IEnumerator AirRainingEffects (float _duration) {
 
 		float currentTime = 0.0f;
 
@@ -150,7 +100,7 @@ public class AirElement : BaseElement {
 			currentTime += Time.deltaTime;
 			yield return null;
 		} 
-		while (currentTime <= time);
+		while (currentTime <= _duration);
 	
 		_rainPT.transform.rotation = Quaternion.Euler (-90f, -45f, 90f);
 		fireNoiseModule.enabled = false;

@@ -7,11 +7,8 @@ public class FireElement : BaseElement {
 	#region Summer
 	[Header("Summer")]
 	[SerializeField] private ParticleSystem _sunrayPT;
-    public ParticleSystem _cloudsPT;
-    private ParticleSystem.MainModule cloudsMainModule;
-    [SerializeField] private Color cloudOpaque;
     [SerializeField] private Light _sunLight;
-    [SerializeField] private float _minSunIntensity = 0f, _maxSunIntensity = 0f, _cloudPartEffectDuration = 0f, _shineDuration = 0f, _sunReturnDuration = 0f;
+    [SerializeField] private float _minSunIntensity = 0f, _maxSunIntensity = 0f, _cloudFadeOutDuration = 0f, _shineDuration = 0f, _cloudFadeInDuration = 0f;
 	#endregion
 
 	#region Autumn
@@ -34,9 +31,6 @@ public class FireElement : BaseElement {
 
 	private void Start () 
 	{
-        cloudsMainModule = _cloudsPT.main;
-        cloudsMainModule.startColor = cloudOpaque;
-
         fireShapeModule = _firePT.shape;
 		fireEmissionModule = _firePT.emission;
 	}
@@ -72,16 +66,16 @@ public class FireElement : BaseElement {
 
     private IEnumerator Shine()
     {
-        StartCoroutine(ManipulateShine(_maxSunIntensity, _cloudPartEffectDuration, true));
+        StartCoroutine(ManipulateShine(_maxSunIntensity, _cloudFadeOutDuration, true));
 
-        yield return new WaitForSeconds (_cloudPartEffectDuration + _shineDuration);
+        yield return new WaitForSeconds (_cloudFadeOutDuration + _shineDuration);
 
-        StartCoroutine(ManipulateShine(_minSunIntensity, _sunReturnDuration, false));
+        StartCoroutine(ManipulateShine(_minSunIntensity, _cloudFadeInDuration, false));
 
         yield return null;
     }
 
-    private IEnumerator ManipulateShine(float targetSunIntensity, float duration, bool fading)
+    private IEnumerator ManipulateShine(float targetSunIntensity, float _duration, bool _fading)
     {
         float currentTime = 0.0f;
 
@@ -101,11 +95,12 @@ public class FireElement : BaseElement {
                 cloudsMainModule.startColor = Color.Lerp(Color.clear, cloudOpaque, currentTime);
             }
             */
+
             _sunLight.intensity = Mathf.Lerp(startIntensity, targetSunIntensity, currentTime);
 
             yield return null;
         }
-        while(currentTime < duration);
+        while(currentTime < _duration);
     }
 
     private IEnumerator FirePulseEffects(float time, float _minRadius, float _maxRadius, float _minRate, float _maxRate)

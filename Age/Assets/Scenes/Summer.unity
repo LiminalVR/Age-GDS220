@@ -4905,7 +4905,7 @@ GameObject:
   - component: {fileID: 364618531}
   m_Layer: 0
   m_Name: Dandelion
-  m_TagString: StemBase
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5069,6 +5069,10 @@ Prefab:
       propertyPath: InitialModule.startSize.minScalar
       value: 0.07
       objectReference: {fileID: 0}
+    - target: {fileID: 1660064880663554, guid: 44c379f13fe899c41968b472dc05d806, type: 2}
+      propertyPath: m_TagString
+      value: DandelionBloomParticle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44c379f13fe899c41968b472dc05d806, type: 2}
   m_IsPrefabParent: 0
@@ -5155,11 +5159,16 @@ MonoBehaviour:
   _airElement: {fileID: 1925242537}
   _seasonElement: {fileID: 738627321}
   _currentElementOrder: 
-  _normalSize: {x: 0.1, y: 0.1, z: 0.1}
-  _shrunkenSize: {x: 0.06, y: 0.06, z: 0.06}
-  _enlargedSize: {x: 0.12, y: 0.12, z: 0.12}
-  _adjustmentDuration: 3
-  _stagnentDuration: 5
+  _stemBase: []
+  _cloudsPT: {fileID: 0}
+  _bloomPT: []
+  _dandelionBloomPT: []
+  _dandelionBlowPT: []
+  _dandelionStillPT: []
+  _flowerSoilTuftPT: []
+  _splashPT: []
+  _stemPopPT: []
+  _flowerAnims: []
 --- !u!4 &352193000
 Transform:
   m_ObjectHideFlags: 0
@@ -5920,6 +5929,16 @@ Prefab:
         type: 2}
       propertyPath: TrailModule.minVertexDistance
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198070849772644028, guid: 37fb0a8ed3bff9742a8e19a2419795f5,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198070849772644028, guid: 37fb0a8ed3bff9742a8e19a2419795f5,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
       objectReference: {fileID: 0}
     - target: {fileID: 198070849772644028, guid: 37fb0a8ed3bff9742a8e19a2419795f5,
         type: 2}
@@ -10134,7 +10153,7 @@ GameObject:
   - component: {fileID: 1212550195}
   m_Layer: 0
   m_Name: Dandelion (1)
-  m_TagString: StemBase
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10526,7 +10545,7 @@ GameObject:
   - component: {fileID: 441337409}
   m_Layer: 0
   m_Name: Dandelion (2)
-  m_TagString: StemBase
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10604,6 +10623,10 @@ Prefab:
         type: 2}
       propertyPath: InitialModule.startSize.minScalar
       value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1660064880663554, guid: 44c379f13fe899c41968b472dc05d806, type: 2}
+      propertyPath: m_TagString
+      value: DandelionBloomParticle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44c379f13fe899c41968b472dc05d806, type: 2}
@@ -18268,6 +18291,46 @@ Prefab:
       propertyPath: _particlesSystemsToFade.Array.data[1]
       value: 
       objectReference: {fileID: 939594613}
+    - target: {fileID: 114834613096490174, guid: 9a6c3c0a03f965b45b9c01df6b3ee496,
+        type: 2}
+      propertyPath: _maxAlpha
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114834613096490174, guid: 9a6c3c0a03f965b45b9c01df6b3ee496,
+        type: 2}
+      propertyPath: _fadeDuration
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114834613096490174, guid: 9a6c3c0a03f965b45b9c01df6b3ee496,
+        type: 2}
+      propertyPath: _scale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114834613096490174, guid: 9a6c3c0a03f965b45b9c01df6b3ee496,
+        type: 2}
+      propertyPath: _scale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114834613096490174, guid: 9a6c3c0a03f965b45b9c01df6b3ee496,
+        type: 2}
+      propertyPath: _scale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114834613096490174, guid: 9a6c3c0a03f965b45b9c01df6b3ee496,
+        type: 2}
+      propertyPath: _duration
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114834613096490174, guid: 9a6c3c0a03f965b45b9c01df6b3ee496,
+        type: 2}
+      propertyPath: _angle
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114834613096490174, guid: 9a6c3c0a03f965b45b9c01df6b3ee496,
+        type: 2}
+      propertyPath: _scaleDuration
+      value: 4.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9a6c3c0a03f965b45b9c01df6b3ee496, type: 2}
   m_IsPrefabParent: 0
@@ -26121,6 +26184,56 @@ Prefab:
       propertyPath: ShapeModule.radiusThickness
       value: 1.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 198372335458646502, guid: 0b2fa53dc0c08ab40a78f08e63c1e015,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114444886346821386, guid: 0b2fa53dc0c08ab40a78f08e63c1e015,
+        type: 2}
+      propertyPath: _maxAlpha
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114444886346821386, guid: 0b2fa53dc0c08ab40a78f08e63c1e015,
+        type: 2}
+      propertyPath: _fadeDuration
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 198372335458646502, guid: 0b2fa53dc0c08ab40a78f08e63c1e015,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114444886346821386, guid: 0b2fa53dc0c08ab40a78f08e63c1e015,
+        type: 2}
+      propertyPath: _cloudFadeOutDuration
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114444886346821386, guid: 0b2fa53dc0c08ab40a78f08e63c1e015,
+        type: 2}
+      propertyPath: _cloudFadeInDuration
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114444886346821386, guid: 0b2fa53dc0c08ab40a78f08e63c1e015,
+        type: 2}
+      propertyPath: _minSunIntensity
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114444886346821386, guid: 0b2fa53dc0c08ab40a78f08e63c1e015,
+        type: 2}
+      propertyPath: _maxSunIntensity
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114444886346821386, guid: 0b2fa53dc0c08ab40a78f08e63c1e015,
+        type: 2}
+      propertyPath: _shineDuration
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 114444886346821386, guid: 0b2fa53dc0c08ab40a78f08e63c1e015,
+        type: 2}
+      propertyPath: _maxRadius
+      value: 0.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b2fa53dc0c08ab40a78f08e63c1e015, type: 2}
   m_IsPrefabParent: 0
@@ -27013,6 +27126,31 @@ Prefab:
       propertyPath: _particlesSystemsToFade.Array.data[1]
       value: 
       objectReference: {fileID: 1198133471}
+    - target: {fileID: 114307240472340854, guid: 4e7c228d118bbe64fbfe7535f2bbe112,
+        type: 2}
+      propertyPath: _maxAlpha
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114307240472340854, guid: 4e7c228d118bbe64fbfe7535f2bbe112,
+        type: 2}
+      propertyPath: _fadeDuration
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114307240472340854, guid: 4e7c228d118bbe64fbfe7535f2bbe112,
+        type: 2}
+      propertyPath: _duration
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114307240472340854, guid: 4e7c228d118bbe64fbfe7535f2bbe112,
+        type: 2}
+      propertyPath: _angle
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114307240472340854, guid: 4e7c228d118bbe64fbfe7535f2bbe112,
+        type: 2}
+      propertyPath: _delay
+      value: 5.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4e7c228d118bbe64fbfe7535f2bbe112, type: 2}
   m_IsPrefabParent: 0
@@ -27027,7 +27165,7 @@ GameObject:
   - component: {fileID: 1385910656}
   m_Layer: 0
   m_Name: Dandelion (4)
-  m_TagString: StemBase
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31157,6 +31295,10 @@ Prefab:
         type: 2}
       propertyPath: looping
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1660064880663554, guid: 44c379f13fe899c41968b472dc05d806, type: 2}
+      propertyPath: m_TagString
+      value: DandelionBloomParticle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44c379f13fe899c41968b472dc05d806, type: 2}
@@ -43028,6 +43170,36 @@ Prefab:
       propertyPath: _particlesSystemsToFade.Array.data[1]
       value: 
       objectReference: {fileID: 1496209666}
+    - target: {fileID: 114615754104969634, guid: 338c09b90f1b5aa44b533e2b3b96dca8,
+        type: 2}
+      propertyPath: _maxAlpha
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114615754104969634, guid: 338c09b90f1b5aa44b533e2b3b96dca8,
+        type: 2}
+      propertyPath: _fadeDuration
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114615754104969634, guid: 338c09b90f1b5aa44b533e2b3b96dca8,
+        type: 2}
+      propertyPath: _scaleDuration
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114615754104969634, guid: 338c09b90f1b5aa44b533e2b3b96dca8,
+        type: 2}
+      propertyPath: _scaleTarget.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114615754104969634, guid: 338c09b90f1b5aa44b533e2b3b96dca8,
+        type: 2}
+      propertyPath: _scaleTarget.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114615754104969634, guid: 338c09b90f1b5aa44b533e2b3b96dca8,
+        type: 2}
+      propertyPath: _scaleTarget.z
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 338c09b90f1b5aa44b533e2b3b96dca8, type: 2}
   m_IsPrefabParent: 0
@@ -43607,7 +43779,7 @@ GameObject:
   - component: {fileID: 717549699}
   m_Layer: 0
   m_Name: Dandelion (5)
-  m_TagString: StemBase
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44183,6 +44355,10 @@ Prefab:
     - target: {fileID: 4915207963977738, guid: 44c379f13fe899c41968b472dc05d806, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1660064880663554, guid: 44c379f13fe899c41968b472dc05d806, type: 2}
+      propertyPath: m_TagString
+      value: DandelionBloomParticle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44c379f13fe899c41968b472dc05d806, type: 2}
@@ -48847,6 +49023,10 @@ Prefab:
       propertyPath: InitialModule.startSize.minScalar
       value: 0.07
       objectReference: {fileID: 0}
+    - target: {fileID: 1660064880663554, guid: 44c379f13fe899c41968b472dc05d806, type: 2}
+      propertyPath: m_TagString
+      value: DandelionBloomParticle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44c379f13fe899c41968b472dc05d806, type: 2}
   m_IsPrefabParent: 0
@@ -48871,7 +49051,7 @@ GameObject:
   - component: {fileID: 1803271757}
   m_Layer: 0
   m_Name: Dandelion (3)
-  m_TagString: StemBase
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57326,12 +57506,11 @@ MonoBehaviour:
   _particlesSystemsToFade:
   - {fileID: 725164034}
   - {fileID: 718780301}
-  _fadeDuration: 0
+  _maxAlpha: 0.4
+  _fadeDuration: 3
+  _elementManager: {fileID: 0}
   _campAnim: {fileID: 325704555}
   _campSoilPT: {fileID: 283603441}
-  _stemBase: []
-  _scaleDuration: 4
-  _scaleTarget: {x: 0.1, y: 0.1, z: 0.1}
   _soilDumpPT: {fileID: 484869099}
   _firePT: {fileID: 1125560143}
 --- !u!1001 &2118832376
@@ -57407,6 +57586,10 @@ Prefab:
         type: 2}
       propertyPath: InitialModule.startSize.minScalar
       value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1660064880663554, guid: 44c379f13fe899c41968b472dc05d806, type: 2}
+      propertyPath: m_TagString
+      value: DandelionBloomParticle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44c379f13fe899c41968b472dc05d806, type: 2}

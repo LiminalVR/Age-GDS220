@@ -11,16 +11,11 @@ public class EarthElement : BaseElement {
     #endregion
 
     #region Autumn
-    //[Header("Autumn")]
-    private List<Animator> _flowerAnims;
-    public GameObject[] _stemBase;
-    public float _scaleDuration;
-    public Vector3 _scaleTarget;
+
     #endregion
 
     #region Winter
-    //[Header("Winter")]
-    private List<ParticleSystem> _flowerSoilTuftPT;
+
     #endregion
 
     #region Spring
@@ -31,36 +26,7 @@ public class EarthElement : BaseElement {
 
 	private void Start()
 	{
-        //List initialise
-        _flowerSoilTuftPT = new List<ParticleSystem>();
-        _flowerAnims = new List<Animator>();
 
-        //Particle lists
-        var _findParticles = FindObjectsOfType<ParticleSystem>();
-
-		foreach (ParticleSystem p in _findParticles) {
-			switch (p.tag) {
-            case ("SoilTuftParticle"):
-                _flowerSoilTuftPT.Add(p);
-                break;
-                default:
-				break;
-			}
-		}
-
-        //Object arrays
-        _stemBase = GameObject.FindGameObjectsWithTag("StemBase");
-
-        //Find animators on flowers only
-        Animator _findAnimators;
-
-        foreach (GameObject a in _stemBase)
-        {
-            _findAnimators = a.GetComponentInParent<Animator>();
-
-            if (_findAnimators != null)
-                _flowerAnims.Add(_findAnimators);
-        }
     }
 
 	//Fixes campfire and causes dirt tufts
@@ -73,15 +39,28 @@ public class EarthElement : BaseElement {
 
     protected override void EnactAutumnActions()
     {
-        foreach (ParticleSystem p in _flowerSoilTuftPT)
+        foreach (ParticleSystem p in _elementManager._flowerSoilTuftPT)
         {
             p.Play();
+        }
+
+        foreach (Animator a in _elementManager._flowerAnims)
+        {
+            a.SetBool("Bloomed", false);
         }
     }
 
     protected override void EnactWinterActions()
     {
+        foreach (ParticleSystem p in _elementManager._dandelionBloomPT)
+        {
+            p.Play();
+        }
 
+        foreach (ParticleSystem p in _elementManager._dandelionStillPT)
+        {
+            p.Play();
+        }
     }
 
 	//Dumps soil on campfire, extinguising it and knocking down
@@ -91,28 +70,4 @@ public class EarthElement : BaseElement {
         _firePT.Stop();
         _campAnim.SetBool("cFireDead", true);
     }
-
-    public void ScaleDoodad(GameObject[] _objectArray, float _scaleDuration, Vector3 _scaleTarget)
-    {
-        foreach (GameObject g in _objectArray)
-        {
-            StartCoroutine(ScaleOverTime(g, _scaleDuration, _scaleTarget));
-        }
-    }
-    
-	private IEnumerator ScaleOverTime(GameObject obj, float duration, Vector3 scale)
-	{
-		Vector3 originalScale = obj.transform.localScale;
-
-		float currentTime = 0.0f;
-
-		do
-		{
-			obj.transform.localScale = Vector3.Lerp(originalScale, scale, currentTime / duration);
-			currentTime += Time.deltaTime;
-			yield return null;
-		}
-		while(currentTime <= duration);
-	}
-    
 }

@@ -5,10 +5,6 @@ using UnityEngine;
 public class SceneElement : BaseElement
 {
     private SeasonManager _seasonManager;
-    [SerializeField] private AirElement _Air;
-    [SerializeField] private EarthElement _Earth;
-    [SerializeField] private FireElement _Fire;
-    [SerializeField] private WaterElement _Water;
 
     [Header("Clouds")]
     private ParticleSystem.EmissionModule _cloudEmissionModule;
@@ -18,10 +14,6 @@ public class SceneElement : BaseElement
     [SerializeField] private GameObject _sceneLight;
     [SerializeField] private Vector3 auRotate = Vector3.zero, wnRotate = Vector3.zero, spRotate = Vector3.zero;
 
-    [Header("Flowers")]
-    [SerializeField] private float _shrinkDuration;
-    [SerializeField] private Vector3 _shrinkTargetScale;
-
     [Header("Leaves")]
     [SerializeField] private ParticleSystem _auTreeLeavesPT;
     [SerializeField] private ParticleSystem _auTerrainLeavesPT;
@@ -29,12 +21,15 @@ public class SceneElement : BaseElement
     [Header("Spring")]
     [SerializeField] private ParticleSystem _spTerrainPollenPT;
 
+    [Header("Models")]
+    [SerializeField] private float _scaleDuration = 0f;
+    [SerializeField] private Vector3 _scaleTarget = Vector3.zero;
 
     private void Start()
     {
         _seasonManager = GameObject.FindGameObjectWithTag("GameGod").GetComponent<SeasonManager>();
 
-        _cloudEmissionModule = _Fire._cloudsPT.emission;
+        _cloudEmissionModule = _elementManager._cloudsPT.emission;
     }
 
     public override void Interact()
@@ -44,6 +39,7 @@ public class SceneElement : BaseElement
         StartCoroutine(_seasonManager.ChangeSeason());
     }
 
+    //Cloud rate, light rotate, begin misc leaves particles
     protected override void EnactSummerActions()
     {
         _cloudEmissionModule.rateOverTime = auRate;
@@ -54,15 +50,17 @@ public class SceneElement : BaseElement
         _auTerrainLeavesPT.Play();
     }
 
+    //Cloud rate, light rotate, scale down flowers
     protected override void EnactAutumnActions()
     {
         _cloudEmissionModule.rateOverTime = wnRate;
 
         StartCoroutine(LightRotate(wnRotate, 5f));
 
-        _Earth.ScaleDoodad(_Earth._stemBase, _Earth._scaleDuration, _Earth._scaleTarget);
+        _elementManager.ScaleDoodad(_elementManager._stemBase, _scaleDuration, _scaleTarget);
     }
 
+    //Cloud rate, light rotate, stop misc leaves particles, begin misc pollen particles
     protected override void EnactWinterActions()
     {
         _cloudEmissionModule.rateOverTime = spRate;
@@ -94,28 +92,5 @@ public class SceneElement : BaseElement
             yield return null;
         }
         while (currentTime <= time);
-    }
-
-    private void GrowStem(GameObject[] _objectArray, float _scaleDuration, Vector3 _scale)
-    {
-        foreach (GameObject stem in _objectArray)
-        {
-            StartCoroutine(ScaleOverTime(stem, _scaleDuration, _scale));
-        }
-    }
-
-    private IEnumerator ScaleOverTime(GameObject obj, float duration, Vector3 _scale)
-    {
-        Vector3 originalScale = obj.transform.localScale;
-
-        float currentTime = 0.0f;
-
-        do
-        {
-            obj.transform.localScale = Vector3.Lerp(originalScale, _scale, currentTime / duration);
-            currentTime += Time.deltaTime;
-            yield return null;
-        }
-        while (currentTime <= duration);
     }
 }

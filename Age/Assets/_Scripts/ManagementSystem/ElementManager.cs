@@ -10,17 +10,82 @@ public class ElementManager : MonoBehaviour {
     [HideInInspector] public ElementType[] _currentElementOrder;
     private int _nextElementIndex = 0;
 
-    
-    [Header("Sizes")]
-    [SerializeField] private Vector3 _normalSize;
-    [SerializeField] private Vector3 _shrunkenSize;
-    [SerializeField] private Vector3 _enlargedSize;
-    [SerializeField] private float _adjustmentDuration;
-    [SerializeField] private float _stagnentDuration;
+    protected float testNum;
 
-    private void Awake()
+    [Header("Global Variables")]
+    [HideInInspector] public GameObject[] _stemBase;
+    public ParticleSystem _cloudsPT;
+
+    [HideInInspector] public List<ParticleSystem> _bloomPT;
+    [HideInInspector] public List<ParticleSystem> _dandelionBloomPT;
+    [HideInInspector] public List<ParticleSystem> _dandelionBlowPT;
+    [HideInInspector] public List<ParticleSystem> _dandelionStillPT;
+    [HideInInspector] public List<ParticleSystem> _flowerSoilTuftPT;
+    [HideInInspector] public List<ParticleSystem> _splashPT;
+    [HideInInspector] public List<ParticleSystem> _stemPopPT;
+
+    [HideInInspector] public List<Animator> _flowerAnims;
+
+    private void Start()
     {
         DelegatesAndEvents._onElementAcivated += ElementActivated;
+
+        #region Global variables
+        _stemBase = GameObject.FindGameObjectsWithTag("StemBase");
+
+        //List initialise
+        _bloomPT = new List<ParticleSystem>();
+        _dandelionBloomPT = new List<ParticleSystem>();
+        _dandelionBlowPT = new List<ParticleSystem>();
+        _dandelionStillPT = new List<ParticleSystem>();
+        _flowerSoilTuftPT = new List<ParticleSystem>();
+        _splashPT = new List<ParticleSystem>();
+        _stemPopPT = new List<ParticleSystem>();
+
+
+        //Particle lists
+        var _findParticles = GameObject.FindObjectsOfType<ParticleSystem>();
+
+        foreach (ParticleSystem p in _findParticles)
+        {
+            switch (p.tag)
+            {
+                case ("BloomParticle"):
+                    _bloomPT.Add(p);
+                    break;
+                case ("DandelionBloomParticle"):
+                    _dandelionBloomPT.Add(p);
+                    break;
+                case ("DandelionBlowParticle"):
+                    _dandelionBlowPT.Add(p);
+                    break;
+                case ("DandelionStillParticle"):
+                    _dandelionStillPT.Add(p);
+                    break;
+                case ("SoilTuftParticle"):
+                    _flowerSoilTuftPT.Add(p);
+                    break;
+                case ("SplashParticle"):
+                    _splashPT.Add(p);
+                    break;
+                case ("StemPopParticle"):
+                    _stemPopPT.Add(p);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        Animator _findAnimators;
+
+        foreach (GameObject a in _stemBase)
+        {
+            _findAnimators = a.GetComponentInParent<Animator>();
+
+            if (_findAnimators != null)
+                _flowerAnims.Add(_findAnimators);
+        }
+        #endregion
     }
 
     public void SpawnElement()
@@ -80,4 +145,56 @@ public class ElementManager : MonoBehaviour {
         _airElement.ResetElement();
         _seasonElement.ResetElement();
     }
+
+    #region Global variables
+
+    public void ScaleDoodad(GameObject[] _objectArray, float _scaleDuration, Vector3 _scaleTarget)
+    {
+        foreach (GameObject g in _objectArray)
+        {
+            StartCoroutine(ScaleOverTime(g, _scaleDuration, _scaleTarget));
+        }
+    }
+
+    private IEnumerator ScaleOverTime(GameObject obj, float duration, Vector3 scale)
+    {
+        Vector3 originalScale = obj.transform.localScale;
+
+        float currentTime = 0.0f;
+
+        do
+        {
+            obj.transform.localScale = Vector3.Lerp(originalScale, scale, currentTime / duration);
+            currentTime += Time.deltaTime;
+            yield return null;
+        }
+        while (currentTime <= duration);
+    }
+
+    public void Wiggle(GameObject[] _objectArray, float _duration, float _angle)
+    {
+        foreach (GameObject g in _objectArray)
+        {
+            StartCoroutine(RotateTo(g, _duration, _angle));
+        }
+    }
+
+    private IEnumerator RotateTo(GameObject g, float _duration, float _angle)
+    {
+        {
+            float currentTime = 0.0f;
+
+            {
+                do
+                {
+                    g.transform.localEulerAngles = new Vector3(g.transform.rotation.eulerAngles.x, g.transform.rotation.eulerAngles.y, Mathf.PingPong(currentTime * 5f, _angle));
+
+                    currentTime += Time.deltaTime;
+                    yield return null;
+                }
+                while (currentTime <= _duration);
+            }
+        }
+    }
+    #endregion
 }
