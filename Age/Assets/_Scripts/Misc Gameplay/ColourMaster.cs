@@ -12,11 +12,27 @@ public class ColourMaster {
         }
     }
 
+    public void ChangeColours(Material[] materials, Color targetColour)
+    {
+        for(int index = 0; index < materials.Length; index++)
+        {
+            materials[index].color = targetColour;
+        }
+    }
+
     public void ChangeColours(Renderer[] renderers, Color[] targetColours)
     {
         for(int index = 0; index < renderers.Length; index++)
         {
             renderers[index].material.color = targetColours[index];
+        }
+    }
+
+    public void ChangeColours(Renderer[] renderers, Color targetColour)
+    {
+        for(int index = 0; index < renderers.Length; index++)
+        {
+            renderers[index].material.color = targetColour;
         }
     }
 
@@ -26,7 +42,16 @@ public class ColourMaster {
 
         foreach(Renderer rend in renderers)
         {
-            colours.Add(rend.material.color);
+            if(rend.material.color != null)
+            {
+                colours.Add(rend.material.color);
+            }
+
+            ParticleSystem partSys = rend.GetComponent<ParticleSystem>();
+            if(partSys != null)
+            {
+                colours.Add(partSys.startColor);
+            }
         }
 
         return colours.ToArray();
