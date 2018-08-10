@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4112424, g: 0.57318723, b: 0.44579953, a: 1}
+  m_IndirectSpecularColor: {r: 0.38713753, g: 0.59019494, b: 0.50131273, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -4889,6 +4889,11 @@ MonoBehaviour:
   m_CenterEyeCamera: {fileID: 1558399000}
   m_LeftEyeCamera: {fileID: 1208830334}
   m_RightEyeCamera: {fileID: 1390861998}
+--- !u!198 &222150039 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 198606351489511330, guid: 4e7c228d118bbe64fbfe7535f2bbe112,
+    type: 2}
+  m_PrefabInternal: {fileID: 974717305}
 --- !u!1 &270155932
 GameObject:
   m_ObjectHideFlags: 0
@@ -5455,6 +5460,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 423380553}
   m_Mesh: {fileID: 4300010, guid: 6c0ebf21860ee46459b7a654190f5596, type: 3}
+--- !u!198 &425687535 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 198226241913855646, guid: 9a6c3c0a03f965b45b9c01df6b3ee496,
+    type: 2}
+  m_PrefabInternal: {fileID: 763920524}
 --- !u!1001 &426903749
 Prefab:
   m_ObjectHideFlags: 0
@@ -5860,6 +5870,16 @@ Prefab:
         type: 2}
       propertyPath: TrailModule.minVertexDistance
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198070849772644028, guid: 37fb0a8ed3bff9742a8e19a2419795f5,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198070849772644028, guid: 37fb0a8ed3bff9742a8e19a2419795f5,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
       objectReference: {fileID: 0}
     - target: {fileID: 198070849772644028, guid: 37fb0a8ed3bff9742a8e19a2419795f5,
         type: 2}
@@ -14319,6 +14339,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4484045974178992, guid: 1c0d27d33467e484fa15a5691607c737,
     type: 2}
   m_PrefabInternal: {fileID: 2069687734}
+--- !u!198 &718780301 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 198488126150494968, guid: 1c0d27d33467e484fa15a5691607c737,
+    type: 2}
+  m_PrefabInternal: {fileID: 2069687734}
 --- !u!1 &725164032
 GameObject:
   m_ObjectHideFlags: 0
@@ -14453,7 +14478,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -270803796
+  randomSeed: 1397860421
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -17776,6 +17801,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 173733653}
     m_Modifications:
+    - target: {fileID: 114834613096490174, guid: 9a6c3c0a03f965b45b9c01df6b3ee496,
+        type: 2}
+      propertyPath: _particlesSystemsToFade.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4108543790039758, guid: 9a6c3c0a03f965b45b9c01df6b3ee496, type: 2}
       propertyPath: m_LocalPosition.x
       value: 15.94722
@@ -18173,6 +18203,16 @@ Prefab:
       propertyPath: _wiggleDuration
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114834613096490174, guid: 9a6c3c0a03f965b45b9c01df6b3ee496,
+        type: 2}
+      propertyPath: _particlesSystemsToFade.Array.data[0]
+      value: 
+      objectReference: {fileID: 425687535}
+    - target: {fileID: 114834613096490174, guid: 9a6c3c0a03f965b45b9c01df6b3ee496,
+        type: 2}
+      propertyPath: _particlesSystemsToFade.Array.data[1]
+      value: 
+      objectReference: {fileID: 939594613}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9a6c3c0a03f965b45b9c01df6b3ee496, type: 2}
   m_IsPrefabParent: 0
@@ -25199,6 +25239,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 173733653}
     m_Modifications:
+    - target: {fileID: 114444886346821386, guid: 0b2fa53dc0c08ab40a78f08e63c1e015,
+        type: 2}
+      propertyPath: _particlesSystemsToFade.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4241980070340894, guid: 0b2fa53dc0c08ab40a78f08e63c1e015, type: 2}
       propertyPath: m_LocalPosition.x
       value: 15.855201
@@ -25996,6 +26041,26 @@ Prefab:
       propertyPath: ShapeModule.radiusThickness
       value: 1.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 198372335458646502, guid: 0b2fa53dc0c08ab40a78f08e63c1e015,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198372335458646502, guid: 0b2fa53dc0c08ab40a78f08e63c1e015,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114444886346821386, guid: 0b2fa53dc0c08ab40a78f08e63c1e015,
+        type: 2}
+      propertyPath: _particlesSystemsToFade.Array.data[0]
+      value: 
+      objectReference: {fileID: 863668554}
+    - target: {fileID: 114444886346821386, guid: 0b2fa53dc0c08ab40a78f08e63c1e015,
+        type: 2}
+      propertyPath: _particlesSystemsToFade.Array.data[1]
+      value: 
+      objectReference: {fileID: 863668554}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b2fa53dc0c08ab40a78f08e63c1e015, type: 2}
   m_IsPrefabParent: 0
@@ -26376,6 +26441,11 @@ GameObject:
   m_PrefabParentObject: {fileID: 1274225337195890, guid: 0b2fa53dc0c08ab40a78f08e63c1e015,
     type: 2}
   m_PrefabInternal: {fileID: 826598840}
+--- !u!198 &863668554 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 198654830278340082, guid: 0b2fa53dc0c08ab40a78f08e63c1e015,
+    type: 2}
+  m_PrefabInternal: {fileID: 826598840}
 --- !u!1 &908776948
 GameObject:
   m_ObjectHideFlags: 0
@@ -26435,6 +26505,11 @@ GameObject:
   m_PrefabParentObject: {fileID: 1930510887751894, guid: 9a6c3c0a03f965b45b9c01df6b3ee496,
     type: 2}
   m_PrefabInternal: {fileID: 763920524}
+--- !u!198 &939594613 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 198016977940993824, guid: 9a6c3c0a03f965b45b9c01df6b3ee496,
+    type: 2}
+  m_PrefabInternal: {fileID: 763920524}
 --- !u!1001 &974717305
 Prefab:
   m_ObjectHideFlags: 0
@@ -26442,6 +26517,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 173733653}
     m_Modifications:
+    - target: {fileID: 114307240472340854, guid: 4e7c228d118bbe64fbfe7535f2bbe112,
+        type: 2}
+      propertyPath: _particlesSystemsToFade.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4773977363690196, guid: 4e7c228d118bbe64fbfe7535f2bbe112, type: 2}
       propertyPath: m_LocalPosition.x
       value: 15.773551
@@ -26863,6 +26943,16 @@ Prefab:
       propertyPath: _wiggleAngle
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114307240472340854, guid: 4e7c228d118bbe64fbfe7535f2bbe112,
+        type: 2}
+      propertyPath: _particlesSystemsToFade.Array.data[0]
+      value: 
+      objectReference: {fileID: 222150039}
+    - target: {fileID: 114307240472340854, guid: 4e7c228d118bbe64fbfe7535f2bbe112,
+        type: 2}
+      propertyPath: _particlesSystemsToFade.Array.data[1]
+      value: 
+      objectReference: {fileID: 1198133471}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4e7c228d118bbe64fbfe7535f2bbe112, type: 2}
   m_IsPrefabParent: 0
@@ -31170,6 +31260,11 @@ Transform:
 --- !u!1 &1198133469 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1284266154350850, guid: 4e7c228d118bbe64fbfe7535f2bbe112,
+    type: 2}
+  m_PrefabInternal: {fileID: 974717305}
+--- !u!198 &1198133471 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 198093438292800614, guid: 4e7c228d118bbe64fbfe7535f2bbe112,
     type: 2}
   m_PrefabInternal: {fileID: 974717305}
 --- !u!1 &1199972291
@@ -42567,6 +42662,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 173733653}
     m_Modifications:
+    - target: {fileID: 114615754104969634, guid: 338c09b90f1b5aa44b533e2b3b96dca8,
+        type: 2}
+      propertyPath: _particlesSystemsToFade.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4883662367530508, guid: 338c09b90f1b5aa44b533e2b3b96dca8, type: 2}
       propertyPath: m_LocalPosition.x
       value: 15.689917
@@ -42858,6 +42958,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114615754104969634, guid: 338c09b90f1b5aa44b533e2b3b96dca8,
+        type: 2}
+      propertyPath: _particlesSystemsToFade.Array.data[0]
+      value: 
+      objectReference: {fileID: 1697759569}
+    - target: {fileID: 114615754104969634, guid: 338c09b90f1b5aa44b533e2b3b96dca8,
+        type: 2}
+      propertyPath: _particlesSystemsToFade.Array.data[1]
+      value: 
+      objectReference: {fileID: 1496209666}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 338c09b90f1b5aa44b533e2b3b96dca8, type: 2}
   m_IsPrefabParent: 0
@@ -43141,6 +43251,11 @@ ParticleSystem:
 --- !u!1 &1496209663 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1732475603667050, guid: 338c09b90f1b5aa44b533e2b3b96dca8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1409051222}
+--- !u!198 &1496209666 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 198090950920634490, guid: 338c09b90f1b5aa44b533e2b3b96dca8,
     type: 2}
   m_PrefabInternal: {fileID: 1409051222}
 --- !u!1 &1502454988
@@ -48044,6 +48159,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4738016080717990, guid: 7402b53ad4a955149b0e1327f8273d00,
     type: 2}
   m_PrefabInternal: {fileID: 1677088429}
+--- !u!198 &1697759569 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 198143814459030540, guid: 11b6f12876959214f9496e04ca22868c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1095053045}
 --- !u!1001 &1697781799
 Prefab:
   m_ObjectHideFlags: 0
@@ -57141,9 +57261,15 @@ MonoBehaviour:
   _interactionSound: {fileID: 0}
   _interactionEffect: {fileID: 1961462686726152, guid: 5589ebffcba2df144bfbc19d174ad297,
     type: 2}
-  _otherInteractionSound: {fileID: 0}
+  _renderersToFade:
+  - {fileID: 86089892}
+  _particlesSystemsToFade:
+  - {fileID: 725164034}
+  - {fileID: 718780301}
+  _fadeDuration: 0
   _campAnim: {fileID: 325704555}
   _campSoilPT: {fileID: 283603441}
+  _stemBase: []
   _scaleDuration: 4
   _scaleTarget: {x: 0.1, y: 0.1, z: 0.1}
   _soilDumpPT: {fileID: 484869099}
