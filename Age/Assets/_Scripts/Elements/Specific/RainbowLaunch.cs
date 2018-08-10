@@ -38,7 +38,7 @@ public class RainbowLaunch : MonoBehaviour
 
         while (elapse_time < duration)
         {
-            _rbProjectile.Translate(0f, (yVel - (_rbGravity * elapse_time)) * Time.deltaTime /4f, xVel * Time.deltaTime /4f);
+            _rbProjectile.Translate(0f, (yVel - (_rbGravity * elapse_time)) * Time.deltaTime, xVel * Time.deltaTime);
 
             elapse_time += Time.deltaTime;
 

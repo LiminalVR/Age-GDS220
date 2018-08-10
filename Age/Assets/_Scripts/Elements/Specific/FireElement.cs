@@ -127,6 +127,7 @@ public class FireElement : BaseElement {
         {
             currentTime += Time.deltaTime;
 
+            /*
             if (fading)
             {
                 cloudsMainModule.startColor = Color.Lerp(cloudOpaque, Color.clear, currentTime);
@@ -135,7 +136,7 @@ public class FireElement : BaseElement {
             {
                 cloudsMainModule.startColor = Color.Lerp(Color.clear, cloudOpaque, currentTime);
             }
-
+            */
             _sunLight.intensity = Mathf.Lerp(startIntensity, targetSunIntensity, currentTime);
 
             yield return null;

@@ -11,7 +11,7 @@ public class WaterElement : BaseElement {
     private List<ParticleSystem> _bloomPT;
     private List<ParticleSystem> _splashPT;
     [SerializeField] private ParticleSystem waterShower1, waterShower2;
-    [SerializeField] private Animator[] _flowerAnims;
+    private List<Animator> _flowerAnims;
     #endregion
 
     #region Autumn
@@ -39,14 +39,31 @@ public class WaterElement : BaseElement {
 
     private void Start()
     {
-		//Rain particle declaration (for modifying its speed)
-		_rainPTMainModule = _rainPT.main;
+        //List initialise
+        _bloomPT = new List<ParticleSystem>();
+        _splashPT = new List<ParticleSystem>();
+        _flowerAnims = new List<Animator>();
+        _dandBloomPT = new List<ParticleSystem>();
+        _dandelionStillPT = new List<ParticleSystem>();
+        _stemPopPT = new List<ParticleSystem>();
+
+        //Rain particle declaration (for modifying its speed)
+        _rainPTMainModule = _rainPT.main;
 
 		//Object arrays
         _flowerPetals = GameObject.FindGameObjectsWithTag("Petals");
         _stemBase = GameObject.FindGameObjectsWithTag("StemBase");
-        
-        
+
+        //Find animators on flowers only
+        Animator _findAnimators;
+
+        foreach (GameObject a in _stemBase)
+        {
+            _findAnimators = a.GetComponentInParent<Animator>();
+
+            if (_findAnimators != null)
+            _flowerAnims.Add(_findAnimators);
+        }
 
 		//Particle lists
 		var _findParticles = GameObject.FindObjectsOfType<ParticleSystem> ();
@@ -76,7 +93,10 @@ public class WaterElement : BaseElement {
 
     protected override void EnactSummerActions(bool initialAction)
     {
-        StartCoroutine(WaterFlowers());
+        waterShower1.Play();
+        waterShower2.Play();
+
+        StartCoroutine(BloomFlowers(5f));
 
         if (initialAction)
         {
@@ -143,7 +163,7 @@ public class WaterElement : BaseElement {
             p.Play();
         }
 
-        //ANIMATE HERE
+        StartCoroutine(BloomFlowers(1.4f));
 
         if (initialAction)
         {
@@ -155,14 +175,14 @@ public class WaterElement : BaseElement {
         }
     }
 
-    private IEnumerator WaterFlowers()
+    private IEnumerator BloomFlowers(float delay)
     {
-        waterShower1.Play();
-        waterShower2.Play();
+        yield return new WaitForSeconds(delay);
 
-        yield return new WaitForSeconds(5f);
-
-        //ANIMATE HERE
+        foreach (Animator a in _flowerAnims)
+        {
+            a.SetBool("Bloomed", true);
+        }
 
         yield return new WaitForSeconds(4.5f);
 
@@ -227,7 +247,7 @@ public class WaterElement : BaseElement {
             {
                 do
                 {
-                    g.transform.localEulerAngles = new Vector3(g.transform.rotation.eulerAngles.x, g.transform.rotation.eulerAngles.y, Mathf.PingPong(currentTime * 20, _wiggleAngle));
+                    g.transform.localEulerAngles = new Vector3(g.transform.rotation.eulerAngles.x, g.transform.rotation.eulerAngles.y, Mathf.PingPong(currentTime * 5f, _wiggleAngle));
 
                     currentTime += Time.deltaTime;
                     yield return null;

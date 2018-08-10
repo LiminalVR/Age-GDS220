@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class AirElement : BaseElement {
 
-	Terrain _Terrain;
-
 	#region Summer
 	[Header("Summer")]
 	[SerializeField] private ParticleSystem _airGustPT;
@@ -29,13 +27,17 @@ public class AirElement : BaseElement {
 
     #region Spring
     //[Header("Spring")]
-    private List<ParticleSystem> _dandelionStillPT = new List<ParticleSystem>();
-    private List<ParticleSystem> _dandelionBlowPT = new List<ParticleSystem>();
+    private List<ParticleSystem> _dandelionStillPT;
+    private List<ParticleSystem> _dandelionBlowPT;
     #endregion
 
-    private void Start () {
-		//Particle declaration for enabling noise on campfire
-		fireNoiseModule = _firePT.noise;
+    private void Start ()
+    {
+        _dandelionStillPT = new List<ParticleSystem>();
+        _dandelionBlowPT = new List<ParticleSystem>();
+
+        //Particle declaration for enabling noise on campfire
+        fireNoiseModule = _firePT.noise;
 
         _stemBase = GameObject.FindGameObjectsWithTag("StemBase");
 
@@ -60,9 +62,7 @@ public class AirElement : BaseElement {
     //Air gust particles and terrain grass wind strength
     protected override void EnactSummerActions(bool initialAction)
     {
-        _Terrain = FindObjectOfType<Terrain>();
-        _airGustPT.Play();
-        StartCoroutine(SummerGust(5.4f));
+        StartCoroutine(WindGust(5.4f));
 
         if (initialAction)
         {
@@ -77,7 +77,8 @@ public class AirElement : BaseElement {
     //Air and leaves particles, tilt rain particles if applicable
     protected override void EnactAutumnActions(bool initialAction)
     {
-        _airGustPT.Play();
+        StartCoroutine(WindGust(5.4f));
+
         _auLeafTuftPT.Play();
 
         StartCoroutine(AirRainingEffects(5.4f));
@@ -95,8 +96,10 @@ public class AirElement : BaseElement {
     //Air gust, fire ember, tilt rain / fire if applicable
     protected override void EnactWinterActions(bool initialAction)
     {
-        _airGustPT.Play();
+        StartCoroutine(WindGust(5.4f));
+
         _emberBurstPT.Play();
+
         StartCoroutine(AirRainingEffects(3.8f));
 
         if (initialAction)
@@ -132,23 +135,16 @@ public class AirElement : BaseElement {
         }
     }
 
-	private IEnumerator SummerGust (float time) {
+	private IEnumerator WindGust (float delay) {
 
-		float currentTime = 0.0f;
+        _airGustPT.Play();
 
-		yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(delay);
 
         Wiggle(_stemBase);
 
-        do {
-			_Terrain.terrainData.wavingGrassStrength = 1f;
-			currentTime += Time.deltaTime;
-			yield return null;
-		} 
-		while (currentTime <= time);
-		//Resets wind power back to 0.3 after gusting complete
-		_Terrain.terrainData.wavingGrassStrength = 0.3f;
-	}
+        yield return null;
+    }
 
     private void Wiggle(GameObject[] _objectArray)
     {
@@ -166,7 +162,7 @@ public class AirElement : BaseElement {
             {
                 do
                 {
-                    g.transform.localEulerAngles = new Vector3(g.transform.rotation.eulerAngles.x, g.transform.rotation.eulerAngles.y, Mathf.PingPong(currentTime * 8, _wiggleAngle));
+                    g.transform.localEulerAngles = new Vector3(g.transform.rotation.eulerAngles.x, g.transform.rotation.eulerAngles.y, Mathf.PingPong(currentTime * 5f, _wiggleAngle));
 
                     currentTime += Time.deltaTime;
                     yield return null;

@@ -8,19 +8,18 @@ public class EarthElement : BaseElement {
 	[Header("Summer")]
 	[SerializeField] private Animator _campAnim;
 	[SerializeField] private ParticleSystem _campSoilPT;
-	[SerializeField] private float _flowerClipDuration;
-	[SerializeField] private Vector3 _flowerGrowthTargetScale;
-	[SerializeField] private GameObject[] _flowers;
-	#endregion
+    #endregion
 
-	#region Autumn
-	//[Header("Autumn")]
-	private List<ParticleSystem> _petalsPT;
-	private List<ParticleSystem> _treeLeavesPT;
-	#endregion
+    #region Autumn
+    //[Header("Autumn")]
+    private List<Animator> _flowerAnims;
+    public GameObject[] _stemBase;
+    public float _scaleDuration;
+    public Vector3 _scaleTarget;
+    #endregion
 
-	#region Winter
-	//[Header("Winter")]
+    #region Winter
+    //[Header("Winter")]
     private List<ParticleSystem> _flowerSoilTuftPT;
     #endregion
 
@@ -32,20 +31,15 @@ public class EarthElement : BaseElement {
 
 	private void Start()
 	{
-        _petalsPT = new List<ParticleSystem>();
+        //List initialise
         _flowerSoilTuftPT = new List<ParticleSystem>();
+        _flowerAnims = new List<Animator>();
 
-		_campAnim.SetBool("cFireDead", true);
-
-		_flowers = GameObject.FindGameObjectsWithTag("PetalsOpen");
-
-		var _findParticles = FindObjectsOfType<ParticleSystem>();
+        //Particle lists
+        var _findParticles = FindObjectsOfType<ParticleSystem>();
 
 		foreach (ParticleSystem p in _findParticles) {
 			switch (p.tag) {
-			case ("PetalParticle"):
-				_petalsPT.Add (p);
-				break;
             case ("SoilTuftParticle"):
                 _flowerSoilTuftPT.Add(p);
                 break;
@@ -53,7 +47,21 @@ public class EarthElement : BaseElement {
 				break;
 			}
 		}
-	}
+
+        //Object arrays
+        _stemBase = GameObject.FindGameObjectsWithTag("StemBase");
+
+        //Find animators on flowers only
+        Animator _findAnimators;
+
+        foreach (GameObject a in _stemBase)
+        {
+            _findAnimators = a.GetComponentInParent<Animator>();
+
+            if (_findAnimators != null)
+                _flowerAnims.Add(_findAnimators);
+        }
+    }
 
 	//Fixes campfire and causes dirt tufts
     protected override void EnactSummerActions(bool initialAction)
@@ -71,12 +79,10 @@ public class EarthElement : BaseElement {
         }
     }
 
-	//1: Clips off flower petals incl particles 2: Causes tree leaves to fall
+
     protected override void EnactAutumnActions(bool initialAction)
     {
-        ClipFlower();
-
-        foreach (ParticleSystem p in _petalsPT)
+        foreach (ParticleSystem p in _flowerSoilTuftPT)
         {
             p.Play();
         }
@@ -91,13 +97,10 @@ public class EarthElement : BaseElement {
         }
     }
 
-	//Causes dirt tufts at each flower growth position
+	//
     protected override void EnactWinterActions(bool initialAction)
     {
-        foreach (ParticleSystem p in _flowerSoilTuftPT)
-        {
-            p.Play();
-        }
+        
 
         if (initialAction)
 		{
@@ -126,14 +129,14 @@ public class EarthElement : BaseElement {
         }
     }
 
-	void ClipFlower()
-	{
-		foreach(GameObject flower in _flowers)
-		{
-			StartCoroutine(ScaleOverTime(flower, _flowerClipDuration, _flowerGrowthTargetScale));
-		}
-	}
-
+    public void ScaleDoodad(GameObject[] _objectArray, float _scaleDuration, Vector3 _scaleTarget)
+    {
+        foreach (GameObject g in _objectArray)
+        {
+            StartCoroutine(ScaleOverTime(g, _scaleDuration, _scaleTarget));
+        }
+    }
+    
 	private IEnumerator ScaleOverTime(GameObject obj, float duration, Vector3 scale)
 	{
 		Vector3 originalScale = obj.transform.localScale;
@@ -148,4 +151,5 @@ public class EarthElement : BaseElement {
 		}
 		while(currentTime <= duration);
 	}
+    
 }

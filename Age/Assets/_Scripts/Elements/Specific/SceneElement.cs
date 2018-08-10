@@ -59,6 +59,8 @@ public class SceneElement : BaseElement
         _cloudEmissionModule.rateOverTime = wnRate;
 
         StartCoroutine(LightRotate(wnRotate, 5f));
+
+        _Earth.ScaleDoodad(_Earth._stemBase, _Earth._scaleDuration, _Earth._scaleTarget);
     }
 
     protected override void EnactWinterActions(bool initialAction)
