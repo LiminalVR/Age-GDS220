@@ -50,7 +50,7 @@ public class WaterElement : BaseElement {
     protected override void EnactAutumnActions()
     {
         _rainPT.Play();
-        StartCoroutine(WaterRainingEffects(4.5f));
+        StartCoroutine(WaterRainingEffects(_duration));
     }
 
     //Rainbow + sparkle particles
@@ -80,12 +80,13 @@ public class WaterElement : BaseElement {
         StartCoroutine(BloomFlowers(5f));
     }
 
-    private IEnumerator BloomFlowers(float delay)
+    private IEnumerator BloomFlowers(float _delay)
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(_delay);
 
         foreach (Animator a in _elementManager._flowerAnims)
         {
+            Debug.Log("save the wqaorkjasdf");
             a.SetBool("Bloomed", true);
         }
 
@@ -105,7 +106,7 @@ public class WaterElement : BaseElement {
         yield return null;
     }
 
-    private IEnumerator WaterRainingEffects (float duration) 
+    private IEnumerator WaterRainingEffects (float _duration) 
 	{
 
 		float currentTime = 0.0f;
@@ -122,7 +123,7 @@ public class WaterElement : BaseElement {
             currentTime += Time.deltaTime;
 			yield return null;
 		} 
-		while (currentTime <= duration);
+		while (currentTime <= _duration);
 
 		_rainPTMainModule.simulationSpeed = initialSpeed;
 	}

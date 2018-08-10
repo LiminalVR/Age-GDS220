@@ -16,6 +16,7 @@ public class ElementManager : MonoBehaviour {
     [HideInInspector] public GameObject[] _stemBase;
     public ParticleSystem _cloudsPT;
 
+
     [HideInInspector] public List<ParticleSystem> _bloomPT;
     [HideInInspector] public List<ParticleSystem> _dandelionBloomPT;
     [HideInInspector] public List<ParticleSystem> _dandelionBlowPT;
@@ -42,6 +43,7 @@ public class ElementManager : MonoBehaviour {
         _splashPT = new List<ParticleSystem>();
         _stemPopPT = new List<ParticleSystem>();
 
+        _flowerAnims = new List<Animator>();
 
         //Particle lists
         var _findParticles = GameObject.FindObjectsOfType<ParticleSystem>();

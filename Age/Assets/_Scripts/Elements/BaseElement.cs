@@ -168,7 +168,7 @@ public abstract class BaseElement : MonoBehaviour, IElement {
 
         yield return null;
     }
-
+    
     private IEnumerator Fade(Renderer[] renderers, float targetAlpha, float duration)
     {
         Color[] startColours = _colourMaster.GetColours(_renderersToFade);
@@ -205,4 +205,5 @@ public abstract class BaseElement : MonoBehaviour, IElement {
 
         yield return null;
     }
+    
 }
