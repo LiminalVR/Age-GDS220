@@ -42,68 +42,32 @@ public class FireElement : BaseElement {
 	}
 
     //Fade clouds and show sun ray particles
-    protected override void EnactSummerActions(bool initialAction)
+    protected override void EnactSummerActions()
     {
         _sunrayPT.Play();
         StartCoroutine(Shine());
-
-        if (initialAction)
-        {
-			
-		}
-        else
-        {
-           
-        }
     }
 
     //Kindle fire alight
-    protected override void EnactAutumnActions(bool initialAction)
+    protected override void EnactAutumnActions()
     {
         _kindlePT.Play();
         _firePT.Play();
-
-        if (initialAction)
-        {
-			
-        }
-        else
-        {
-			
-        }
     }
 
     //Fire burns brighter
-    protected override void EnactWinterActions(bool initialAction)
+    protected override void EnactWinterActions()
     {
         StartCoroutine(FirePulseEffects(5f, _minRadius, _maxRadius, _minRate, _maxRate));
 
         _smokeTrailPT.Play();
-
-        if (initialAction)
-        {
-            
-        }
-        else
-        {
-            
-        }
     }
 
     //Sun rays, see summer
-    protected override void EnactSpringActions(bool initialAction)
+    protected override void EnactSpringActions()
     {
         _sunrayPT.Play();
         StartCoroutine(Shine());
-
-        if (initialAction)
-        {
-            
-        }
-        else
-        {
-
-        }
     }
 
     private IEnumerator Shine()

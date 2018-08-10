@@ -44,7 +44,7 @@ public class SceneElement : BaseElement
         StartCoroutine(_seasonManager.ChangeSeason());
     }
 
-    protected override void EnactSummerActions(bool initialAction)
+    protected override void EnactSummerActions()
     {
         _cloudEmissionModule.rateOverTime = auRate;
 
@@ -54,7 +54,7 @@ public class SceneElement : BaseElement
         _auTerrainLeavesPT.Play();
     }
 
-    protected override void EnactAutumnActions(bool initialAction)
+    protected override void EnactAutumnActions()
     {
         _cloudEmissionModule.rateOverTime = wnRate;
 
@@ -63,7 +63,7 @@ public class SceneElement : BaseElement
         _Earth.ScaleDoodad(_Earth._stemBase, _Earth._scaleDuration, _Earth._scaleTarget);
     }
 
-    protected override void EnactWinterActions(bool initialAction)
+    protected override void EnactWinterActions()
     {
         _cloudEmissionModule.rateOverTime = spRate;
 
@@ -75,7 +75,7 @@ public class SceneElement : BaseElement
         _spTerrainPollenPT.Play();
     }
 
-    protected override void EnactSpringActions(bool initialAction)
+    protected override void EnactSpringActions()
     {
 		
     }

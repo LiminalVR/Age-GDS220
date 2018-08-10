@@ -17,9 +17,6 @@ public abstract class BaseElement : MonoBehaviour, IElement {
     [SerializeField] private Renderer[] _renderersToFade;
     [SerializeField] private ParticleSystem[] _particlesSystemsToFade;
     [SerializeField] private float _fadeDuration;
-    [SerializeField] private Gradient _particleFadeGrad;
-
-    private List<ParticleSystem.ColorOverLifetimeModule> _colourModules;
 
     protected AudioSource _as;
     protected bool _isActive = false;
@@ -68,15 +65,6 @@ public abstract class BaseElement : MonoBehaviour, IElement {
         _as = GetComponent<AudioSource>();
         _colourMaster = new ColourMaster();
         _startColours = _colourMaster.GetColours(_renderersToFade);
-
-
-        //_colourModules = new List<ParticleSystem.ColorOverLifetimeModule>();
-        //foreach(ParticleSystem partSys in _particlesSystemsToFade)
-        //{
-        //    ParticleSystem.ColorOverLifetimeModule colourModule = partSys.GetComponent<ParticleSystem.ColorOverLifetimeModule>();
-        //    colourModule = partSys.colorOverLifetime;
-        //    _colourModules.Add(colourModule);
-        //}
     }
 
     public void ResetElement()
@@ -99,19 +87,19 @@ public abstract class BaseElement : MonoBehaviour, IElement {
         switch(SeasonManager._currentSeasonType)
         {
             case SeasonManager.SeasonType.SUMMER:
-                EnactSummerActions(!_isActive);
+                EnactSummerActions();
                 break;
 
             case SeasonManager.SeasonType.AUTUMN:
-                EnactAutumnActions(!_isActive);
+                EnactAutumnActions();
                 break;
 
             case SeasonManager.SeasonType.WINTER:
-                EnactWinterActions(!_isActive);
+                EnactWinterActions();
                 break;
 
             case SeasonManager.SeasonType.SPRING:
-                EnactSpringActions(!_isActive);
+                EnactSpringActions();
                 break;
 
             default:
@@ -125,10 +113,10 @@ public abstract class BaseElement : MonoBehaviour, IElement {
 
     #region "Actions"
 
-    protected abstract void EnactSummerActions(bool initialAction);
-    protected abstract void EnactWinterActions(bool initialAction);
-    protected abstract void EnactAutumnActions(bool initialAction);
-    protected abstract void EnactSpringActions(bool initialAction);
+    protected abstract void EnactSummerActions();
+    protected abstract void EnactWinterActions();
+    protected abstract void EnactAutumnActions();
+    protected abstract void EnactSpringActions();
 
     #endregion
 

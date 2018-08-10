@@ -91,39 +91,21 @@ public class WaterElement : BaseElement {
 		}
     }
 
-    protected override void EnactSummerActions(bool initialAction)
+    protected override void EnactSummerActions()
     {
         waterShower1.Play();
         waterShower2.Play();
 
         StartCoroutine(BloomFlowers(5f));
-
-        if (initialAction)
-        {
-           
-        }
-        else
-        {
-			
-        }
     }
 
-    protected override void EnactAutumnActions(bool initialAction)
+    protected override void EnactAutumnActions()
     {
         _rainPT.Play();
         StartCoroutine(WaterRainingEffects(4.5f));
-
-        if (initialAction)
-        {
-			
-        }
-        else
-        {
-			
-		}
     }
 
-    protected override void EnactWinterActions(bool initialAction)
+    protected override void EnactWinterActions()
     {
         _rainbowLauncher1.LaunchRainbow();
         _rainbowLauncher2.LaunchRainbow();
@@ -140,18 +122,9 @@ public class WaterElement : BaseElement {
 
         _rainPT.Stop();
         _skySparklePT.Play();
-
-        if (initialAction)
-        {
-
-        }
-        else
-        {
-            
-        }
     }
 
-    protected override void EnactSpringActions(bool initialAction)
+    protected override void EnactSpringActions()
     {
         foreach (ParticleSystem p in _stemPopPT)
         {
@@ -164,15 +137,6 @@ public class WaterElement : BaseElement {
         }
 
         StartCoroutine(BloomFlowers(1.4f));
-
-        if (initialAction)
-        {
-            
-        }
-        else
-        {
-			
-        }
     }
 
     private IEnumerator BloomFlowers(float delay)

@@ -60,60 +60,33 @@ public class AirElement : BaseElement {
     }
 
     //Air gust particles and terrain grass wind strength
-    protected override void EnactSummerActions(bool initialAction)
+    protected override void EnactSummerActions()
     {
         StartCoroutine(WindGust(5.4f));
-
-        if (initialAction)
-        {
-			
-        }
-        else
-        {
-			
-        }
     }
 
     //Air and leaves particles, tilt rain particles if applicable
-    protected override void EnactAutumnActions(bool initialAction)
+    protected override void EnactAutumnActions()
     {
         StartCoroutine(WindGust(5.4f));
 
         _auLeafTuftPT.Play();
 
         StartCoroutine(AirRainingEffects(5.4f));
-
-        if (initialAction)
-        {
-			
-        }
-        else
-        {
-			
-        }
     }
 
     //Air gust, fire ember, tilt rain / fire if applicable
-    protected override void EnactWinterActions(bool initialAction)
+    protected override void EnactWinterActions()
     {
         StartCoroutine(WindGust(5.4f));
 
         _emberBurstPT.Play();
 
         StartCoroutine(AirRainingEffects(3.8f));
-
-        if (initialAction)
-        {
-			
-        }
-        else
-        {
-		
-        }
     }
 
     //Blows dandelion pollen in wind
-    protected override void EnactSpringActions(bool initialAction)
+    protected override void EnactSpringActions()
     {
         //Blow pollen off dandelions
         foreach (ParticleSystem p in _dandelionStillPT)
@@ -123,15 +96,6 @@ public class AirElement : BaseElement {
         foreach (ParticleSystem p in _dandelionBlowPT)
         {
             p.Play();
-        }
-
-        if (initialAction)
-        {
-            
-        }
-        else
-        {
-            
         }
     }
 

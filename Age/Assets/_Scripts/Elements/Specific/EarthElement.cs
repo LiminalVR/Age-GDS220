@@ -64,69 +64,31 @@ public class EarthElement : BaseElement {
     }
 
 	//Fixes campfire and causes dirt tufts
-    protected override void EnactSummerActions(bool initialAction)
+    protected override void EnactSummerActions()
     {
         _campAnim.SetBool("cFireDead", false);
         _campSoilPT.Play();
-
-        if (initialAction)
-        {
-            
-        }
-        else
-        {
-		
-        }
     }
 
 
-    protected override void EnactAutumnActions(bool initialAction)
+    protected override void EnactAutumnActions()
     {
         foreach (ParticleSystem p in _flowerSoilTuftPT)
         {
             p.Play();
         }
-
-        if (initialAction)
-        {
-			
-        }
-        else
-        {
-
-        }
     }
 
-	//
-    protected override void EnactWinterActions(bool initialAction)
+    protected override void EnactWinterActions()
     {
-        
-
-        if (initialAction)
-		{
-			
-        }
-        else
-        {
-            
-        }
     }
 
 	//Dumps soil on campfire, extinguising it and knocking down
-    protected override void EnactSpringActions(bool initialAction)
+    protected override void EnactSpringActions()
     {
         _soilDumpPT.Play();
         _firePT.Stop();
         _campAnim.SetBool("cFireDead", true);
-
-        if (initialAction)
-        {
-			
-        }
-        else
-        {
-
-        }
     }
 
     public void ScaleDoodad(GameObject[] _objectArray, float _scaleDuration, Vector3 _scaleTarget)
