@@ -16,6 +16,7 @@ public abstract class BaseElement : MonoBehaviour, IElement {
     [Header("Fade")]
     [SerializeField] private Renderer[] _renderersToFade;
     [SerializeField] private ParticleSystem[] _particlesSystemsToFade;
+    [SerializeField] private float _maxAlpha;
     [SerializeField] private float _fadeDuration;
 
     protected AudioSource _as;
@@ -28,33 +29,30 @@ public abstract class BaseElement : MonoBehaviour, IElement {
         get { return _confirmationTime; }
         set
         {
-            if(value == 0)
+            if(_isActive == false)
             {
-                _isConfirming = false;
-
-                if(_confirmingEffect.activeSelf)
                 {
-                    _confirmingEffect.SetActive(false);
-                }
-            }
-            else
-            {
-                _isConfirming = true;
+                    _isConfirming = false;
 
-                if(!_confirmingEffect.activeSelf)
+                    if(_confirmingEffect.activeSelf)
+                        _confirmingEffect.SetActive(false);
+                }
+                else
                 {
-                    _confirmingEffect.SetActive(true);
+                    _isConfirming = true;
+
+                    if(!_confirmingEffect.activeSelf)
+                        _confirmingEffect.SetActive(true);
                 }
-            }
 
-            _confirmationTime = value;
+                _confirmationTime = value;
 
-            if(_confirmationTime > _confirmationDuration)
-            {
-                StartCoroutine(Deactive(_renderersToFade, _fadeDuration));
-                _confirmationTime = 0;
-                _isConfirming = false;
-                Interact();
+                if(_confirmationTime > _confirmationDuration)
+                {
+                    _confirmationTime = 0;
+                    _isConfirming = false;
+                    Interact();
+                }
             }
         }
     }
@@ -67,6 +65,11 @@ public abstract class BaseElement : MonoBehaviour, IElement {
         _startColours = _colourMaster.GetColours(_renderersToFade);
     }
 
+    public void Init()
+    {
+        StartCoroutine(Fade(_renderersToFade, _maxAlpha, _fadeDuration));
+    }
+
     public void ResetElement()
     {
         // Temp.
@@ -76,10 +79,21 @@ public abstract class BaseElement : MonoBehaviour, IElement {
         {
             _isActive = false;
             _isConfirming = false;
-            _colourMaster.ChangeColours(_renderersToFade, _startColours);
+
+            ResetColours();
 
             gameObject.SetActive(false);
         }
+    }
+
+    private void ResetColours()
+    {
+        for(int index = 0; index < _startColours.Length; index++)
+        {
+            _startColours[index] = _colourMaster.ChangeAlpha(_startColours[index], 0.0f);
+        }
+
+        _colourMaster.ChangeColours(_renderersToFade, _startColours);
     }
 
     public virtual void Interact()
@@ -109,6 +123,8 @@ public abstract class BaseElement : MonoBehaviour, IElement {
 
         StartCoroutine(AnimateEffect());
         _isActive = true;
+
+        StartCoroutine(DeactivateElement());
     }
 
     #region "Actions"
@@ -140,8 +156,18 @@ public abstract class BaseElement : MonoBehaviour, IElement {
         yield return null;
     }
 
-    
-    private IEnumerator Deactive(Renderer[] renderers, float duration)
+    private IEnumerator DeactivateElement()
+    {
+        StartCoroutine(Fade(_renderersToFade, 0.0f, _fadeDuration));
+
+        yield return new WaitForSeconds(_fadeDuration);
+
+        gameObject.SetActive(false);
+
+        yield return null;
+    }
+
+    private IEnumerator Fade(Renderer[] renderers, float targetAlpha, float duration)
     {
         Color[] startColours = _colourMaster.GetColours(_renderersToFade);
 
@@ -155,7 +181,7 @@ public abstract class BaseElement : MonoBehaviour, IElement {
             {
                 Material mat = renderers[index].material;
                 Color startColour = startColours[index];
-                Color targetColour = _colourMaster.ChangeAlpha(mat.color, 0.0f);
+                Color targetColour = _colourMaster.ChangeAlpha(mat.color, targetAlpha);
 
                 mat.color = Color.Lerp(startColour, targetColour, step);
                 renderers[index].material = mat;
@@ -164,17 +190,16 @@ public abstract class BaseElement : MonoBehaviour, IElement {
             for(int index = 0; index < _particlesSystemsToFade.Length; index++)
             {
                 Color startColour = _particlesSystemsToFade[index].main.startColor.color;
+                Color targetColour = _colourMaster.ChangeAlpha(startColour, targetAlpha);
                 ParticleSystem.ColorOverLifetimeModule colourModule = _particlesSystemsToFade[index].colorOverLifetime;
 
 
-                colourModule.color = Color.Lerp(startColour, Color.clear, step);
+                colourModule.color = Color.Lerp(startColour, targetColour, step);
 
             }
 
             yield return null;
         }
-
-        gameObject.SetActive(false);
 
         yield return null;
     }

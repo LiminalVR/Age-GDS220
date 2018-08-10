@@ -26,6 +26,7 @@ public class ElementManager : MonoBehaviour {
     public void SpawnElement()
     {
         _selectedElement.gameObject.SetActive(true);
+        _selectedElement.Init();
         _nextElementIndex++;
     }
 
