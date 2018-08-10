@@ -81,6 +81,7 @@ public class EarthElement : BaseElement {
 
     protected override void EnactWinterActions()
     {
+
     }
 
 	//Dumps soil on campfire, extinguising it and knocking down

@@ -5289,7 +5289,7 @@ Prefab:
     - target: {fileID: 198421180540360914, guid: ce6ae4c5d19fff645b2c1deba09b449b,
         type: 2}
       propertyPath: randomSeed
-      value: 1508859937
+      value: -899312946
       objectReference: {fileID: 0}
     - target: {fileID: 198421180540360914, guid: ce6ae4c5d19fff645b2c1deba09b449b,
         type: 2}
@@ -5305,6 +5305,56 @@ Prefab:
         type: 2}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 199006803184395786, guid: ce6ae4c5d19fff645b2c1deba09b449b,
+        type: 2}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199006803184395786, guid: ce6ae4c5d19fff645b2c1deba09b449b,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 199006803184395786, guid: ce6ae4c5d19fff645b2c1deba09b449b,
+        type: 2}
+      propertyPath: m_RenderAlignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 199006803184395786, guid: ce6ae4c5d19fff645b2c1deba09b449b,
+        type: 2}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198421180540360914, guid: ce6ae4c5d19fff645b2c1deba09b449b,
+        type: 2}
+      propertyPath: ShapeModule.m_Rotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198421180540360914, guid: ce6ae4c5d19fff645b2c1deba09b449b,
+        type: 2}
+      propertyPath: ShapeModule.m_Rotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198421180540360914, guid: ce6ae4c5d19fff645b2c1deba09b449b,
+        type: 2}
+      propertyPath: ShapeModule.m_Rotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198421180540360914, guid: ce6ae4c5d19fff645b2c1deba09b449b,
+        type: 2}
+      propertyPath: InitialModule.startRotationX.scalar
+      value: 1.5707963
+      objectReference: {fileID: 0}
+    - target: {fileID: 198421180540360914, guid: ce6ae4c5d19fff645b2c1deba09b449b,
+        type: 2}
+      propertyPath: InitialModule.startRotation.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198421180540360914, guid: ce6ae4c5d19fff645b2c1deba09b449b,
+        type: 2}
+      propertyPath: InitialModule.startRotationY.scalar
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce6ae4c5d19fff645b2c1deba09b449b, type: 2}
@@ -5870,6 +5920,11 @@ Prefab:
         type: 2}
       propertyPath: TrailModule.minVertexDistance
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198070849772644028, guid: 37fb0a8ed3bff9742a8e19a2419795f5,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
       objectReference: {fileID: 0}
     - target: {fileID: 198070849772644028, guid: 37fb0a8ed3bff9742a8e19a2419795f5,
         type: 2}
@@ -26061,6 +26116,11 @@ Prefab:
       propertyPath: _particlesSystemsToFade.Array.data[1]
       value: 
       objectReference: {fileID: 863668554}
+    - target: {fileID: 198372335458646502, guid: 0b2fa53dc0c08ab40a78f08e63c1e015,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b2fa53dc0c08ab40a78f08e63c1e015, type: 2}
   m_IsPrefabParent: 0
