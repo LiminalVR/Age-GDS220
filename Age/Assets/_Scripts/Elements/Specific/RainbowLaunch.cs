@@ -16,7 +16,7 @@ public class RainbowLaunch : MonoBehaviour
     }
     public void LaunchRainbow()
     {
-        StartCoroutine(SimulateProjectile(10f));
+        StartCoroutine(SimulateProjectile(30f));
     }
 
     IEnumerator SimulateProjectile(float duration)

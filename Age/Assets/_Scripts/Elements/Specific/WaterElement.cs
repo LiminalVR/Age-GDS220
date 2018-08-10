@@ -6,18 +6,12 @@ public class WaterElement : BaseElement {
 
 	#region Summer
 	[Header("Summer")]
-	[SerializeField] private float _flowerGrowDuration;
-	[SerializeField] private Vector3 _flowerGrowthTargetScale;
-    [SerializeField] private float _flowerShrinkDuration;
-    [SerializeField] private Vector3 _flowerShrinkTargetScale;
-    private GameObject[] _flowersOpen;
-	private GameObject[] _flowersClose;
-    private GameObject[] _stemBase;
     [SerializeField] private float _wiggleDuration;
     [SerializeField] private float _wiggleAngle;
-    private List<ParticleSystem> _bloomPT = new List<ParticleSystem>();
-	private List<ParticleSystem> _splashPT = new List<ParticleSystem>();
+    private List<ParticleSystem> _bloomPT;
+    private List<ParticleSystem> _splashPT;
     [SerializeField] private ParticleSystem waterShower1, waterShower2;
+    [SerializeField] private Animator[] _flowerAnims;
     #endregion
 
     #region Autumn
@@ -29,19 +23,18 @@ public class WaterElement : BaseElement {
 
     #region Winter
     [Header("Winter")]
-	private GameObject[] _dandelionStem;
-	[SerializeField] private float _dandelionGrowDuration;
-	[SerializeField] private Vector3 _dandelionGrowthTargetScale;
     [SerializeField] RainbowLaunch _rainbowLauncher1, _rainbowLauncher2;
-    private List<ParticleSystem> _dandBloomPT = new List<ParticleSystem>();
+    private List<ParticleSystem> _dandBloomPT;
+    private List<ParticleSystem> _dandelionStillPT;
     #endregion
 
     #region Spring
     [Header("Spring")]
+    private GameObject[] _flowerPetals;
+    private GameObject[] _stemBase;
     [SerializeField] private ParticleSystem _skySparklePT;
     [SerializeField] private Vector3 _flowerStemGrowthTargetScale;
-    [HideInInspector] public GameObject[] _flowerStem;
-    private List<ParticleSystem> _stemPopPT = new List<ParticleSystem>();
+    private List<ParticleSystem> _stemPopPT;
     #endregion
 
     private void Start()
@@ -50,11 +43,10 @@ public class WaterElement : BaseElement {
 		_rainPTMainModule = _rainPT.main;
 
 		//Object arrays
-        _flowersOpen = GameObject.FindGameObjectsWithTag("PetalsOpen");
-		_flowersClose = GameObject.FindGameObjectsWithTag("PetalsClosed");
+        _flowerPetals = GameObject.FindGameObjectsWithTag("Petals");
         _stemBase = GameObject.FindGameObjectsWithTag("StemBase");
-		_dandelionStem = GameObject.FindGameObjectsWithTag("DandelionStem");
-		_flowerStem = GameObject.FindGameObjectsWithTag("FlowerStem");
+        
+        
 
 		//Particle lists
 		var _findParticles = GameObject.FindObjectsOfType<ParticleSystem> ();
@@ -66,6 +58,9 @@ public class WaterElement : BaseElement {
 				break;
             case ("DandBloomParticle"):
                 _dandBloomPT.Add(p);
+                break;
+            case ("DandelionStillParticle"):
+                _dandelionStillPT.Add(p);
                 break;
             case ("SplashParticle"):
 				_splashPT.Add (p);
@@ -95,13 +90,16 @@ public class WaterElement : BaseElement {
 
     protected override void EnactAutumnActions(bool initialAction)
     {
-        if(initialAction)
+        _rainPT.Play();
+        StartCoroutine(WaterRainingEffects(4.5f));
+
+        if (initialAction)
         {
-			_rainPT.Play ();
+			
         }
         else
         {
-			StartCoroutine (WaterRainingEffects (4.5f));
+			
 		}
     }
 
@@ -110,7 +108,15 @@ public class WaterElement : BaseElement {
         _rainbowLauncher1.LaunchRainbow();
         _rainbowLauncher2.LaunchRainbow();
 
-        GrowStem(_dandelionStem, _dandelionGrowDuration, _dandelionGrowthTargetScale, _dandBloomPT);
+        foreach (ParticleSystem p in _dandBloomPT)
+        {
+            p.Play();
+        }
+
+        foreach (ParticleSystem p in _dandelionStillPT)
+        {
+            p.Play();
+        }
 
         _rainPT.Stop();
         _skySparklePT.Play();
@@ -127,28 +133,25 @@ public class WaterElement : BaseElement {
 
     protected override void EnactSpringActions(bool initialAction)
     {
-        if(initialAction)
+        foreach (ParticleSystem p in _stemPopPT)
         {
-            foreach (ParticleSystem p in _stemPopPT)
-            {
-                p.Play();
-            }
+            p.Play();
+        }
 
-            GrowStem (_flowerStem, _flowerGrowDuration, _flowerStemGrowthTargetScale, _bloomPT);
-
-            foreach (GameObject flower in _flowersClose)
+        foreach(ParticleSystem p in _splashPT)
             {
-                StartCoroutine(ScaleOverTime(flower, _flowerGrowDuration, _flowerGrowthTargetScale, _splashPT));
-            }
+            p.Play();
+        }
+
+        //ANIMATE HERE
+
+        if (initialAction)
+        {
+            
         }
         else
         {
-			foreach (ParticleSystem p in _splashPT)
-            {
-				p.Play ();
-			}
-
-			OpenFlower();
+			
         }
     }
 
@@ -159,7 +162,7 @@ public class WaterElement : BaseElement {
 
         yield return new WaitForSeconds(5f);
 
-        OpenFlower();
+        //ANIMATE HERE
 
         yield return new WaitForSeconds(4.5f);
 
@@ -177,19 +180,7 @@ public class WaterElement : BaseElement {
         yield return null;
     }
 
-    private void OpenFlower()
-    {
-        foreach(GameObject flower in _flowersOpen)
-        {
-            StartCoroutine(ScaleOverTime(flower, _flowerGrowDuration, _flowerGrowthTargetScale, _bloomPT));
-        }
-
-		foreach(GameObject flower in _flowersClose)
-		{
-			StartCoroutine(ScaleOverTime(flower, _flowerShrinkDuration, _flowerShrinkTargetScale, _bloomPT));
-		}
-    }
-
+    /*
     private void GrowStem(GameObject[] _objectArray, float _growDuration, Vector3 _growthScale, List<ParticleSystem> _ptList)
 	{
 		foreach(GameObject stem in _objectArray)
@@ -197,6 +188,7 @@ public class WaterElement : BaseElement {
 			StartCoroutine(ScaleOverTime(stem, _growDuration, _growthScale, _ptList));
 		}
 	}
+    */
 
     private void Wiggle(GameObject[] _objectArray)
     {
@@ -206,6 +198,7 @@ public class WaterElement : BaseElement {
         }
     }
 
+    /*
     private IEnumerator ScaleOverTime(GameObject obj, float duration, Vector3 scale, List<ParticleSystem> _ptList)
     {
         Vector3 originalScale = obj.transform.localScale;
@@ -224,6 +217,7 @@ public class WaterElement : BaseElement {
 			p.Play ();
 		}
     }
+    */
 
     private IEnumerator RotateTo (GameObject g, float time)
     {
@@ -250,7 +244,7 @@ public class WaterElement : BaseElement {
 
         float initialSpeed = _rainPTMainModule.simulationSpeed;
 
-        _rainPT.Emit(100);
+        _rainPT.Emit(50);
 
        yield return new WaitForSeconds(1f);
 

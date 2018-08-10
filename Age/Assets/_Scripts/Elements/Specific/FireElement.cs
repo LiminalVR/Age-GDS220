@@ -76,7 +76,7 @@ public class FireElement : BaseElement {
     //Fire burns brighter
     protected override void EnactWinterActions(bool initialAction)
     {
-        StartCoroutine(FirePulseEffects(4f, _minRadius, _maxRadius, _minRate, _maxRate));
+        StartCoroutine(FirePulseEffects(5f, _minRadius, _maxRadius, _minRate, _maxRate));
 
         _smokeTrailPT.Play();
 

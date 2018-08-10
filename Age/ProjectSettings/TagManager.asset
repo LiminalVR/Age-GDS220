@@ -5,20 +5,17 @@ TagManager:
   serializedVersion: 2
   tags:
   - GameGod
-  - Tree
-  - PetalsClosed
-  - PetalsOpen
   - PetalParticle
   - BloomParticle
-  - DandelionStem
   - SplashParticle
   - SoilTuftParticle
-  - FlowerStem
   - StemPopParticle
   - StemBase
   - DandelionStillParticle
   - DandelionBlowParticle
   - DandBloomParticle
+  - Petals
+  - Tree
   layers:
   - Default
   - TransparentFX

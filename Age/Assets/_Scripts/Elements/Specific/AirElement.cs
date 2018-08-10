@@ -29,7 +29,7 @@ public class AirElement : BaseElement {
 
     #region Spring
     //[Header("Spring")]
-    [HideInInspector] public List<ParticleSystem> _dandelionStillPT = new List<ParticleSystem>();
+    private List<ParticleSystem> _dandelionStillPT = new List<ParticleSystem>();
     private List<ParticleSystem> _dandelionBlowPT = new List<ParticleSystem>();
     #endregion
 

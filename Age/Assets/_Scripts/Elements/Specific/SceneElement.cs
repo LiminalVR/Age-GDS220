@@ -59,8 +59,6 @@ public class SceneElement : BaseElement
         _cloudEmissionModule.rateOverTime = wnRate;
 
         StartCoroutine(LightRotate(wnRotate, 5f));
-
-        GrowStem(_Water._flowerStem, _shrinkDuration, _shrinkTargetScale);
     }
 
     protected override void EnactWinterActions(bool initialAction)
@@ -68,11 +66,6 @@ public class SceneElement : BaseElement
         _cloudEmissionModule.rateOverTime = spRate;
 
         StartCoroutine(LightRotate(spRotate, 5f));
-
-        foreach (ParticleSystem p in _Air._dandelionStillPT)
-        {
-            p.Play();
-        }
 
         _auTreeLeavesPT.Stop();
         _auTerrainLeavesPT.Stop();
