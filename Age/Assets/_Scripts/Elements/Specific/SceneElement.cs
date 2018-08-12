@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Liminal.SDK.Core;
 
 public class SceneElement : BaseElement
 {
@@ -75,7 +76,7 @@ public class SceneElement : BaseElement
 
     protected override void EnactSpringActions()
     {
-		
+        ExperienceApp.End();
     }
 
     private IEnumerator LightRotate (Vector3 rotateVector, float time)
