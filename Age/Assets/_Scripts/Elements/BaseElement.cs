@@ -31,9 +31,8 @@ public abstract class BaseElement : MonoBehaviour, IElement {
         get { return _confirmationTime; }
         set
         {
-            if(_isActive == false)
+            if(_isActive != false)
             {
-                
                 _isConfirming = false;
 
                 if(_confirmingEffect.activeSelf)
@@ -47,9 +46,12 @@ public abstract class BaseElement : MonoBehaviour, IElement {
                     _confirmingEffect.SetActive(true);
             }
 
+            if(value == 0)
+                _confirmingEffect.SetActive(false);
+
             _confirmationTime = value;
 
-            if(_confirmationTime > _confirmationDuration)
+            if(_confirmationTime > _confirmationDuration && _isConfirming)
             {
                     _confirmationTime = 0;
                     _isConfirming = false;
