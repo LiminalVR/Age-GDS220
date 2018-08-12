@@ -90,6 +90,8 @@ public class WaterElement : BaseElement {
             a.SetBool("Bloomed", true);
         }
 
+        yield return new WaitForSeconds(2.4f);
+
         _as.PlayOneShot(_bloomAC);
         
         _elementManager.Wiggle(_elementManager._stemBase, _duration, _angle);
