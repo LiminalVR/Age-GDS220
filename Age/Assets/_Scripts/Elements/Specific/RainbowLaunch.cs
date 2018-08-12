@@ -21,8 +21,6 @@ public class RainbowLaunch : MonoBehaviour
 
     IEnumerator SimulateProjectile(float duration)
     {
-        yield return new WaitForSeconds(2f);
-
         _rbProjectile.position = _rbTransform.position + new Vector3(0f, 0f, 0f);
 
         float _target_Distance = Vector3.Distance(_rbProjectile.position, _rbTarget.position);
@@ -38,7 +36,7 @@ public class RainbowLaunch : MonoBehaviour
 
         while (elapse_time < duration)
         {
-            _rbProjectile.Translate(0f, (yVel - (_rbGravity * elapse_time)) * Time.deltaTime, xVel * Time.deltaTime);
+            _rbProjectile.Translate(0f, (yVel - (_rbGravity * elapse_time)) * Time.deltaTime /3.6f, xVel * Time.deltaTime /3.6f);
 
             elapse_time += Time.deltaTime;
 
