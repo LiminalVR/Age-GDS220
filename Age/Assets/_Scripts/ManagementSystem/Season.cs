@@ -38,7 +38,7 @@ public class Season {
 		_skyMat = RenderSettings.skybox;
 
         // Activates appropriate terrain.
-        _seasonTerrain.SetActive(true);
+        //_seasonTerrain.SetActive(true);
 
         // Activates other necessary GameObjects. 
         foreach(GameObject go in _otherActiveObjects)
@@ -80,6 +80,6 @@ public class Season {
 
     public void EndSeason()
     {
-        _seasonTerrain.SetActive(false);
+        //_seasonTerrain.SetActive(false);
     }
 }

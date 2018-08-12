@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Liminal.Core.Fader;
 
 public class SeasonManager : MonoBehaviour {
 
@@ -43,6 +44,11 @@ public class SeasonManager : MonoBehaviour {
         SetupSeasons();
     }
 
+    private void Update()
+    {
+        print(Time.timeScale);
+    }
+
     // Finds all labelled trees in scene and saves a reference to the specified material.
     private void SetupTrees()
     {
@@ -63,8 +69,9 @@ public class SeasonManager : MonoBehaviour {
 
     private void SetupSeasons()
     {
-        // Selects correct current season and implements its specific season actions.
 
+        print("Seting up Seasons.");
+        // Selects correct current season and implements its specific season actions.
         _currentSeason = _seasons[_currentSeasonNum];
         
         switch (_currentSeasonNum)
@@ -93,8 +100,13 @@ public class SeasonManager : MonoBehaviour {
         // Applying global aesthetic changes.
         ChangeTrees();
 
+        print("Made it to fade");
+
         // Fade in.
-        StartCoroutine(ManipulateFadeMask(_fadeInDuration, Color.clear));
+        var fader = ScreenFader.Instance;
+        fader.FadeTo(Color.clear, _fadeOutDuration);
+
+        print("Fading");
     }
 
     // Simple lerp to fade in or out the mask.
@@ -118,10 +130,6 @@ public class SeasonManager : MonoBehaviour {
     // Changes the season.
     public IEnumerator ChangeSeason()
     {
-        // Fades out scene.
-        StartCoroutine(ManipulateFadeMask(_fadeOutDuration, _currentSeason._transitionColour));
-
-        yield return new WaitForSeconds(_fadeOutDuration);
 
         _currentSeason.EndSeason();
 
