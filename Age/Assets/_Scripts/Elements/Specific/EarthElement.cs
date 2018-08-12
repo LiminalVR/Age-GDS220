@@ -22,6 +22,7 @@ public class EarthElement : BaseElement {
     [Header("Spring")]
 	[SerializeField] private ParticleSystem _soilDumpPT;
     [SerializeField] private ParticleSystem _firePT;
+    [SerializeField] private AudioClip _soilDumpAC;
 	#endregion
 
 	private void Start()
@@ -66,6 +67,7 @@ public class EarthElement : BaseElement {
 	//Dumps soil on campfire, extinguising it and knocking down
     protected override void EnactSpringActions()
     {
+        _as.PlayOneShot(_soilDumpAC);
         _soilDumpPT.Play();
         _firePT.Stop();
         _campAnim.SetBool("cFireDead", true);

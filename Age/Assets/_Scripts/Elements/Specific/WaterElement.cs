@@ -9,6 +9,7 @@ public class WaterElement : BaseElement {
     [SerializeField] private float _duration;
     [SerializeField] private float _angle;
     [SerializeField] private ParticleSystem waterShower1, waterShower2;
+    [SerializeField] AudioClip _bloomAC;
     #endregion
 
     #region Autumn
@@ -71,7 +72,7 @@ public class WaterElement : BaseElement {
         }
 
         foreach(ParticleSystem p in _elementManager._splashPT)
-            {
+        {
             p.Play();
         }
 
@@ -89,8 +90,8 @@ public class WaterElement : BaseElement {
             a.SetBool("Bloomed", true);
         }
 
-        yield return new WaitForSeconds(4.5f);
-
+        _as.PlayOneShot(_bloomAC);
+        
         _elementManager.Wiggle(_elementManager._stemBase, _duration, _angle);
 
         foreach (ParticleSystem p in _elementManager._splashPT)

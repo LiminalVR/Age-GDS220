@@ -46,7 +46,7 @@ public class SeasonManager : MonoBehaviour {
 
     private void Update()
     {
-        print(Time.timeScale);
+        //print(Time.timeScale);
     }
 
     // Finds all labelled trees in scene and saves a reference to the specified material.
@@ -70,7 +70,7 @@ public class SeasonManager : MonoBehaviour {
     private void SetupSeasons()
     {
 
-        print("Seting up Seasons.");
+        print("Setting up Seasons.");
         // Selects correct current season and implements its specific season actions.
         _currentSeason = _seasons[_currentSeasonNum];
         
