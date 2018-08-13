@@ -42,11 +42,22 @@ public class SeasonManager : MonoBehaviour {
         SetupTrees();
 
         SetupSeasons();
+
+        StartCoroutine(Test());
     }
 
     private void Update()
     {
         //print(Time.timeScale);
+    }
+
+    public IEnumerator Test()
+    {
+        Debug.Log("Logging Test in 5");
+
+        yield return new WaitForSeconds(5.0f);
+
+        Debug.Log("Test");
     }
 
     // Finds all labelled trees in scene and saves a reference to the specified material.
@@ -104,7 +115,7 @@ public class SeasonManager : MonoBehaviour {
 
         // Fade in.
         var fader = ScreenFader.Instance;
-        fader.FadeTo(Color.clear, _fadeOutDuration);
+        fader.FadeTo(Color.clear, _fadeInDuration);
 
         print("Fading");
     }
@@ -127,9 +138,22 @@ public class SeasonManager : MonoBehaviour {
         yield return null;
     }
 
-    // Changes the season.
-    public IEnumerator ChangeSeason()
+    public void BeginSeasonChange()
     {
+        StartCoroutine(ChangeSeason());
+    }
+
+    // Changes the season.
+    private IEnumerator ChangeSeason()
+    {
+        print("Pre Season Test");
+
+        var fader = ScreenFader.Instance;
+        fader.FadeTo(_currentSeason._transitionColour, _fadeOutDuration);
+
+        yield return new WaitForSeconds(_fadeOutDuration);
+
+        print("Test");
 
         _currentSeason.EndSeason();
 

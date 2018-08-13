@@ -37,7 +37,7 @@ public class SceneElement : BaseElement
     {
         base.Interact();
 
-        StartCoroutine(_seasonManager.ChangeSeason());
+        _seasonManager.BeginSeasonChange();
     }
 
     //Cloud rate, light rotate, begin misc leaves particles

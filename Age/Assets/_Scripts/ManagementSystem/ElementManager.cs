@@ -24,9 +24,14 @@ public class ElementManager : MonoBehaviour {
 
     [HideInInspector] public List<Animator> _flowerAnims;
 
-    private void Start()
+    private void Awake()
     {
         DelegatesAndEvents._onElementAcivated += ElementActivated;
+    }
+
+    private void Start()
+    {
+
 
         #region Global variables
         _stemBase = GameObject.FindGameObjectsWithTag("StemBase");
@@ -180,20 +185,16 @@ public class ElementManager : MonoBehaviour {
 
     private IEnumerator RotateTo(GameObject g, float _duration, float _angle)
     {
+        float currentTime = 0.0f;
+
+        do
         {
-            float currentTime = 0.0f;
+            g.transform.localEulerAngles = new Vector3(g.transform.rotation.eulerAngles.x, g.transform.rotation.eulerAngles.y, Mathf.PingPong(currentTime * 5f, _angle));
 
-            {
-                do
-                {
-                    g.transform.localEulerAngles = new Vector3(g.transform.rotation.eulerAngles.x, g.transform.rotation.eulerAngles.y, Mathf.PingPong(currentTime * 5f, _angle));
-
-                    currentTime += Time.deltaTime;
-                    yield return null;
-                }
-                while (currentTime <= _duration);
-            }
+            currentTime += Time.deltaTime;
+            yield return null;
         }
+        while (currentTime <= _duration);
     }
     #endregion
 }
