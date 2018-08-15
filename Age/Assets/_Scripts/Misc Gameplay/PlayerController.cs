@@ -78,9 +78,6 @@ public class PlayerController : MonoBehaviour {
         }
         else
         {
-            _controller.transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.Active);
-
-
             if(Input.GetButtonDown(VRButton.One) || OVRInput.GetDown(OVRInput.Button.One) || Input.GetButtonDown(VRButton.Trigger) || OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
             {
                 Ray ray = new Ray(transform.position, _controller.transform.forward);
