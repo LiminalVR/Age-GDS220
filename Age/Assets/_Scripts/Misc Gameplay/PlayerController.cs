@@ -6,6 +6,7 @@ using Liminal.SDK.VR.Input;
 
 public class PlayerController : MonoBehaviour {
 
+    [SerializeField] private GameObject _controller;
     [SerializeField] private LayerMask _interactionLayers;
     [SerializeField] private string _buttonName;
     [SerializeField] private float _maxDis;
@@ -21,7 +22,7 @@ public class PlayerController : MonoBehaviour {
 
     private void Start()
     {
-        _lineRenderer = GetComponent<LineRenderer>();
+        _lineRenderer = _controller.GetComponent<LineRenderer>();
         _lineRenderer.useWorldSpace = false;
         _lineRenderer.positionCount = 2;
         
@@ -77,9 +78,12 @@ public class PlayerController : MonoBehaviour {
         }
         else
         {
+            _controller.transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.Active);
+
+
             if(Input.GetButtonDown(VRButton.One) || OVRInput.GetDown(OVRInput.Button.One) || Input.GetButtonDown(VRButton.Trigger) || OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
             {
-                Ray ray = new Ray(transform.position, transform.forward);
+                Ray ray = new Ray(transform.position, _controller.transform.forward);
                 RaycastHit raycastHit;
 
                 if(Physics.Raycast(ray, out raycastHit, _maxDis, _interactionLayers))
@@ -90,7 +94,7 @@ public class PlayerController : MonoBehaviour {
 
             if(Input.GetButton(VRButton.One) || OVRInput.Get(OVRInput.Button.One) || Input.GetButton(VRButton.Trigger) || OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
             {
-                Ray ray = new Ray(transform.position, transform.forward);
+                Ray ray = new Ray(transform.position, _controller.transform.forward);
                 RaycastHit raycastHit;
 
                 
