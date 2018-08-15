@@ -58,6 +58,9 @@ public class SceneElement : BaseElement
 
         StartCoroutine(LightRotate(wnRotate, 5f));
 
+        _auTreeLeavesPT.Stop();
+        _auTerrainLeavesPT.Stop();
+
         _elementManager.ScaleDoodad(_elementManager._stemBase, _scaleDuration, _scaleTarget);
     }
 
@@ -67,9 +70,6 @@ public class SceneElement : BaseElement
         _cloudEmissionModule.rateOverTime = spRate;
 
         StartCoroutine(LightRotate(spRotate, 5f));
-
-        _auTreeLeavesPT.Stop();
-        _auTerrainLeavesPT.Stop();
 
         _spTerrainPollenPT.Play();
     }

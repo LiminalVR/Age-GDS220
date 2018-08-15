@@ -13,6 +13,7 @@ public class ElementManager : MonoBehaviour {
     [Header("Global Variables")]
     [HideInInspector] public GameObject[] _stemBase;
     public ParticleSystem _cloudsPT;
+    public ParticleSystem _rainPT;
 
     [HideInInspector] public List<ParticleSystem> _bloomPT;
     [HideInInspector] public List<ParticleSystem> _dandelionBloomPT;

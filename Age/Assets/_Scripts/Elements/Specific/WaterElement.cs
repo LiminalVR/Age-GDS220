@@ -14,7 +14,6 @@ public class WaterElement : BaseElement {
 
     #region Autumn
     [Header("Autumn")]
-    [SerializeField] private ParticleSystem _rainPT;
 	private ParticleSystem.MainModule _rainPTMainModule;
     private ParticleSystem.EmissionModule _rainPTEmissionModule;
     #endregion
@@ -35,7 +34,7 @@ public class WaterElement : BaseElement {
     private void Start()
     {
         //Rain particle declaration (for modifying its speed)
-        _rainPTMainModule = _rainPT.main;
+        _rainPTMainModule = _elementManager._rainPT.main;
     }
 
     //Water flowers and bloom them
@@ -50,7 +49,7 @@ public class WaterElement : BaseElement {
     //Begin rain + slowmo effect
     protected override void EnactAutumnActions()
     {
-        _rainPT.Play();
+        _elementManager._rainPT.Play();
         StartCoroutine(WaterRainingEffects(_duration));
     }
 
@@ -115,7 +114,7 @@ public class WaterElement : BaseElement {
 
         float initialSpeed = _rainPTMainModule.simulationSpeed;
 
-        _rainPT.Emit(50);
+        _elementManager._rainPT.Emit(50);
 
        yield return new WaitForSeconds(1f);
 
