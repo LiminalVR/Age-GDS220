@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour {
         {
             if(Input.GetButtonDown(VRButton.One) || OVRInput.GetDown(OVRInput.Button.One) || Input.GetButtonDown(VRButton.Trigger) || OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
             {
-                Ray ray = new Ray(transform.position, _controller.transform.forward);
+                Ray ray = new Ray(_controller.transform.position, _controller.transform.forward);
                 RaycastHit raycastHit;
 
                 if(Physics.Raycast(ray, out raycastHit, _maxDis, _interactionLayers))
@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour {
 
             if(Input.GetButton(VRButton.One) || OVRInput.Get(OVRInput.Button.One) || Input.GetButton(VRButton.Trigger) || OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
             {
-                Ray ray = new Ray(transform.position, _controller.transform.forward);
+                Ray ray = new Ray(_controller.transform.position, _controller.transform.forward);
                 RaycastHit raycastHit;
 
                 
