@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private string _buttonName;
     [SerializeField] private float _maxDis;
     [SerializeField] private float _mouseSensitivity = 15.0f;
-    private IElement _selectedElement;
+    private BaseElement _selectedElement;
 
     [SerializeField] private bool _isVR;
 
@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour {
 
                 if(Physics.Raycast(ray, out raycastHit, _maxDis, _interactionLayers))
                 {
-                    _selectedElement = raycastHit.collider.gameObject.GetComponent<IElement>();
+                    _selectedElement = raycastHit.collider.gameObject.GetComponent<BaseElement>();
                 }
             }
 
@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour {
                 if(_selectedElement != null)
                 {
                     _selectedElement.ConfirmationTime += Time.deltaTime;
+                    print(_selectedElement.ConfirmationTime);
                 }
             }
 
@@ -83,7 +84,7 @@ public class PlayerController : MonoBehaviour {
 
                 if(Physics.Raycast(ray, out raycastHit, _maxDis, _interactionLayers))
                 {
-                    _selectedElement = raycastHit.collider.gameObject.GetComponent<IElement>();
+                    _selectedElement = raycastHit.collider.gameObject.GetComponent<BaseElement>();
                 }
             }
 

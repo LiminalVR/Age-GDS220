@@ -31,6 +31,8 @@ public abstract class BaseElement : MonoBehaviour, IElement {
         get { return _confirmationTime; }
         set
         {
+            Debug.Log(_isActive);
+
             if(_isActive != false)
             {
                 _isConfirming = false;
@@ -79,15 +81,12 @@ public abstract class BaseElement : MonoBehaviour, IElement {
         // Temp.
         Setup();
 
-        if(gameObject.activeSelf)
-        {
-            _isActive = false;
-            _isConfirming = false;
+        _isActive = false;
+        _isConfirming = false;
 
-            ResetColours();
+        ResetColours();
 
-            gameObject.SetActive(false);
-        }
+        gameObject.SetActive(false);
     }
 
     private void ResetColours()
