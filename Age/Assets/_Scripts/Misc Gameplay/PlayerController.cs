@@ -80,7 +80,10 @@ public class PlayerController : MonoBehaviour {
         {
             if(Input.GetButtonDown(VRButton.One) || OVRInput.GetDown(OVRInput.Button.One) || Input.GetButtonDown(VRButton.Trigger) || OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
             {
-                _selectedElement = raycastHit.collider.gameObject.GetComponent<BaseElement>();
+                GameObject go = raycastHit.collider != null ? raycastHit.collider.gameObject : null;
+
+                if(go != null)
+                    _selectedElement = go.GetComponent<BaseElement>() ?? null;
             }
 
             if(Input.GetButton(VRButton.One) || OVRInput.Get(OVRInput.Button.One) || Input.GetButton(VRButton.Trigger) || OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
