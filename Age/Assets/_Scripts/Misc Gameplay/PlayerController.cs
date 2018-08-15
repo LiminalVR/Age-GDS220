@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour {
         }
         else
         {
-            if(Input.GetButtonDown(VRButton.One) || OVRInput.GetDown(OVRInput.Button.One))
+            if(Input.GetButtonDown(VRButton.One) || OVRInput.GetDown(OVRInput.Button.One) || Input.GetButtonDown(VRButton.Trigger) || OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
             {
                 Ray ray = new Ray(transform.position, transform.forward);
                 RaycastHit raycastHit;
@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour {
                 }
             }
 
-            if(Input.GetButton(VRButton.One) || OVRInput.Get(OVRInput.Button.One))
+            if(Input.GetButton(VRButton.One) || OVRInput.Get(OVRInput.Button.One) || Input.GetButton(VRButton.Trigger) || OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
             {
                 Ray ray = new Ray(transform.position, transform.forward);
                 RaycastHit raycastHit;
@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour {
                 }
             }
 
-            if(Input.GetButtonUp(VRButton.One) || OVRInput.GetUp(OVRInput.Button.One))
+            if(Input.GetButtonUp(VRButton.One) || OVRInput.GetUp(OVRInput.Button.One) || Input.GetButtonUp(VRButton.Trigger) || OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger))
             {
                 if(_selectedElement != null)
                 {
