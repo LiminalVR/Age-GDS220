@@ -191,7 +191,7 @@ public class ElementManager : MonoBehaviour {
 
         do
         {
-            g.transform.localEulerAngles = new Vector3(g.transform.rotation.eulerAngles.x, g.transform.rotation.eulerAngles.y, Mathf.PingPong(currentTime * 5f, _angle));
+            g.transform.localEulerAngles = new Vector3(g.transform.rotation.eulerAngles.x, g.transform.rotation.eulerAngles.y, Mathf.PingPong(currentTime * 10f, _angle));
 
             currentTime += Time.deltaTime;
             yield return null;
