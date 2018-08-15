@@ -75,19 +75,23 @@ public class AirElement : BaseElement {
         }
     }
 
-	private IEnumerator WindGust (float _delay) {
-
+	private IEnumerator WindGust (float _delay)
+    {
+        _activeCoroutines++;
         _airGustPT.Play();
 
         yield return new WaitForSeconds(_delay);
 
         _elementManager.Wiggle(_elementManager._stemBase, _duration, _angle);
 
+        _activeCoroutines--;
+        CalculateActiveStatus();
         yield return null;
     }
 
-    private IEnumerator AirRainingEffects (float _duration) {
-
+    private IEnumerator AirRainingEffects (float _duration)
+    {
+        _activeCoroutines++;
 		float currentTime = 0.0f;
 
 		_rainPT.transform.rotation = Quaternion.Euler (-115f, -45f, 90f);
@@ -105,5 +109,9 @@ public class AirElement : BaseElement {
 	
 		_rainPT.transform.rotation = Quaternion.Euler (-90f, -45f, 90f);
 		fireNoiseModule.enabled = false;
-	}
+
+        _activeCoroutines--;
+        CalculateActiveStatus();
+        yield return null;
+    }
 }

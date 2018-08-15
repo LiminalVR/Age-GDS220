@@ -198,5 +198,6 @@ public class ElementManager : MonoBehaviour {
         }
         while (currentTime <= _duration);
     }
+
     #endregion
 }

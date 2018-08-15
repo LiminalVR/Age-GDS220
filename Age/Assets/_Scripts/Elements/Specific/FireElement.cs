@@ -65,17 +65,21 @@ public class FireElement : BaseElement {
 
     private IEnumerator Shine()
     {
+        _activeCoroutines++;
         StartCoroutine(ManipulateShine(_maxSunIntensity, _cloudFadeOutDuration, true));
 
         yield return new WaitForSeconds (_cloudFadeOutDuration + _shineDuration);
 
         StartCoroutine(ManipulateShine(_minSunIntensity, _cloudFadeInDuration, false));
 
+        _activeCoroutines--;
+        CalculateActiveStatus();
         yield return null;
     }
 
     private IEnumerator ManipulateShine(float targetSunIntensity, float _duration, bool _fading)
     {
+        _activeCoroutines++;
         float currentTime = 0.0f;
 
         float startIntensity = _sunLight.intensity;
@@ -100,11 +104,15 @@ public class FireElement : BaseElement {
             yield return null;
         }
         while(currentTime < _duration);
+
+        _activeCoroutines--;
+        CalculateActiveStatus();
+        yield return null;
     }
 
     private IEnumerator FirePulseEffects(float time, float _minRadius, float _maxRadius, float _minRate, float _maxRate)
     {
-
+        _activeCoroutines++;
         float currentTime = 0.0f;
 
         fireShapeModule.radius = _maxRadius;
@@ -122,5 +130,9 @@ public class FireElement : BaseElement {
         fireShapeModule.radius = _minRadius;
         fireEmissionModule.rateOverTime = _minRate;
         fireNoiseModule.enabled = false;
+
+        _activeCoroutines--;
+        CalculateActiveStatus();
+        yield return null;
     }
 }

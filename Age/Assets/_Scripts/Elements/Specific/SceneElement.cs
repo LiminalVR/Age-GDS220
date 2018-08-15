@@ -81,6 +81,7 @@ public class SceneElement : BaseElement
 
     private IEnumerator LightRotate (Vector3 rotateVector, float time)
     {
+        _activeCoroutines++;
         float currentTime = 0.0f;
 
         Quaternion RotateTo = Quaternion.Euler(new Vector3(rotateVector.x, rotateVector.y, rotateVector.z));
@@ -93,5 +94,9 @@ public class SceneElement : BaseElement
             yield return null;
         }
         while (currentTime <= time);
+
+        _activeCoroutines--;
+        CalculateActiveStatus();
+        yield return null;
     }
 }

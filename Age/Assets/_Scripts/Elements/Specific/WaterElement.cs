@@ -82,6 +82,8 @@ public class WaterElement : BaseElement {
 
     private IEnumerator BloomFlowers(float _delay)
     {
+        _activeCoroutines++;
+
         yield return new WaitForSeconds(_delay);
 
         foreach (Animator a in _elementManager._flowerAnims)
@@ -104,12 +106,14 @@ public class WaterElement : BaseElement {
             p.Play();
         }
 
+        _activeCoroutines--;
+        CalculateActiveStatus();
         yield return null;
     }
 
     private IEnumerator WaterRainingEffects (float _duration) 
 	{
-
+        _activeCoroutines++;
 		float currentTime = 0.0f;
 
         float initialSpeed = _rainPTMainModule.simulationSpeed;
@@ -127,5 +131,9 @@ public class WaterElement : BaseElement {
 		while (currentTime <= _duration);
 
 		_rainPTMainModule.simulationSpeed = initialSpeed;
+        _activeCoroutines--;
+        CalculateActiveStatus();
+
+        yield return null;
 	}
 }

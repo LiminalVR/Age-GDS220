@@ -26,6 +26,8 @@ public abstract class BaseElement : MonoBehaviour, IElement {
     protected bool _isConfirming = false;
     private float _confirmationTime;
 
+    protected int _activeCoroutines;
+
     public float ConfirmationTime
     {
         get { return _confirmationTime; }
@@ -73,7 +75,7 @@ public abstract class BaseElement : MonoBehaviour, IElement {
 
     public void Init()
     {
-        //StartCoroutine(Fade(_renderersToFade, _maxAlpha, _fadeDuration));
+        StartCoroutine(Fade(_renderersToFade, _maxAlpha, _fadeDuration));
     }
 
     public void ResetElement()
@@ -126,8 +128,14 @@ public abstract class BaseElement : MonoBehaviour, IElement {
 
         StartCoroutine(AnimateEffect());
         _isActive = true;
+    }
 
-        StartCoroutine(DeactivateElement());
+    protected void CalculateActiveStatus()
+    {
+        if(_isActive && _activeCoroutines == 0)
+        {
+            StartCoroutine(DeactivateElement());
+        }
     }
 
     #region "Actions"
@@ -141,6 +149,8 @@ public abstract class BaseElement : MonoBehaviour, IElement {
 
     private IEnumerator AnimateEffect()
     {
+        _activeCoroutines++;
+
         GameObject activeEffect = null;
 
         DelegatesAndEvents.ElementActivated();
@@ -156,12 +166,14 @@ public abstract class BaseElement : MonoBehaviour, IElement {
             yield return null;
         }
 
+        _activeCoroutines--;
+        CalculateActiveStatus();
         yield return null;
     }
 
     private IEnumerator DeactivateElement()
     {
-        //StartCoroutine(Fade(_renderersToFade, 0.0f, _fadeDuration));
+        StartCoroutine(Fade(_renderersToFade, 0.0f, _fadeDuration));
 
         yield return new WaitForSeconds(_fadeDuration);
 
@@ -170,41 +182,41 @@ public abstract class BaseElement : MonoBehaviour, IElement {
         yield return null;
     }
     
-    //private IEnumerator Fade(Renderer[] renderers, float targetAlpha, float duration)
-    //{
-    //    Color[] startColours = _colourMaster.GetColours(_renderersToFade);
+    private IEnumerator Fade(Renderer[] renderers, float targetAlpha, float duration)
+    {
+        Color[] startColours = _colourMaster.GetColours(_renderersToFade);
 
-    //    var step = 0.0f;
+        var step = 0.0f;
 
-    //    while(step < 1)
-    //    {
-    //        step += Time.deltaTime / duration;
+        while(step < 1)
+        {
+            step += Time.deltaTime / duration;
 
-    //        for(int index = 0; index < startColours.Length; index++)
-    //        {
-    //            Material mat = renderers[index].material;
-    //            Color startColour = startColours[index];
-    //            Color targetColour = _colourMaster.ChangeAlpha(mat.color, targetAlpha);
+            for(int index = 0; index < startColours.Length; index++)
+            {
+                Material mat = renderers[index].material;
+                Color startColour = startColours[index];
+                Color targetColour = _colourMaster.ChangeAlpha(mat.color, targetAlpha);
 
-    //            mat.color = Color.Lerp(startColour, targetColour, step);
-    //            renderers[index].material = mat;
-    //        }
+                mat.color = Color.Lerp(startColour, targetColour, step);
+                renderers[index].material = mat;
+            }
 
-    //        for(int index = 0; index < _particlesSystemsToFade.Length; index++)
-    //        {
-    //            Color startColour = _particlesSystemsToFade[index].main.startColor.color;
-    //            Color targetColour = _colourMaster.ChangeAlpha(startColour, targetAlpha);
-    //            ParticleSystem.ColorOverLifetimeModule colourModule = _particlesSystemsToFade[index].colorOverLifetime;
+            for(int index = 0; index < _particlesSystemsToFade.Length; index++)
+            {
+                Color startColour = _particlesSystemsToFade[index].main.startColor.color;
+                Color targetColour = _colourMaster.ChangeAlpha(startColour, targetAlpha);
+                ParticleSystem.ColorOverLifetimeModule colourModule = _particlesSystemsToFade[index].colorOverLifetime;
 
 
-    //            colourModule.color = Color.Lerp(startColour, targetColour, step);
+                colourModule.color = Color.Lerp(startColour, targetColour, step);
 
-    //        }
+            }
 
-    //        yield return null;
-    //    }
+            yield return null;
+        }
 
-    //    yield return null;
-    //}
+        yield return null;
+    }
     
 }
