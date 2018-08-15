@@ -6,6 +6,7 @@ using Liminal.SDK.VR.Input;
 
 public class PlayerController : MonoBehaviour {
 
+    [SerializeField] private GameObject _pointer;
     [SerializeField] private GameObject _controller;
     [SerializeField] private LayerMask _interactionLayers;
     [SerializeField] private string _buttonName;
@@ -30,7 +31,19 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Update()
-    {   
+    {
+        Ray ray = new Ray(_controller.transform.position, _controller.transform.forward);
+        RaycastHit raycastHit;
+
+        if(Physics.Raycast(ray, out raycastHit, _maxDis, _interactionLayers))
+        {
+            _lineRenderer.SetPosition(1, new Vector3(0, 0, raycastHit.distance));
+        }
+
+        _pointer.transform.position = raycastHit.point;
+        //_pointer.transform.rotation = Quaternion.Euler(0, OVRInput.GetLocalControllerRotation(OVRInput.Controller.Active).eulerAngles.y, 0);
+
+
         if(!_isVR)
         {
             _xRot += Input.GetAxis("Mouse X") * _mouseSensitivity;
@@ -39,27 +52,11 @@ public class PlayerController : MonoBehaviour {
 
             if(Input.GetButtonDown(_buttonName))
             {
-                Ray ray = new Ray(transform.position, transform.forward);
-                RaycastHit raycastHit;
-
-                if(Physics.Raycast(ray, out raycastHit, _maxDis, _interactionLayers))
-                {
-                    _selectedElement = raycastHit.collider.gameObject.GetComponent<BaseElement>();
-                }
+                _selectedElement = raycastHit.collider.gameObject.GetComponent<BaseElement>();
             }
 
             if(Input.GetButton(_buttonName))
             {
-                Ray ray = new Ray(transform.position, transform.forward);
-                RaycastHit raycastHit;
-
-                
-                if(Physics.Raycast(ray, out raycastHit, _maxDis, _interactionLayers))
-                {
-                    _lineRenderer.SetPosition(1, new Vector3(0, 0, raycastHit.distance));
-                }
-                
-
                 if(_selectedElement != null)
                 {
                     _selectedElement.ConfirmationTime += Time.deltaTime;
@@ -80,27 +77,12 @@ public class PlayerController : MonoBehaviour {
         {
             if(Input.GetButtonDown(VRButton.One) || OVRInput.GetDown(OVRInput.Button.One) || Input.GetButtonDown(VRButton.Trigger) || OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
             {
-                Ray ray = new Ray(_controller.transform.position, _controller.transform.forward);
-                RaycastHit raycastHit;
 
-                if(Physics.Raycast(ray, out raycastHit, _maxDis, _interactionLayers))
-                {
-                    _selectedElement = raycastHit.collider.gameObject.GetComponent<BaseElement>();
-                }
+                _selectedElement = raycastHit.collider.gameObject.GetComponent<BaseElement>();
             }
 
             if(Input.GetButton(VRButton.One) || OVRInput.Get(OVRInput.Button.One) || Input.GetButton(VRButton.Trigger) || OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
             {
-                Ray ray = new Ray(_controller.transform.position, _controller.transform.forward);
-                RaycastHit raycastHit;
-
-                
-                if(Physics.Raycast(ray, out raycastHit, _maxDis, _interactionLayers))
-                {
-                    _lineRenderer.SetPosition(1, new Vector3(0, 0, raycastHit.distance));
-                }
-                
-
                 if(_selectedElement != null)
                 {
                     _selectedElement.ConfirmationTime += Time.deltaTime;
