@@ -95,8 +95,9 @@ public class AirElement : BaseElement {
 		yield return new WaitForSeconds(5f);
 
 		fireNoiseModule.enabled = true;
+        _elementManager._smokeTrailPT.Play();
 
-		do {
+        do {
 			currentTime += Time.deltaTime;
 			yield return null;
 		} 

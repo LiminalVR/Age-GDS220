@@ -19,9 +19,9 @@ public class FireElement : BaseElement {
 
     #region Winter
     [Header("Winter")]
-    [SerializeField] private ParticleSystem _smokeTrailPT;
     private ParticleSystem.EmissionModule fireEmissionModule;
 	private ParticleSystem.ShapeModule fireShapeModule;
+    private ParticleSystem.NoiseModule fireNoiseModule;
     [SerializeField] private float _minRadius = 0f, _maxRadius = 0f, _minRate = 0f, _maxRate = 0f;
 	#endregion
 
@@ -33,7 +33,8 @@ public class FireElement : BaseElement {
 	{
         fireShapeModule = _firePT.shape;
 		fireEmissionModule = _firePT.emission;
-	}
+        fireNoiseModule = _firePT.noise;
+    }
 
     //Fade clouds and show sun ray particles
     protected override void EnactSummerActions()
@@ -53,8 +54,6 @@ public class FireElement : BaseElement {
     protected override void EnactWinterActions()
     {
         StartCoroutine(FirePulseEffects(5f, _minRadius, _maxRadius, _minRate, _maxRate));
-
-        _smokeTrailPT.Play();
     }
 
     //Sun rays, see summer
@@ -110,6 +109,8 @@ public class FireElement : BaseElement {
 
         fireShapeModule.radius = _maxRadius;
         fireEmissionModule.rateOverTime = _maxRate;
+        fireNoiseModule.enabled = true;
+        _elementManager._smokeTrailPT.Play();
 
         do
         {
@@ -120,5 +121,6 @@ public class FireElement : BaseElement {
 
         fireShapeModule.radius = _minRadius;
         fireEmissionModule.rateOverTime = _minRate;
+        fireNoiseModule.enabled = false;
     }
 }

@@ -14,6 +14,7 @@ public class ElementManager : MonoBehaviour {
     [HideInInspector] public GameObject[] _stemBase;
     public ParticleSystem _cloudsPT;
     public ParticleSystem _rainPT;
+    public ParticleSystem _smokeTrailPT;
 
     [HideInInspector] public List<ParticleSystem> _bloomPT;
     [HideInInspector] public List<ParticleSystem> _dandelionBloomPT;
