@@ -47,8 +47,6 @@ public class AirElement : BaseElement {
         StartCoroutine(WindGust(_delay));
 
         _auLeafTuftPT.Play();
-
-        StartCoroutine(AirRainingEffects(_duration));
     }
 
     //Air gust, fire ember, tilt rain / fire if applicable
@@ -56,9 +54,10 @@ public class AirElement : BaseElement {
     {
         StartCoroutine(WindGust(_delay));
 
+        _elementManager._smokeTrailPT.Play();
         _emberBurstPT.Play();
 
-        StartCoroutine(AirRainingEffects(_duration));
+        StartCoroutine(AirGustEffects(_duration));
     }
 
     //Blows dandelion pollen in wind
@@ -89,7 +88,7 @@ public class AirElement : BaseElement {
         yield return null;
     }
 
-    private IEnumerator AirRainingEffects (float _duration)
+    private IEnumerator AirGustEffects (float _duration)
     {
         _activeCoroutines++;
 		float currentTime = 0.0f;
@@ -99,7 +98,6 @@ public class AirElement : BaseElement {
 		yield return new WaitForSeconds(5f);
 
 		fireNoiseModule.enabled = true;
-        _elementManager._smokeTrailPT.Play();
 
         do {
 			currentTime += Time.deltaTime;

@@ -31,13 +31,13 @@ public class SeasonManager : MonoBehaviour {
     private Material[] _treeMaterials;
     private int _albedoID;
 
-    private ColourMaster _colourMaster;
+    //private ColourMaster _colourMaster;
     private ElementManager _elementManager;
 
     private void Start()
     {
         _elementManager = GetComponent<ElementManager>();
-        _colourMaster = new ColourMaster();
+        //_colourMaster = new ColourMaster();
 
         SetupTrees();
 

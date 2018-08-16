@@ -19,22 +19,12 @@ public class FireElement : BaseElement {
 
     #region Winter
     [Header("Winter")]
-    private ParticleSystem.EmissionModule fireEmissionModule;
-	private ParticleSystem.ShapeModule fireShapeModule;
-    private ParticleSystem.NoiseModule fireNoiseModule;
-    [SerializeField] private float _minRadius = 0f, _maxRadius = 0f, _minRate = 0f, _maxRate = 0f;
+    [SerializeField] private ParticleSystem _firePulsePT;
 	#endregion
 
 	#region Spring
 
 	#endregion
-
-	private void Start () 
-	{
-        fireShapeModule = _firePT.shape;
-		fireEmissionModule = _firePT.emission;
-        fireNoiseModule = _firePT.noise;
-    }
 
     //Fade clouds and show sun ray particles
     protected override void EnactSummerActions()
@@ -53,7 +43,7 @@ public class FireElement : BaseElement {
     //Fire burns brighter
     protected override void EnactWinterActions()
     {
-        StartCoroutine(FirePulseEffects(5f, _minRadius, _maxRadius, _minRate, _maxRate));
+        StartCoroutine(FirePulseEffect(6f));
     }
 
     //Sun rays, see summer
@@ -88,17 +78,6 @@ public class FireElement : BaseElement {
         {
             currentTime += Time.deltaTime;
 
-            /*
-            if (fading)
-            {
-                cloudsMainModule.startColor = Color.Lerp(cloudOpaque, Color.clear, currentTime);
-            }
-            else
-            {
-                cloudsMainModule.startColor = Color.Lerp(Color.clear, cloudOpaque, currentTime);
-            }
-            */
-
             _sunLight.intensity = Mathf.Lerp(startIntensity, targetSunIntensity, currentTime);
 
             yield return null;
@@ -110,26 +89,16 @@ public class FireElement : BaseElement {
         yield return null;
     }
 
-    private IEnumerator FirePulseEffects(float time, float _minRadius, float _maxRadius, float _minRate, float _maxRate)
+    private IEnumerator FirePulseEffect(float _duration)
     {
         _activeCoroutines++;
-        float currentTime = 0.0f;
 
-        fireShapeModule.radius = _maxRadius;
-        fireEmissionModule.rateOverTime = _maxRate;
-        fireNoiseModule.enabled = true;
-        _elementManager._smokeTrailPT.Play();
+        _firePT.Stop();
+        _firePulsePT.Play();
 
-        do
-        {
-            currentTime += Time.deltaTime;
-            yield return null;
-        }
-        while (currentTime <= time);
+        yield return new WaitForSeconds(_duration);
 
-        fireShapeModule.radius = _minRadius;
-        fireEmissionModule.rateOverTime = _minRate;
-        fireNoiseModule.enabled = false;
+        _firePT.Play();
 
         _activeCoroutines--;
         CalculateActiveStatus();

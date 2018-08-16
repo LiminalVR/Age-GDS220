@@ -71,7 +71,8 @@ public class SceneElement : BaseElement
 
         StartCoroutine(LightRotate(spRotate, 5f));
 
-        _spTerrainPollenPT.Play();
+        _elementManager._rainPT.Stop();
+        _spTerrainPollenPT.Play(); 
     }
 
     protected override void EnactSpringActions()

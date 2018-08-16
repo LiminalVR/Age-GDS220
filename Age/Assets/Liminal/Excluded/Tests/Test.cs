@@ -27,8 +27,8 @@ public class Test : MonoBehaviour
     [SerializeField] private SomeNestedSerializableData m_NestedData = new SomeNestedSerializableData();
     [SerializeField] private TestUnityEvent m_Event = new TestUnityEvent();
     [SerializeField] private GameObject m_Prefab = null;
-    [SerializeField] private VRControllerVisualProxy m_TutorialController = null;
-    [SerializeField] private GameObject m_TutorialCanvas = null;
+    //[SerializeField] private VRControllerVisualProxy m_TutorialController = null;
+    //[SerializeField] private GameObject m_TutorialCanvas = null;
 
     public UnityEvent m_NormalUnityEvent;
 
