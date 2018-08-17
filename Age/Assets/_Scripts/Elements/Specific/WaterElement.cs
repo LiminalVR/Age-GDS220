@@ -9,7 +9,9 @@ public class WaterElement : BaseElement {
     [SerializeField] private float _duration;
     [SerializeField] private float _angle;
     [SerializeField] private ParticleSystem waterShower1, waterShower2;
-    [SerializeField] AudioClip _bloomAC;
+    [SerializeField] private AudioSource _asRain;
+    [SerializeField] private AudioClip _bloomAC;
+    [SerializeField] private AudioClip _waterHoseAC;
     #endregion
 
     #region Autumn
@@ -21,6 +23,7 @@ public class WaterElement : BaseElement {
     #region Winter
     [Header("Winter")]
     [SerializeField] RainbowLaunch _rainbowLauncher1, _rainbowLauncher2;
+    [SerializeField] private AudioClip _sparkleAC;
     #endregion
 
     #region Spring
@@ -40,6 +43,8 @@ public class WaterElement : BaseElement {
     //Water flowers and bloom them
     protected override void EnactSummerActions()
     {
+        _as.PlayOneShot(_waterHoseAC);
+
         waterShower1.Play();
         waterShower2.Play();
 
@@ -50,6 +55,7 @@ public class WaterElement : BaseElement {
     protected override void EnactAutumnActions()
     {
         _elementManager._rainPT.Play();
+        _asRain.Play();
         StartCoroutine(WaterRainingEffects(_duration));
     }
 
@@ -60,6 +66,7 @@ public class WaterElement : BaseElement {
         _rainbowLauncher2.LaunchRainbow();
 
         _skySparklePT.Play();
+        _as.PlayOneShot(_sparkleAC);
     }
 
     //Grow flowers back, and bloom

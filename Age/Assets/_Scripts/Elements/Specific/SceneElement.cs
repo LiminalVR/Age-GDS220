@@ -11,6 +11,9 @@ public class SceneElement : BaseElement
     private ParticleSystem.EmissionModule _cloudEmissionModule;
     [SerializeField] private float auRate = 0f, wnRate = 0f, spRate = 0f;
 
+    [Header("Rain")]
+    [SerializeField] private AudioSource _asRain;
+
     [Header("Light")]
     [SerializeField] private GameObject _sceneLight;
     [SerializeField] private Vector3 auRotate = Vector3.zero, wnRotate = Vector3.zero, spRotate = Vector3.zero;
@@ -60,7 +63,7 @@ public class SceneElement : BaseElement
 
         _auTreeLeavesPT.Stop();
         _auTerrainLeavesPT.Stop();
-
+        
         _elementManager.ScaleDoodad(_elementManager._stemBase, _scaleDuration, _scaleTarget);
     }
 
@@ -72,6 +75,7 @@ public class SceneElement : BaseElement
         StartCoroutine(LightRotate(spRotate, 5f));
 
         _elementManager._rainPT.Stop();
+        _asRain.Stop();
         _spTerrainPollenPT.Play(); 
     }
 

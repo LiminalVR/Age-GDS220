@@ -7,6 +7,7 @@ public class FireElement : BaseElement {
 	#region Summer
 	[Header("Summer")]
 	[SerializeField] private ParticleSystem _sunrayPT;
+    [SerializeField] private AudioClip _sunrayAC;
     [SerializeField] private Light _sunLight;
     [SerializeField] private float _minSunIntensity = 0f, _maxSunIntensity = 0f, _cloudFadeOutDuration = 0f, _shineDuration = 0f, _cloudFadeInDuration = 0f;
 	#endregion
@@ -15,7 +16,6 @@ public class FireElement : BaseElement {
 	[Header("Autumn")]
 	[SerializeField] private ParticleSystem _firePT;
     [SerializeField] private ParticleSystem _kindlePT;
-    [SerializeField] private AudioClip _fireCrackleAC;
     [SerializeField] private AudioSource _asFire;
     [SerializeField] private AudioClip _fireKindleAC;
     #endregion
@@ -33,6 +33,7 @@ public class FireElement : BaseElement {
     protected override void EnactSummerActions()
     {
         _sunrayPT.Play();
+        StartCoroutine(AudioDelay(8f, _sunrayAC));
         StartCoroutine(Shine());
     }
 
@@ -42,7 +43,7 @@ public class FireElement : BaseElement {
         _kindlePT.Play();
         _as.PlayOneShot(_fireKindleAC);
         _firePT.Play();
-        
+        _asFire.Play();
     }
 
     //Fire burns brighter
@@ -55,7 +56,20 @@ public class FireElement : BaseElement {
     protected override void EnactSpringActions()
     {
         _sunrayPT.Play();
+        StartCoroutine(AudioDelay(8f, _sunrayAC));
         StartCoroutine(Shine());
+    }
+
+    private IEnumerator AudioDelay(float _delay, AudioClip _ac)
+    {
+        _activeCoroutines++;
+        yield return new WaitForSeconds(_delay);
+
+        _as.PlayOneShot(_ac);
+
+        _activeCoroutines--;
+        CalculateActiveStatus();
+        yield return null;
     }
 
     private IEnumerator Shine()
@@ -99,11 +113,13 @@ public class FireElement : BaseElement {
         _activeCoroutines++;
 
         _firePT.Stop();
+        _asFire.Stop();
         _firePulsePT.Play();
 
         yield return new WaitForSeconds(_duration);
 
         _firePT.Play();
+        _asFire.Play();
 
         _activeCoroutines--;
         CalculateActiveStatus();

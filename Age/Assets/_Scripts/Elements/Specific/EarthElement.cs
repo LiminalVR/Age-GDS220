@@ -11,7 +11,8 @@ public class EarthElement : BaseElement {
     #endregion
 
     #region Autumn
-    
+    [Header("Autumn")]
+    [SerializeField] private AudioClip _deBloomAC;
     #endregion
 
     #region Winter
@@ -22,6 +23,7 @@ public class EarthElement : BaseElement {
     [Header("Spring")]
 	[SerializeField] private ParticleSystem _soilDumpPT;
     [SerializeField] private ParticleSystem _firePT;
+    [SerializeField] private AudioSource _asFire;
     [SerializeField] private AudioClip _soilDumpAC;
     #endregion
 
@@ -44,6 +46,8 @@ public class EarthElement : BaseElement {
         {
             a.SetBool("Bloomed", false);
         }
+
+        StartCoroutine(AudioDelay(4.9f, _deBloomAC));
     }
 
     protected override void EnactWinterActions()
@@ -63,8 +67,21 @@ public class EarthElement : BaseElement {
     protected override void EnactSpringActions()
     {
         _as.PlayOneShot(_soilDumpAC);
+        _asFire.Stop();
         _soilDumpPT.Play();
         _firePT.Stop();
         _campAnim.SetBool("cFireDead", true);
+    }
+
+    private IEnumerator AudioDelay(float _delay, AudioClip _ac)
+    {
+        _activeCoroutines++;
+        yield return new WaitForSeconds(_delay);
+
+        _as.PlayOneShot(_ac);
+
+        _activeCoroutines--;
+        CalculateActiveStatus();
+        yield return null;
     }
 }
