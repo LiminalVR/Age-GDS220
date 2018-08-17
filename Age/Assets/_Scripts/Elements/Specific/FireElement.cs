@@ -15,6 +15,9 @@ public class FireElement : BaseElement {
 	[Header("Autumn")]
 	[SerializeField] private ParticleSystem _firePT;
     [SerializeField] private ParticleSystem _kindlePT;
+    [SerializeField] private AudioClip _fireCrackleAC;
+    [SerializeField] private AudioSource _asFire;
+    [SerializeField] private AudioClip _fireKindleAC;
     #endregion
 
     #region Winter
@@ -37,7 +40,9 @@ public class FireElement : BaseElement {
     protected override void EnactAutumnActions()
     {
         _kindlePT.Play();
+        _as.PlayOneShot(_fireKindleAC);
         _firePT.Play();
+        
     }
 
     //Fire burns brighter

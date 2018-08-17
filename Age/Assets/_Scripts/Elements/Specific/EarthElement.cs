@@ -11,7 +11,7 @@ public class EarthElement : BaseElement {
     #endregion
 
     #region Autumn
-
+    
     #endregion
 
     #region Winter
@@ -23,14 +23,9 @@ public class EarthElement : BaseElement {
 	[SerializeField] private ParticleSystem _soilDumpPT;
     [SerializeField] private ParticleSystem _firePT;
     [SerializeField] private AudioClip _soilDumpAC;
-	#endregion
+    #endregion
 
-	private void Start()
-	{
-
-    }
-
-	//Fixes campfire and causes dirt tufts
+    //Fixes campfire and causes dirt tufts
     protected override void EnactSummerActions()
     {
         _campAnim.SetBool("cFireDead", false);
